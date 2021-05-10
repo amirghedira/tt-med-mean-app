@@ -1,0 +1,68 @@
+<div class="main-container">
+  <div class="center">
+    <h1 class="main-page-title">Inscription</h1>
+    <div class="input-container">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div class="input-field-container">
+        <mat-form-field class="txt_field">
+          <mat-label>Nom d'utilisateur</mat-label>
+          <input matInput (focus)="resetErrorMsg()" [(ngModel)]="username">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+    <div class="input-container">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <div class="input-field-container">
+        <mat-form-field class="txt_field">
+          <mat-label>Email</mat-label>
+          <input matInput (focus)="resetErrorMsg()" [(ngModel)]="email">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+    <div class="input-container">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <div class="input-field-container">
+        <mat-form-field class="txt_field">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput (focus)="resetErrorMsg()" [(ngModel)]="password" type="password">
+        </mat-form-field>
+
+      </div>
+
+    </div>
+    <div class="input-container">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <div class="input-field-container">
+        <mat-form-field class="txt_field">
+          <mat-label>Confirmer mot de passe</mat-label>
+          <input matInput (focus)="resetErrorMsg()" [(ngModel)]="rePassword" type="password">
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="input-container">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <div class="input-field-container">
+        <mat-form-field class="txt_field">
+          <mat-label>Telecom password</mat-label>
+          <input matInput (focus)="resetErrorMsg()" [(ngModel)]="telecomPass" [(ngModel)]="telecomPass" type="password">
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="error-message-container">
+      <h2 class="error-message">
+        {{errorMessage}}
+      </h2>
+    </div>
+    <button class="submit-button" (click)="onSignup()">
+      Se Connecter
+    </button>
+  </div>
+
+</div>

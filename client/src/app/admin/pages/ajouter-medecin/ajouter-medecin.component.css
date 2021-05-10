@@ -1,0 +1,151 @@
+.presentation {
+
+  margin-top: -200px;
+  margin-left: 20px;
+}
+
+.main-container { height:100%;
+  background-image: url('src/assets/images/bleu.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.consultform {
+  width: 800px;
+  background-color: #025d6d;
+  color: #FFFFFF;
+  margin: auto;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.main {
+  background-color: rgba(99, 179, 179, 0.6);
+  width: 800px;
+  margin: auto;
+}
+
+form {
+  padding: 30px;
+}
+
+#name {
+  width: 100%;
+  height: 100px;
+
+}
+
+.name {
+  margin-left: 25px;
+  margin-top: 30px;
+  width: 150px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.matricule {
+  position: relative;
+  left: 200px;
+  top: -37px;
+  line-height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+}
+
+.firstname {
+  position: relative;
+  left: 200px;
+  top: -37px;
+  line-height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+
+}
+
+
+.lastname {
+  position: relative;
+  left: 200px;
+  top: -37px;
+  line-height: 40px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+}
+
+.firstlabel {
+  position: relative;
+  color: white;
+  text-transform: capitalize;
+  font-size: 14px;
+  left: -45px;
+
+}
+
+.lastlabel {
+
+  position: relative;
+  color: white;
+  text-transform: capitalize;
+  font-size: 14px;
+  left: -42px;
+}
+
+.option {
+  position: relative;
+  left: 200px;
+  top: -20px;
+  line-height: 50px;
+  width: 240px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  outline: none;
+  color: #555;
+}
+
+.option option {
+  font-size: 20px;
+}
+
+button {
+  background-color: #68ebf5;
+  display: block;
+  margin: 10px 0px 0px 20px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid rgb(27, 204, 235);
+  padding: 14px 50px;
+  margin-left: 600px;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.25px;
+  box-shadow: 0 0 10px #4bf0f0;
+  transition-duration: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 20px #46fcf3;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+
+}
+
+#para {
+  border-left-width: 10px;
+  font-family: calibri;
+  line-height: 20px;
+  margin-left: 20px;
+
+
+}

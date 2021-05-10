@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+
 exports.getConnectedUser = async (req, res) => {
     try {
         const connectedUser = await User.findOne({ _id: req.user._id })
@@ -20,7 +21,7 @@ exports.getUser = async (req, res) => {
 }
 exports.getUsers = async (req, res) => {
     try {
-        const users = await User.findOne({ _id: req.params.userId })
+        const users = await User.find()
         res.status(200).json({ users: users })
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -91,16 +92,16 @@ exports.deleteUser = async (req, res) => {
 
 exports.createUser = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 11)
-        const newUser = new User({
-            email: req.body.email,
-            username: req.body.username,
-            password: hashedPassword,
-            role: req.body.role
-        })
-        const createdUser = await newUser.save()
-        res.status(200).json({ user: createdUser })
+        if (req.body.telecomPass === process.env.telecomPass) {
+            const hashedPassword = await bcrypt.hash(req.body.user.password, 11)
+            req.body.user.password = hashedPassword;
+            const createdUser = await User.create(req.body.user)
+            res.status(200).json({ user: createdUser })
+        } else {
+            res.status(400).json({ message: 'unvalid telecom password' })
+        }
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message })
     }
 }
@@ -110,10 +111,10 @@ exports.userLogin = async (req, res) => {
         const user = await User.findOne({
             $or: [
                 {
-                    email: req.body.email.toLowerCase(),
+                    email: req.body.username.toLowerCase(),
                 },
                 {
-                    username: req.body.email,
+                    username: req.body.username,
                 },
             ],
         }).exec();
