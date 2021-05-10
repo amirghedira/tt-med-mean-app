@@ -1,0 +1,88 @@
+body {
+  /* background-image: url(images/bleu.jpg); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: sans-serif;
+  margin-top: 200px;
+}
+
+
+.main {
+  background-color: rgba(99, 179, 179, 0.6);
+  width: 700px;
+  margin: auto;
+}
+
+.consultform {
+  width: 700px;
+  background-color: #025d6d;
+  color: #FFFFFF;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.name {
+  margin-left: 25px;
+  margin-top: 30px;
+  width: 200px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+form {
+  padding: 30px;
+}
+
+.option {
+  position: relative;
+  left: 200px;
+  top: -20px;
+  line-height: 50px;
+  width: 240px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  outline: none;
+  color: #555;
+}
+
+.bouton2 {
+  background-color: #68ebf5;
+  display: block;
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid rgb(27, 204, 235);
+  padding: 14px 50px;
+  margin-left: 500px;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.25px;
+  box-shadow: 0 0 10px #4bf0f0;
+  transition-duration: 0.3s;
+}
+
+.bouton2:hover {
+  box-shadow: 0 0 20px #46fcf3;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+
+}
+
+.recherche {
+  border: 3px solid rgb(108, 180, 221);
+  height: 40px;
+  width: 300px;
+  border-radius: 50px;
+  margin-left: 500px;
+  margin-bottom: 20px;
+
+}
