@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 
+
 //routes imports 
 const userRoutes = require('./routes/user')
 
