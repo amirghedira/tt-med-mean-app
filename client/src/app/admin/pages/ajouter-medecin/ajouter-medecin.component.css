@@ -4,7 +4,8 @@
   margin-left: 20px;
 }
 
-.main-container { height:100%;
+.main-container {
+  min-height: 100vh;
   background-image: url('src/assets/images/bleu.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -27,6 +28,8 @@
   background-color: rgba(99, 179, 179, 0.6);
   width: 800px;
   margin: auto;
+  padding: 20px;
+
 }
 
 form {

@@ -1,13 +1,6 @@
-.presentation {
-
-  margin-top: -200px;
-  margin-left: 20px;
-}
-
 table {
   margin-left: 30px;
   border-collapse: collapse;
-  width: 90%;
   height: 200px;
   border: 1px solid rgb(30, 166, 207);
   box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
@@ -45,7 +38,8 @@ tr:hover {
 
 
 
-.main-container { height:100%;
+.main-container {
+  min-height: 100vh;
   background-image: url('src/assets/images/bleu.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -68,6 +62,7 @@ tr:hover {
   background-color: rgba(99, 179, 179, 0.6);
   width: 800px;
   margin: auto;
+  padding: 20px;
 
 }
 
@@ -296,13 +291,20 @@ form {
   transition-duration: 0.3s;
 }
 
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+}
+
 .recherche {
   border: 3px solid rgb(108, 180, 221);
   height: 40px;
   width: 300px;
   border-radius: 50px;
-  margin-left: 500px;
-  margin-bottom: 20px;
 
 }
 

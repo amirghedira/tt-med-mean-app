@@ -1,5 +1,5 @@
 .main-container {
-  height: 100%;
+  min-height: 100vh;
   background-image: url('src/assets/images/bleu.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -7,6 +7,8 @@
   font-family: sans-serif;
   padding-top: 100px;
   padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
 
 }
 
@@ -23,6 +25,8 @@
   background-color: rgba(99, 179, 179, 0.6);
   width: 800px;
   margin: auto;
+  padding: 20px;
+
 
 }
 
