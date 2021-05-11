@@ -4,71 +4,120 @@
       <h1>Formulaire agent</h1>
     </div>
     <div class="main">
-      <form>
-        <div id="name">
-          <h2 class="name">Num de matricule</h2>
-          <input class="matricule" type="number" name="num_matricule">
-        </div>
-        <h2 class="name">Situation</h2>
-        <select class="option" name="Qualité">
-          <option disabled="disabled" selected="selected">--choisir une option-- </option>
-          <option>Agent</option>
-          <option>Retrété</option>
-        </select>
-        <div id="name">
-          <h2 class="name">Nom</h2>
-          <input class="firstname" type="text" name="first_name">
-          <label class="firstlabel">Prénom</label>
-          <input class="lastname" type="text" name="last_name">
-          <label class="lastlabel">Nom</label>
-        </div>
+      <div id="name">
+        <h2 class="name">Num de matricule</h2>
+        <input class="matricule" type="number" name="num_matricule">
+      </div>
+      <h2 class="name">Situation</h2>
+      <select class="option" name="Qualité">
+        <option disabled="disabled" selected="selected">--choisir une option-- </option>
+        <option>Agent</option>
+        <option>Retrété</option>
+      </select>
+      <div id="name">
+        <h2 class="name">Nom</h2>
+        <input class="firstname" type="text" name="first_name">
+        <label class="firstlabel">Prénom</label>
+        <input class="lastname" type="text" name="last_name">
+        <label class="lastlabel">Nom</label>
+      </div>
 
-        <h2 class="name">Date de naissance</h2>
-        <input class="naissance" type="date" name="date_naissance">
-
-
-        <h2 class="name">Lieu de naissance</h2>
-        <input class="lieu" type="text" name="lieu_naissance">
+      <h2 class="name">Date de naissance</h2>
+      <input class="naissance" type="date" name="date_naissance">
 
 
-        <h2 class="name">Sexe</h2>
-        <label class="radio">
-          <input class="radio-one" type="radio" checked="checked" name="">
-          <span class="checkmark"></span>
-          Homme
-        </label>
-        <label class="radio">
-          <input class="radio-two" type="radio" name="">
-          <span class="checkmark"></span>
-          Femme
-        </label>
+      <h2 class="name">Lieu de naissance</h2>
+      <input class="lieu" type="text" name="lieu_naissance">
 
 
-        <h2 class="name">Poste</h2>
-        <input class="poste" type="text" name="poste_travail">
+      <h2 class="name">Sexe</h2>
+      <label class="radio">
+        <input class="radio-one" type="radio" checked="checked" name="">
+        <span class="checkmark"></span>
+        Homme
+      </label>
+      <label class="radio">
+        <input class="radio-two" type="radio" name="">
+        <span class="checkmark"></span>
+        Femme
+      </label>
 
 
-        <h2 class="name">Date de recrutement</h2>
-        <input class="date_rec" type="date" name="date_recrutement">
-
-        <h2 class="name">Résidence</h2>
-        <input class="residence" type="text" name="residence">
-        <div id="name">
-          <h2 class="name">Num téléphone</h2>
-          <input class="code" type="text" name="area_code">
-          <label class="area_code">area code</label>
-          <input class="phone" type="text" name="phone number">
-          <label class="phone_number">numéro</label>
-        </div>
-
-        <button class="ajout" type="submit">Ajouter les membres de sa famille</button>
+      <h2 class="name">Poste</h2>
+      <input class="poste" type="text" name="poste_travail">
 
 
+      <h2 class="name">Date de recrutement</h2>
+      <input class="date_rec" type="date" name="date_recrutement">
 
-      </form>
+      <h2 class="name">Résidence</h2>
+      <input class="residence" type="text" name="residence">
+      <div id="name">
+        <h2 class="name">Num téléphone</h2>
+        <input class="code" type="text" name="area_code">
+        <label class="area_code">area code</label>
+        <input class="phone" type="text" name="phone number">
+        <label class="phone_number">numéro</label>
+      </div>
+
+      <button type="button" class="ajout" data-toggle="modal" data-target="#exampleModal">
+        Ajouter les membres de sa famille
+      </button>
       <button type="submit" class="submit">Valider</button>
       <button type="submit" class="submit">Retour</button>
     </div>
   </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="consultform">
+          <h1>Formulaire membres de famille</h1>
+        </div>
+        <div class="main">
+          <div id="name">
+            <h2 class="name">Nom</h2>
+            <input class="firstname" type="text" name="first_name">
+            <label class="firstlabel">Prénom</label>
+            <input class="lastname" type="text" name="last_name">
+            <label class="lastlabel">Nom</label>
+          </div>
 
+          <h2 class="name">Date de naissance</h2>
+          <input class="naissance" type="date" name="date_naissance">
+
+
+          <h2 class="name">Lieu de naissance</h2>
+          <input class="lieu" type="text" name="lieu_naissance">
+
+
+          <h2 class="name">Sexe</h2>
+          <label class="radio">
+            <input class="radio-one" type="radio" checked="checked" name="">
+            <span class="checkmark"></span>
+            Homme
+          </label>
+          <label class="radio">
+            <input class="radio-two" type="radio" name="">
+            <span class="checkmark"></span>
+            Femme
+          </label>
+          <h2 class="name">Qualité</h2>
+          <select class="option" name="Qualité">
+            <option disabled="disabled" selected="selected">--choisir une option-- </option>
+            <option>Conjoint</option>
+            <option>Enfant</option>
+          </select>
+
+          <h2 class="name">Rang</h2>
+          <input class="rang" type="number" name="rang">
+
+
+          <button type="submit" class="submit">Valider</button>
+          <button type="submit" class="submit">Retour</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

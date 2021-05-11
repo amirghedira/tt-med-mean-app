@@ -25,9 +25,18 @@
 
 }
 
-form {
-  padding: 30px;
+
+.consultform {
+  width: 800px;
+  background-color: #025d6d;
+  color: #FFFFFF;
+  margin: auto;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
 }
+
+
 
 #name {
   width: 100%;
@@ -221,6 +230,11 @@ form {
   box-sizing: border-box;
   padding: 1px;
   box-shadow: rgb(126, 238, 229);
+}
+
+.modal-content {
+  width: fit-content;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .submit {

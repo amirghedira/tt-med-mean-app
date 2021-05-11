@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { SideBarComponent } from './admin/components/side-bar/side-bar.component';
+import { NavBarComponent } from './admin/components/nav-bar/nav-bar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AuthComponent,
         AdminComponent,
-        SideBarComponent
+        SideBarComponent,
+        NavBarComponent
 
 
     ],

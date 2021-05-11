@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     prenom: { type: String },
     nom: { type: String },
     role: { type: String, enum: ['admin', 'doctor', 'nurse'] },
-    familyMembers: [{ type: mongoose.Types.ObjectId, ref: 'FamilyMembre' }]
 })
 
 

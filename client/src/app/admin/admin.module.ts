@@ -13,6 +13,7 @@ import { AjouterMedecinComponent } from './pages/ajouter-medecin/ajouter-medecin
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 

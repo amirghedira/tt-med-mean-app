@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema({
         number: { type: String }
 
     },
+    familyMembers: [{ type: mongoose.Types.ObjectId, ref: 'FamilyMembre' }]
+
 
 
 })
