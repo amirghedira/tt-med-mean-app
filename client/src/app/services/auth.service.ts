@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../types/User';
 
 @Injectable({
@@ -8,27 +9,37 @@ import { User } from '../types/User';
 export class AuthService {
 
     token: string;
-    loggedUser: User
+    loggedUser: BehaviorSubject<User>;
     constructor(private http: HttpClient) {
-        if (localStorage.getItem('access_token'))
-            this.token = localStorage.getItem('access_token')
-        else
-            this.token = null
+        this.token = localStorage.getItem('access_token')
+        this.loggedUser = new BehaviorSubject(null)
     }
 
+    checkUser() {
+        if (this.token) {
+            this.getConnectedUser().subscribe((reponse: any) => {
+                this.setCurrentUser(reponse.connectedUser);
+
+            }, err => {
+                this.userLogout()
+            })
+        }
+    }
     userLogin(username: string, password: string) {
 
         return this.http.post('http://localhost:5000/user/login', { username, password })
     }
     userLogout() {
+        localStorage.removeItem('access_token')
         this.token = null;
-        this.loggedUser = null
+        this.setCurrentUser(null)
     }
     getConnectedUser() {
+        console.log('heee')
         return this.http.get<User>('http://localhost:5000/user/connected-user')
     }
     setCurrentUser(user: User) {
-        this.loggedUser = user
+        this.loggedUser.next(user)
     }
     getCurrentUser() {
         return this.loggedUser

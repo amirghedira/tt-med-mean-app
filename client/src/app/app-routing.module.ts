@@ -2,23 +2,26 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { GuestComponent } from './guest/guest.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 
 
 const routes: Routes = [
-
+    {
+        path: 'auth',
+        component: AuthComponent,
+        loadChildren: () => import('./auth/guest.module').then(m => m.AuthModule)
+    },
     {
         path: 'admin',
+        canActivate: [AuthGuard, RoleGuard],
+        data: { role: 'admin' },
         component: AdminComponent,
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     },
-    {
-        path: '',
-        component: GuestComponent,
-        loadChildren: () => import('./guest/guest.module').then(m => m.GuestModule)
-    },
-    { path: '**', redirectTo: '' },
+    { path: '**', redirectTo: 'auth' },
 
 
 ];

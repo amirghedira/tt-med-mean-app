@@ -21,8 +21,10 @@ app.use(cors())
 
 //routes imports 
 const userRoutes = require('./routes/user')
+const agentRoutes = require('./routes/agent')
 
 // app routes
 app.use('/user', userRoutes);
+app.use('/agent', agentRoutes)
 
 module.exports = app;

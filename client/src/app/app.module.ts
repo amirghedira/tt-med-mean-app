@@ -8,14 +8,14 @@ import { MatFormFieldModule, MatInputModule, MatRadioModule, MAT_RADIO_DEFAULT_O
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
-import { GuestComponent } from './guest/guest.component';
+import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { SideBarComponent } from './admin/components/side-bar/side-bar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        GuestComponent,
+        AuthComponent,
         AdminComponent,
         SideBarComponent
 
