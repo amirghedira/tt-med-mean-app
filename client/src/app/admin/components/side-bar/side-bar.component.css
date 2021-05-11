@@ -40,10 +40,6 @@
 
 }
 
-.item-text {
-  color: inherit;
-  text-decoration: none;
-}
 
 .nav-item:hover {
   background-color: #68ebf5;
