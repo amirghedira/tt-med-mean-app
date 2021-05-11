@@ -18,9 +18,9 @@ const routes: Routes = [
     { path: 'medecin', component: ConsulterMedecinComponent },
     { path: 'agent', component: ConsulterAgentComponent },
     { path: 'infirmier', component: ConsulterInfirmierComponent },
-    { path: 'update-agent/:id', component: MiseAJourAgentComponent },
-    { path: 'update-medecin/:id', component: MiseAJourMedecinComponent },
-    { path: 'update-infirmier/:id', component: MiseAJourInfirmierComponent },
+    { path: 'update-agent', component: MiseAJourAgentComponent },
+    { path: 'update-medecin', component: MiseAJourMedecinComponent },
+    { path: 'update-infirmier', component: MiseAJourInfirmierComponent },
     { path: '**', redirectTo: 'ajouter-agent' },
 
 

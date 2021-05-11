@@ -10,12 +10,15 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { GuestComponent } from './guest/guest.component';
 import { AdminComponent } from './admin/admin.component';
+import { SideBarComponent } from './admin/components/side-bar/side-bar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         GuestComponent,
         AdminComponent,
+        SideBarComponent
+
 
     ],
     imports: [

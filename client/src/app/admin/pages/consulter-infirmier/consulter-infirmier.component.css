@@ -1,8 +1,5 @@
 .main-container {
-  background-image: url('src/assets/images/bleu.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
   padding-top: 100px;
   padding-bottom: 50px;
   width: 100%;
@@ -48,7 +45,6 @@ tr:hover {
 }
 
 .submit {
-  background-color: #68ebf5;
   display: block;
   text-align: center;
   font-size: 15px;
@@ -56,11 +52,12 @@ tr:hover {
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 12px;
-  border: 2px solid rgb(28, 110, 124);
   outline: none;
   color: black;
   cursor: pointer;
   transition: 0.25px;
+  border: 2px solid rgb(28, 110, 124);
+  background-color: #68ebf5;
   box-shadow: 0 0 10px #4bf0f0;
   transition-duration: 0.3s;
 }

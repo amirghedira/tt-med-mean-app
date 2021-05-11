@@ -39,11 +39,6 @@ tr:hover {
 
 
 .main-container {
-  min-height: 100vh;
-  background-image: url('src/assets/images/bleu.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   padding-top: 100px;
   padding-bottom: 50px;
 }

@@ -1,9 +1,5 @@
 .main-container {
-  height: 100%;
-  background-image: url('src/assets/images/bleu.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
   padding-top: 100px;
   padding-bottom: 50px;
 }
