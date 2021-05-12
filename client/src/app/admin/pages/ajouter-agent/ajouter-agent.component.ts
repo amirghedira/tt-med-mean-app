@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Agent } from 'src/app/types/Agent';
 import { FamilyMember } from 'src/app/types/FamilyMember';
 import { AdminService } from '../../admin.service';
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-ajouter-agent',
@@ -15,7 +16,37 @@ export class AjouterAgentComponent implements OnInit {
     @ViewChild('toggleModal', { static: true }) toggleModal: ElementRef;
 
     constructor(private adminService: AdminService) {
+
+        this.resetAgent()
         this.resetMember()
+
+    }
+
+    onAddAgent() {
+        this.adminService.addAgent(this.agent)
+            .subscribe(res => {
+                Swal.fire(
+                    'Sucess',
+                    'Agent successfully added!',
+                    'success'
+                ).then((result) => {
+                    if (result.isConfirmed) {
+                        this.resetAgent()
+                    }
+                })
+            }, err => {
+                Swal.fire(
+                    'Error',
+                    'Something went wrong!'
+                )
+            })
+    }
+    onAddFamilyMember() {
+        this.agent.familyMembers.push(this.member)
+        this.toggleModal.nativeElement.click();
+        this.resetMember()
+    }
+    resetAgent() {
         this.agent = {
             _id: null,
             matricule: 0,
@@ -31,20 +62,6 @@ export class AjouterAgentComponent implements OnInit {
             numTel: '',
             familyMembers: []
         }
-    }
-
-    onAddAgent() {
-        this.adminService.addAgent(this.agent)
-            .subscribe(res => {
-                console.log(res)
-            }, err => {
-                console.log(err)
-            })
-    }
-    onAddFamilyMember() {
-        this.agent.familyMembers.push(this.member)
-        this.toggleModal.nativeElement.click();
-        this.resetMember()
     }
     resetMember() {
         this.member = {

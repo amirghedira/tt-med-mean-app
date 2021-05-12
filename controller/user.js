@@ -196,6 +196,7 @@ exports.getDoctors = async (req, res) => {
         const doctors = await User.find({ role: 'doctor' })
         res.status(200).json({ doctors: doctors })
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: error.message });
 
 

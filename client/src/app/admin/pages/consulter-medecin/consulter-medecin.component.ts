@@ -18,7 +18,9 @@ export class ConsulterMedecinComponent implements OnInit {
     ngOnInit() {
         this.adminService.getDoctors()
             .subscribe((data: any) => {
+                console.log(data)
                 this.doctors = data.doctors
+                this.filtredDoctors = data.doctors
             })
     }
     onDeleteDoctor(doctorId: string) {
@@ -33,5 +35,8 @@ export class ConsulterMedecinComponent implements OnInit {
     filterDoctors() {
         this.filtredDoctors = this.doctors.filter((doctor) => doctor.matricule.toString().includes(this.searchedMat))
     }
-
+    setSelectedDoctor(doctorId) {
+        const doctorIndex = this.doctors.findIndex(doctor => doctor._id === doctorId)
+        this.selectedDoctor = this.doctors[doctorIndex]
+    }
 }

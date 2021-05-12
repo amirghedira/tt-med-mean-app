@@ -16,9 +16,13 @@ export class ConsulterInfirmierComponent implements OnInit {
     constructor(private adminService: AdminService) { }
 
     ngOnInit() {
-        this.adminService.getDoctors()
+        console.log('heyeyeyey')
+        this.adminService.getNurses()
             .subscribe((data: any) => {
                 this.nurses = data.nurses
+                this.filtredNurses = data.nurses
+            }, err => {
+                console.log(err)
             })
     }
     onDeleteNurse(nurseId: string) {

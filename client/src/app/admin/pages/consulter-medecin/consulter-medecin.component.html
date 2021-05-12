@@ -2,7 +2,7 @@
   <div>
     <div class="search">
       <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
-      <a href="#"><i class="fa fa-search"></i></a>
+      <a (change)="filterDoctors()"><i class="fa fa-search"></i></a>
     </div>
     <div class="tableau">
       <div>
@@ -16,10 +16,10 @@
 
 
           </tr>
-          <tr *ngFor="let doctor of filtredDoctors">
+          <tr *ngFor="let doctor of filtredDoctors" (click)="setSelectedDoctor(doctor._id)">
             <td>{{doctor.matricule}}</td>
             <td>{{doctor.nom}} {{doctor.prenom}}</td>
-            <td>{{doctor.prenom}}</td>
+            <td>{{doctor.numTel}}</td>
             <td>{{doctor.username}}</td>
             <td>{{doctor.email}}</td>
             <td>
@@ -32,28 +32,38 @@
       </div>
 
     </div>
-    <div class="consultform">
-      <h1>Dr Nom&Prénom</h1>
-    </div>
-    <div class="main">
-      <div id="name">
-        <h2 class="name">Num de matricule:</h2>
+    <div *ngIf="selectedDoctor">
+      <div class="consultform">
+        <h1>Dr {{selectedDoctor.nom}} {{selectedDoctor.prenom}}</h1>
       </div>
-      <div id="name">
-        <h2 class="name">Num de téléphone:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Nom d'utilisateur:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Mail:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Nombre d'heures de travail</h2>
-        <input class="firstname" type="number" name="first_name">
-        <label class="firstlabel">Mois</label>
-        <input class="lastname" type="number" name="last_name">
-        <label class="lastlabel">Année</label>
+      <div class="main">
+        <div id="name">
+          <h2 class="name">Num de matricule:
+            <span class="field-value">{{selectedDoctor.matricule}}</span>
+          </h2>
+        </div>
+        <div id="name">
+          <h2 class="name">Num de téléphone:
+            <span class="field-value">{{selectedDoctor.numTel}}</span>
+          </h2>
+        </div>
+        <div id="name">
+          <h2 class="name">Nom d'utilisateur:
+            <span class="field-value">{{selectedDoctor.username}}</span>
+          </h2>
+        </div>
+        <div id="name">
+          <h2 class="name">Mail:
+            <span class="field-value">{{selectedDoctor.email}}</span>
+          </h2>
+        </div>
+        <div id="name">
+          <h2 class="name">Nombre d'heures de travail</h2>
+          <input class="firstname" type="number" name="first_name">
+          <label class="firstlabel">Mois</label>
+          <input class="lastname" type="number" name="last_name">
+          <label class="lastlabel">Année</label>
+        </div>
       </div>
     </div>
   </div>

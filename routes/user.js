@@ -20,10 +20,10 @@ const {
 
 
 router.get('/connected-user', AuthGuard, getConnectedUser)
-router.get('/:userId', getUser)
 router.get('/', getUsers)
 router.get('/doctor', getDoctors)
 router.get('/nurse', getNurses)
+router.get('/:userId', getUser)
 router.post('/', createUser)
 router.post('/login', userLogin)
 router.post('/doctor', AuthGuard, addDoctor)

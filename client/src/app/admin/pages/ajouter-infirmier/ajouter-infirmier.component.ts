@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Nurse } from 'src/app/types/Nurse';
 import { AdminService } from '../../admin.service';
+import Swal from 'sweetalert2'
 
 @Component({
     selector: 'app-ajouter-infirmier',
@@ -12,6 +13,9 @@ export class AjouterInfirmierComponent implements OnInit {
     nurse: Nurse;
     rePassword: string;
     constructor(private adminService: AdminService) {
+        this.resetNurse()
+    }
+    resetNurse() {
         this.nurse = {
             _id: null,
             matricule: 0,
@@ -23,14 +27,25 @@ export class AjouterInfirmierComponent implements OnInit {
             role: 'nurse',
             numTel: '',
         }
+        this.rePassword = ''
     }
-
     onAddNurse() {
         this.adminService.addNurse(this.nurse)
             .subscribe(res => {
-                console.log(res)
+                Swal.fire(
+                    'Sucess',
+                    'Doctor successfully added!',
+                    'success'
+                ).then((result) => {
+                    if (result.isConfirmed) {
+                        this.resetNurse()
+                    }
+                })
             }, err => {
-                console.log(err)
+                Swal.fire(
+                    'Error',
+                    'Something went wrong!'
+                )
             })
     }
     ngOnInit() {

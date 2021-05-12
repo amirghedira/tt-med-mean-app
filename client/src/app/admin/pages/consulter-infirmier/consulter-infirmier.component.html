@@ -1,9 +1,9 @@
 <div class="main-container">
   <div>
     <div class="search">
-      <input class="recherche" type="text" name="searchedMat" (change)="filterNurses()" [(ngModel)]="searchedMat"
+      <input class="recherche" type="text" name="searchedMat" [(ngModel)]="searchedMat"
         placeholder="Entrez la matricule ">
-      <a href="#"><i class="fa fa-search"></i></a>
+      <a (click)="filterNurses()"><i class="fa fa-search"></i></a>
     </div>
     <div class="tableau">
       <table>

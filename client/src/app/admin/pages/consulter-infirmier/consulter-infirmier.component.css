@@ -1,12 +1,7 @@
 .main-container {
-
   padding-top: 100px;
   padding-bottom: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }
-
 
 table {
   border-collapse: collapse;
@@ -30,7 +25,7 @@ tr {
 
 th,
 td {
-  padding: 10px;
+  padding: 12px;
   text-align: center;
   border-bottom: 1px solid rgb(27, 204, 235);
   color: white;
@@ -45,23 +40,22 @@ tr:hover {
 }
 
 .submit {
+  background-color: #68ebf5;
   display: block;
   text-align: center;
   font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid rgb(28, 110, 124);
+  outline: none;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  border-radius: 12px;
-  outline: none;
   color: black;
   cursor: pointer;
   transition: 0.25px;
-  border: 2px solid rgb(28, 110, 124);
-  background-color: #68ebf5;
   box-shadow: 0 0 10px #4bf0f0;
   transition-duration: 0.3s;
 }
-
 
 .submit:hover {
   box-shadow: #8fb7bc;
@@ -73,12 +67,13 @@ tr:hover {
 .bouton {
   background-color: #68ebf5;
   display: block;
-  margin: 5px 0px 0px 0px;
   text-align: center;
   font-size: 15px;
   border-radius: 12px;
   border: 2px solid rgb(27, 204, 235);
   padding: 14px 50px;
+  margin: auto;
+  margin-top: 20px;
   outline: none;
   color: black;
   cursor: pointer;
@@ -95,6 +90,12 @@ tr:hover {
 
 }
 
+.tableau {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .bouton2 {
   background-color: #68ebf5;
   display: block;
@@ -104,6 +105,7 @@ tr:hover {
   border-radius: 12px;
   border: 2px solid rgb(27, 204, 235);
   padding: 14px 50px;
+  margin-left: 500px;
   outline: none;
   color: black;
   cursor: pointer;
@@ -118,8 +120,9 @@ tr:hover {
   transform: scale(1.1);
   transition-duration: 0.3s;
 
-
 }
+
+
 
 
 #para {
@@ -128,51 +131,6 @@ tr:hover {
   line-height: 20px;
   margin-left: 20px;
 }
-
-.main {
-  background-color: rgba(99, 179, 179, 0.6);
-  width: 700px;
-  padding: 20px;
-  margin: auto;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.name {
-  margin-left: 25px;
-  margin-top: 30px;
-  width: 200px;
-  color: white;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-form {
-  padding: 30px;
-}
-
-
-.recherche {
-  padding: 5px 10px 5px 10px;
-  border: 3px solid rgb(108, 180, 221);
-  height: 40px;
-  width: 300px;
-  border-radius: 50px;
-
-}
-
-
 
 .main {
   background-color: rgba(99, 179, 179, 0.6);
@@ -191,4 +149,97 @@ form {
   padding: 10px 0px 10px 0px;
   text-align: center;
   border-radius: 15px 15px 0px 0px;
+}
+
+.name {
+  margin-left: 25px;
+  margin-top: 30px;
+  width: 200px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+form {
+  padding: 30px;
+}
+
+.option {
+  position: relative;
+
+
+  line-height: 50px;
+  width: 240px;
+  border-radius: 6px;
+  padding: 0 22px;
+  font-size: 16px;
+  outline: none;
+  color: #555;
+}
+
+.field-value {
+  color: black;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.option option {
+  font-size: 20px;
+}
+
+.firstname {
+  position: relative;
+  margin-top: 30px;
+  top: -37px;
+  line-height: 40px;
+  border-radius: 6px;
+  font-size: 16px;
+
+}
+
+
+.lastname {
+  position: relative;
+
+  top: -37px;
+  line-height: 40px;
+  border-radius: 6px;
+
+  font-size: 16px;
+}
+
+.firstlabel {
+
+  color: white;
+  text-transform: capitalize;
+  font-size: 14px;
+
+
+}
+
+.lastlabel {
+
+
+  color: white;
+  text-transform: capitalize;
+  font-size: 14px;
+
+}
+
+
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.recherche {
+  padding: 5px 10px 5px 10px;
+  border: 3px solid rgb(108, 180, 221);
+  height: 40px;
+  width: 300px;
+  border-radius: 50px;
+
 }
