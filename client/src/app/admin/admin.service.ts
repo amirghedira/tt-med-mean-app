@@ -13,14 +13,14 @@ export class AdminService {
     addAgent(agent: Agent) {
         return this.http.post('http://localhost:5000/agent', agent)
     }
-    getAgent(agentId: string) {
-        return this.http.get(`http://localhost:5000/agent/${agentId}`)
+    getAgent(mat: string) {
+        return this.http.get(`http://localhost:5000/agent/${mat}`)
     }
     getAgents() {
         return this.http.get(`http://localhost:5000/agent/`)
     }
-    updateAgent(agentId: string, newInfo) {
-        return this.http.patch(`http://localhost:5000/agent/${agentId}`, newInfo)
+    updateAgent(agentId: string, newAgent) {
+        return this.http.patch(`http://localhost:5000/agent/${agentId}`, { newAgent: newAgent })
     }
     deleteAgent(agentId: string) {
         return this.http.delete(`http://localhost:5000/agent/${agentId}`)
@@ -31,16 +31,24 @@ export class AdminService {
 
     }
     updateDoctor(userId: string, newDoctor: Doctor) {
-        return this.http.post(`http://localhost:5000/user/${userId}`, { newUser: newDoctor })
+        return this.http.patch(`http://localhost:5000/user/doctor/${userId}`, { newDoctor: newDoctor })
 
     }
     updateNurse(userId: string, newNurse: Nurse) {
-        return this.http.post(`http://localhost:5000/user/${userId}`, { newUser: newNurse })
+        return this.http.patch(`http://localhost:5000/user/nurse/${userId}`, { newNurse: newNurse })
 
     }
 
     getUser(userId: string) {
         return this.http.get(`http://localhost:5000/user/${userId}`)
+
+    }
+    getDoctor(mat: string) {
+        return this.http.get(`http://localhost:5000/user/doctor/${mat}`)
+
+    }
+    getNurse(mat: string) {
+        return this.http.get(`http://localhost:5000/user/nurse/${mat}`)
 
     }
 

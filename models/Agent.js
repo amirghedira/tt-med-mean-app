@@ -12,7 +12,15 @@ const userSchema = new mongoose.Schema({
     residence: { type: String },
     recrutement_date: { type: String },
     numTel: { type: String },
-    familyMembers: [{ type: mongoose.Types.ObjectId, ref: 'FamilyMembre' }]
+    familyMembers: [{
+        nom: { type: String, required: true },
+        prenom: { type: String, required: true },
+        qualite: { type: String, default: 'enfant', enum: ['enfant', 'conjoint'] },
+        rang: { type: Number },
+        lieu_n: { type: String },
+        genre: { type: String, enum: ['homme', 'femme'] },
+        date_n: { type: String }
+    }]
 
 
 

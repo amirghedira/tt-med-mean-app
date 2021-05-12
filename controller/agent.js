@@ -1,12 +1,9 @@
 const Agent = require('../models/Agent')
-const FamilyMember = require('../models/FamilyMembre')
 
 
 
 exports.createAgent = async (req, res) => {
     try {
-        const createdFamilyMembers = await FamilyMember.create(req.body.familyMembers)
-        req.body.familyMembers = createdFamilyMembers
         const createdAgent = await Agent.create(req.body)
         res.status(200).json({ createdAgent: createdAgent })
 
@@ -18,8 +15,7 @@ exports.createAgent = async (req, res) => {
 
 exports.getAgent = async (req, res) => {
     try {
-        const agent = await Agent.findOne({ _id: req.params.id })
-            .populate('familyMembers')
+        const agent = await Agent.findOne({ matricule: req.params.id })
 
         if (agent) {
             res.status(200).json({ agent: agent })
@@ -33,7 +29,7 @@ exports.getAgent = async (req, res) => {
 
 exports.getAgents = async (req, res) => {
     try {
-        const agents = await Agent.find().populate('familyMembers')
+        const agents = await Agent.find()
         res.status(200).json({ agents: agents })
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -46,6 +42,7 @@ exports.updateAgent = async (req, res) => {
         return res.status(200).json({ message: 'agent successfully updated' })
 
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: error.message })
     }
 }
@@ -63,10 +60,9 @@ exports.deleteAgent = async (req, res) => {
 
 exports.addAgentFamilyMember = async (req, res) => {
     try {
-        const createdFamilyMember = await FamilyMember.create(req.body.familyMember)
         const agent = await Agent.findOne({ _id: req.params.id })
         if (agent) {
-            agent.familyMember.push(createdFamilyMember)
+            agent.familyMember.push(req.body.familyMember)
             await agent.save()
             res.status(200).json({ message: 'family member added' })
 

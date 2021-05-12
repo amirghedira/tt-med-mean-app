@@ -24,7 +24,8 @@
           <td>{{agent.numTel}}</td>
           <td>
             <button class="submit" type="submit" (click)="onDeleteAgent(agent._id)">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
+            <button type="submit" class="submit" [routerLink]="['/admin/update-agent']"
+              [queryParams]="{matricule: agent.matricule}">Modifier</button>
           </td>
         </tr>
       </table>
@@ -96,12 +97,12 @@
             </tr>
             <tr *ngFor="let member of selectedAgent.familyMembers">
               <td>{{selectedAgent.matricule}}</td>
-              <td>{{selectedAgent.nom}} {{selectedAgent.prenom}}</td>
-              <td>{{selectedAgent.qualite}}</td>
-              <td>{{selectedAgent.date_n}}</td>
-              <td>{{selectedAgent.lieu_n}}</td>
-              <td>{{selectedAgent.genre}}</td>
-              <td>{{selectedAgent.rang}}</td>
+              <td>{{member.nom}} {{member.prenom}}</td>
+              <td>{{member.qualite}}</td>
+              <td>{{member.date_n}}</td>
+              <td>{{member.lieu_n}}</td>
+              <td>{{member.genre}}</td>
+              <td>{{member.rang}}</td>
 
             </tr>
           </table>

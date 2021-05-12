@@ -11,6 +11,30 @@ exports.getConnectedUser = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+exports.getDoctor = async (req, res) => {
+    try {
+        const doctor = await User.findOne({ matricule: req.params.mat, role: 'doctor' })
+        if (doctor)
+            res.status(200).json({ doctor: doctor })
+        else
+            res.status(404).json({ message: 'user not found' })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+exports.getNurse = async (req, res) => {
+    try {
+        const nurse = await User.findOne({ matricule: req.params.mat, role: 'nurse' })
+        if (nurse)
+            res.status(200).json({ nurse: nurse })
+        else
+            res.status(404).json({ message: 'user not found' })
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 exports.getUser = async (req, res) => {
     try {
         const user = await User.findOne({ _id: req.params.userId })
@@ -172,7 +196,9 @@ exports.addNurse = async (req, res) => {
 }
 exports.updateNurse = async (req, res) => {
     try {
-        await User.updateOne({ _id: req.nurse._id }, { $set: { ...req.body.newNurse } });
+        const hashedPassword = await bcrypt.hash(req.body.newNurse.password, 11)
+        req.body.newNurse.password = hashedPassword;
+        await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newNurse } });
         res.status(200).json({ message: "nurse updated successfully", });
 
     } catch (error) {
@@ -182,9 +208,13 @@ exports.updateNurse = async (req, res) => {
 }
 exports.updateDoctor = async (req, res) => {
     try {
-        await User.updateOne({ _id: req.nurse._id }, { $set: { ...req.body.newDoctor } });
+        const hashedPassword = await bcrypt.hash(req.body.newDoctor.password, 11)
+        req.body.newDoctor.password = hashedPassword;
+
+        await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newDoctor } });
         res.status(200).json({ message: "doctor updated successfully", });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: error.message });
 
 

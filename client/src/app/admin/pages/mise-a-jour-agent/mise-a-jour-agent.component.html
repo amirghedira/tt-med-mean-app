@@ -1,7 +1,8 @@
 <div class="main-container">
   <div class="search">
-    <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
-    <a href="#"><i class="fa fa-search"></i></a>
+    <input class="recherche" type="text" name="searchedMat" [(ngModel)]="searchedMat"
+      placeholder="Entrez la matricule ">
+    <a (click)="onSearch()"><i class="fa fa-search"></i></a>
   </div>
   <div class="consultform">
     <h1>Formulaire mettre à jour un agent</h1>
@@ -9,27 +10,24 @@
   <div class="main">
     <form>
       <h2 class="name">Situation</h2>
-      <select class="option" name="Qualité">
-        <option disabled="disabled" selected="selected">--choisir une option-- </option>
-        <option>Agent</option>
-        <option>Retrété</option>
+      <select class="option" name="agent.situation" [(ngModel)]="agent.situation">
+        <option disabled="disabled">--choisir une option-- </option>
+        <option value="active">Active</option>
+        <option value="retired">Retrété</option>
       </select>
 
 
 
       <h2 class="name">Poste</h2>
-      <input class="poste" type="text" name="poste_travail">
+      <input class="poste" type="text" name="agent.poste" [(ngModel)]="agent.poste">
 
 
 
       <h2 class="name">Résidence</h2>
-      <input class="residence" type="text" name="residence">
+      <input class="residence" type="text" name="agent.residence" [(ngModel)]="agent.residence">
       <div id="name">
         <h2 class="name">Num téléphone</h2>
-        <input class="code" type="text" name="area_code">
-        <label class="area_code"> code</label>
-        <input class="phone" type="text" name="phone number">
-        <label class="phone_number">numéro</label>
+        <input class="phone" type="text" name="agent.numTel" [(ngModel)]="agent.numTel">
       </div>
       <div>
         <h2 class="name">Les membres de sa famille</h2>
@@ -44,69 +42,24 @@
               <th>Sexe</th>
               <th>Rang</th>
             </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
+            <tr *ngFor="let member of agent.familyMembers ">
+              <td>{{agent.matricule}}</td>
+              <td>{{member.nom}} {{member.prenom}}</td>
+              <td>{{member.qualite}}</td>
+              <td>{{member.date_n}}</td>
+              <td>{{member.lieu_n}}</td>
+              <td>{{member.genre}}</td>
+              <td>{{member.rang}}</td>
 
             </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
 
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>conjoint</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>femme</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-            </tr>
           </table>
         </div>
         <button class="ajout" type="submit">Ajouter un nouveau membre</button>
       </div>
 
     </form>
-    <button type="submit" class="bouton">Sauvegarder</button>
+    <button type="submit" class="bouton" (click)="onSave()">Sauvegarder</button>
   </div>
 
 </div>

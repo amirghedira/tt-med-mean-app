@@ -15,6 +15,7 @@ import { MatRadioModule, MatFormFieldModule, MatInputModule } from '@angular/mat
 import { AdminService } from './admin.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../services/token-interceptor.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,6 +25,7 @@ import { TokenInterceptorService } from '../services/token-interceptor.service';
         CommonModule,
         FormsModule,
         MatRadioModule,
+        RouterModule,
         MatFormFieldModule,
         MatInputModule,
         HttpClientModule,

@@ -24,7 +24,8 @@
           <td>{{nurse.email}}</td>
           <td>
             <button class="submit" type="submit" (click)="onDeleteNurse(nurse._id)">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
+            <button class="submit" type="submit" [routerLink]="['/admin/update-infirmier']"
+              [queryParams]="{matricule: nurse.matricule}">Modifier</button>
           </td>
 
         </tr>

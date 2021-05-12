@@ -1,31 +1,32 @@
 <div class="main-container">
 
   <div class="search">
-    <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
-    <a href="#"><i class="fa fa-search"></i></a>
+    <input class="recherche" type="text" placeholder="Entrez la matricule " name="searchedMat"
+      [(ngModel)]="searchedMat">
+    <a (click)="onSearch()"><i class="fa fa-search"></i></a>
   </div>
   <div class="consultform">
-    <h1> Dr Nom&Prénom</h1>
+    <h1> Dr {{doctor.nom}} {{doctor.prenom}}</h1>
   </div>
   <div class="main">
     <form>
       <div id="name">
         <h2 class="name">Nom d'utilisateur</h2>
-        <input class="code" type="text" name="area_code">
+        <input class="code" type="text" name="doctor.username" [(ngModel)]="doctor.username">
       </div>
       <div id="name">
         <h2 class="name">Nouvelle mot de passe</h2>
-        <input class="code" type="text" name="area_code">
+        <input class="code" type="text" name="doctor.password" [(ngModel)]="doctor.password">
       </div>
       <div id="name">
         <h2 class="name">Confirmer mot de passe</h2>
-        <input class="code" type="text" name="area_code">
+        <input class="code" type="text" name="rePassword" [(ngModel)]="rePassword">
       </div>
       <div id="name">
         <h2 class="name">Num de téléphone</h2>
-        <input class="code" type="text" name="area_code">
+        <input class="code" type="text" name="doctor.numTel" [(ngModel)]="doctor.numTel">
       </div>
-      <button type="submit" class="bouton2">Sauvegarder</button>
+      <button type="submit" class="bouton2" (click)="onSave()">Sauvegarder</button>
     </form>
 
   </div>

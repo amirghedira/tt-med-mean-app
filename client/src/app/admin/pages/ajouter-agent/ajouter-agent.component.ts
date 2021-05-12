@@ -43,6 +43,7 @@ export class AjouterAgentComponent implements OnInit {
     }
     onAddFamilyMember() {
         this.agent.familyMembers.push(this.member)
+        console.log(this.member)
         this.toggleModal.nativeElement.click();
         this.resetMember()
     }
