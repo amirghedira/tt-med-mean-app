@@ -19,9 +19,7 @@ import { NavBarComponent } from './admin/components/nav-bar/nav-bar.component';
         AuthComponent,
         AdminComponent,
         SideBarComponent,
-        NavBarComponent
-
-
+        NavBarComponent,
     ],
     imports: [
         BrowserModule,

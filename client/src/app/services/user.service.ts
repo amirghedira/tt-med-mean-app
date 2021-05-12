@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../types/User';
+import { Admin } from '../types/Admin';
+import { Doctor } from '../types/Doctor';
 
 @Injectable({
     providedIn: 'root'
@@ -11,10 +12,8 @@ export class UserService {
 
     }
 
-    createUser(newUser: User, telecomPass: string) {
+    createUser(newUser: Admin, telecomPass: string) {
         return this.http.post('http://localhost:5000/user', { user: newUser, telecomPass })
     }
-
-
 
 }

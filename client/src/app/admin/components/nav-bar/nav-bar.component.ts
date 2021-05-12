@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/types/User';
+import { Admin } from 'src/app/types/Admin';
 
 @Component({
     selector: 'app-nav-bar',
@@ -9,13 +9,14 @@ import { User } from 'src/app/types/User';
 })
 export class NavBarComponent implements OnInit {
 
-    user: User;
+    user: Admin;
     constructor(private authService: AuthService) { }
 
     ngOnInit() {
 
         this.authService.getCurrentUser()
-            .subscribe((user: User) => {
+            .subscribe((user: Admin) => {
+                console.log(user)
                 this.user = user
             })
 

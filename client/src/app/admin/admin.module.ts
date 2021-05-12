@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin.component';
 import { AjouterAgentComponent } from './pages/ajouter-agent/ajouter-agent.component';
 import { AjouterInfirmierComponent } from './pages/ajouter-infirmier/ajouter-infirmier.component';
 import { ConsulterAgentComponent } from './pages/consulter-agent/consulter-agent.component';
@@ -13,7 +12,9 @@ import { AjouterMedecinComponent } from './pages/ajouter-medecin/ajouter-medecin
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AdminService } from './admin.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from '../services/token-interceptor.service';
 
 
 
@@ -25,7 +26,13 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
         MatRadioModule,
         MatFormFieldModule,
         MatInputModule,
+        HttpClientModule,
         AdminRoutingModule
-    ]
+    ],
+    providers: [AdminService, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptorService,
+        multi: true
+    }]
 })
 export class AdminModule { }

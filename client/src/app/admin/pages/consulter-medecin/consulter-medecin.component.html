@@ -16,77 +16,19 @@
 
 
           </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
+          <tr *ngFor="let doctor of filtredDoctors">
+            <td>{{doctor.matricule}}</td>
+            <td>{{doctor.nom}} {{doctor.prenom}}</td>
+            <td>{{doctor.prenom}}</td>
+            <td>{{doctor.username}}</td>
+            <td>{{doctor.email}}</td>
             <td>
-              <button class="submit" type="submit">Supprimer</button>
+              <button class="submit" type="submit" (click)="onDeleteDoctor(doctor._id)">Supprimer</button>
               <button class="submit" type="submit">Modifier</button>
             </td>
 
-          </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
-            <td>
-              <button class="submit" type="submit">Supprimer</button>
-              <button class="submit" type="submit">Modifier</button>
-            </td>
-          </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
-            <td>
-              <button class="submit" type="submit">Supprimer</button>
-              <button class="submit" type="submit">Modifier</button>
-            </td>
-
-          </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
-            <td>
-              <button class="submit" type="submit">Supprimer</button>
-              <button class="submit" type="submit">Modifier</button>
-            </td>
-          </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
-            <td>
-              <button class="submit" type="submit">Supprimer</button>
-              <button class="submit" type="submit">Modifier</button>
-            </td>
-          </tr>
-          <tr>
-            <td>531515</td>
-            <td>hatem belkhouja</td>
-            <td>92651516</td>
-            <td>nom utilisateur</td>
-            <td>mohamedali@gmail.com</td>
-            <td>
-              <button class="submit" type="submit">Supprimer</button>
-              <button class="submit" type="submit">Modifier</button>
-            </td>
           </tr>
         </table>
-
-        <button type="submit" class="bouton">Fermer</button>
       </div>
 
     </div>
@@ -94,31 +36,26 @@
       <h1>Dr Nom&Prénom</h1>
     </div>
     <div class="main">
-      <form>
-        <div id="name">
-          <h2 class="name">Num de matricule:</h2>
-        </div>
-        <div id="name">
-          <h2 class="name">Num de téléphone:</h2>
-        </div>
-        <div id="name">
-          <h2 class="name">Nom d'utilisateur:</h2>
-        </div>
-        <div id="name">
-          <h2 class="name">Mail:</h2>
-        </div>
-        <div id="name">
-          <h2 class="name">Nombre d'heures de travail</h2>
-          <input class="firstname" type="number" name="first_name">
-          <label class="firstlabel">Mois</label>
-          <input class="lastname" type="number" name="last_name">
-          <label class="lastlabel">Année</label>
-        </div>
-      </form>
-
+      <div id="name">
+        <h2 class="name">Num de matricule:</h2>
+      </div>
+      <div id="name">
+        <h2 class="name">Num de téléphone:</h2>
+      </div>
+      <div id="name">
+        <h2 class="name">Nom d'utilisateur:</h2>
+      </div>
+      <div id="name">
+        <h2 class="name">Mail:</h2>
+      </div>
+      <div id="name">
+        <h2 class="name">Nombre d'heures de travail</h2>
+        <input class="firstname" type="number" name="first_name">
+        <label class="firstlabel">Mois</label>
+        <input class="lastname" type="number" name="last_name">
+        <label class="lastlabel">Année</label>
+      </div>
     </div>
-
-
   </div>
 
 </div>

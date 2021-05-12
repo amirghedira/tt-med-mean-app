@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from '../types/User';
+import { Admin } from '../types/Admin';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +9,7 @@ import { User } from '../types/User';
 export class AuthService {
 
     token: string;
-    loggedUser: BehaviorSubject<User>;
+    loggedUser: BehaviorSubject<Admin>;
     constructor(private http: HttpClient) {
         this.token = localStorage.getItem('access_token')
         this.loggedUser = new BehaviorSubject(null)
@@ -36,9 +36,9 @@ export class AuthService {
     }
     getConnectedUser() {
         console.log('heee')
-        return this.http.get<User>('http://localhost:5000/user/connected-user')
+        return this.http.get<Admin>('http://localhost:5000/user/connected-user')
     }
-    setCurrentUser(user: User) {
+    setCurrentUser(user: Admin) {
         this.loggedUser.next(user)
     }
     getCurrentUser() {

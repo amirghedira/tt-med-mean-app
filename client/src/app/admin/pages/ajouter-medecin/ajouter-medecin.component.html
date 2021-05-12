@@ -3,50 +3,39 @@
     <h1>Formulaire medecin</h1>
   </div>
   <div class="main">
-    <form>
-      <div id="name">
-        <h2 class="name"> matricule</h2>
-        <input class="matricule" type="number" name="num_matricule">
-      </div>
-      <div id="name">
-        <h2 class="name">Nom</h2>
-        <input class="firstname" type="text" name="first_name">
-        <label class="firstlabel">Prénom</label>
-        <input class="lastname" type="text" name="last_name">
-        <label class="lastlabel">Nom</label>
-      </div>
-      <div id="name">
-        <h2 class="name">Num de téléphone</h2>
-        <input class="matricule" type="number" name="num_matricule">
-      </div>
-      <h2 class="name">Role</h2>
-      <select class="option" name="Qualité">
-        <option disabled="disabled" selected="selected">--choisir le role -- </option>
-        <option>Infirmier</option>
-        <option>Médecin</option>
-      </select>
-      <div id="name">
-        <h2 class="name">Nom d'utilisateur</h2>
-        <input class="matricule" type="text" name="first_name">
-      </div>
-      <div id="name">
-        <h2 class="name">Mot de passe</h2>
-        <input class="matricule" type="text" name="first_name">
-      </div>
-      <div id="name">
-        <h2 class="name">Mail</h2>
-        <input class="matricule" type="text" name="first_name">
-      </div>
-      <div id="name">
-        <h2 class="name">Confirmer mot de passe</h2>
-        <input class="matricule" type="text" name="first_name">
-      </div>
+    <div id="name">
+      <h2 class="name"> matricule</h2>
+      <input class="matricule" type="number" name="doctor.matricule" [(ngModel)]="doctor.matricule" />
+    </div>
+    <div id="name">
+      <h2 class="name">Nom</h2>
+      <input class="firstname" type="text" name="doctor.prenom" [(ngModel)]="doctor.prenom" />
+      <label class="firstlabel">Prénom</label>
+      <input class="lastname" type="text" name="doctor.nom" [(ngModel)]="doctor.nom" />
+      <label class="lastlabel">Nom</label>
+    </div>
+    <div id="name">
+      <h2 class="name">Num de téléphone</h2>
+      <input class="matricule" type="number" name="doctor.numTel" [(ngModel)]="doctor.numTel" />
+    </div>
+    <div id="name">
+      <h2 class="name">Nom d'utilisateur</h2>
+      <input class="matricule" type="text" name="doctor.username" [(ngModel)]="doctor.username" />
+    </div>
+    <div id="name">
+      <h2 class="name">Mail</h2>
+      <input class="matricule" type="text" name="doctor.email" [(ngModel)]="doctor.email" />
+    </div>
+    <div id="name">
+      <h2 class="name">Mot de passe</h2>
+      <input class="matricule" type="text" name="doctor.password" [(ngModel)]="doctor.password" />
+    </div>
+    <div id="name">
+      <h2 class="name">Confirmer mot de passe</h2>
+      <input class="matricule" type="text" name="rePassword" [(ngModel)]="rePassword" />
+    </div>
+    <button (click)="onAddDoctor()">Ajouter</button>
 
-
-      <button type="submit">Valider</button>
-      <button type="submit">Retour</button>
-
-    </form>
   </div>
 
 </div>

@@ -139,3 +139,76 @@ exports.userLogin = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+
+exports.addDoctor = async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.doctor.password, 11)
+        req.body.doctor.password = hashedPassword;
+        const createdDoctor = await User.create(req.body.doctor)
+        res.status(200).json({ doctor: createdDoctor })
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+
+    }
+
+}
+exports.addNurse = async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.nurse.password, 11)
+        req.body.nurse.password = hashedPassword;
+        const createdNurse = await User.create(req.body.nurse)
+        res.status(200).json({ user: createdNurse })
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+
+    }
+
+}
+exports.updateNurse = async (req, res) => {
+    try {
+        await User.updateOne({ _id: req.nurse._id }, { $set: { ...req.body.newNurse } });
+        res.status(200).json({ message: "nurse updated successfully", });
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+
+}
+exports.updateDoctor = async (req, res) => {
+    try {
+        await User.updateOne({ _id: req.nurse._id }, { $set: { ...req.body.newDoctor } });
+        res.status(200).json({ message: "doctor updated successfully", });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+
+    }
+
+}
+exports.getDoctors = async (req, res) => {
+    try {
+        const doctors = await User.find({ role: 'doctor' })
+        res.status(200).json({ doctors: doctors })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+
+    }
+
+}
+exports.getNurses = async (req, res) => {
+    try {
+        const nurses = await User.find({ role: 'nurse' })
+        res.status(200).json({ nurses: nurses })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+    }
+
+}

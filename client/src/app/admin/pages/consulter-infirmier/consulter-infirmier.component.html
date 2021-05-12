@@ -1,7 +1,8 @@
 <div class="main-container">
   <div>
     <div class="search">
-      <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
+      <input class="recherche" type="text" name="searchedMat" (change)="filterNurses()" [(ngModel)]="searchedMat"
+        placeholder="Entrez la matricule ">
       <a href="#"><i class="fa fa-search"></i></a>
     </div>
     <div class="tableau">
@@ -15,83 +16,19 @@
 
 
         </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
+        <tr *ngFor="let nurse of filtredNurses">
+          <td>{{nurse.matricule}}</td>
+          <td>{{nurse.nom}} {{nurse.prenom}}</td>
+          <td>{{nurse.numTel}}</td>
+          <td>{{nurse.username}}</td>
+          <td>{{nurse.email}}</td>
           <td>
-            <button class="submit" type="submit">Supprimer</button>
+            <button class="submit" type="submit" (click)="onDeleteNurse(nurse._id)">Supprimer</button>
             <button class="submit" type="submit">Modifier</button>
           </td>
 
-        </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
-
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
-          </td>
-
-        </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
-
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
-
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>531515</td>
-          <td>Ali gbgn</td>
-          <td>92651516</td>
-          <td>Nom d'utilisateur</td>
-          <td>mohamedali@gmail.com</td>
-
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button class="submit" type="submit">Modifier</button>
-          </td>
         </tr>
       </table>
-
-      <div class="button-container">
-        <button type="submit" class="bouton">Fermer</button>
-      </div>
 
     </div>
   </div>

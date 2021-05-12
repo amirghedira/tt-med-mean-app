@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/types/User';
+import { Admin } from 'src/app/types/Admin';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -31,7 +31,7 @@ export class SignupPageComponent implements OnInit {
     onSignup() {
 
         if (this.password === this.rePassword) {
-            const newUser: User = {
+            const newUser: Admin = {
                 _id: null,
                 username: this.username,
                 email: this.email,

@@ -12,7 +12,7 @@ const routes: Routes = [
     {
         path: 'auth',
         component: AuthComponent,
-        loadChildren: () => import('./auth/guest.module').then(m => m.AuthModule)
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     },
     {
         path: 'admin',

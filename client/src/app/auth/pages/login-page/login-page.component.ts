@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/types/User';
+import { Admin } from 'src/app/types/Admin';
 
 @Component({
     selector: 'app-login-page',
@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.currentUserSubscriber = this.authService.getCurrentUser()
-            .subscribe((user: User) => {
+            .subscribe((user: Admin) => {
                 if (user) {
                     if (user.role === 'admin') {
                         this.router.navigate(['/admin'])

@@ -1,6 +1,7 @@
 <div class="main-container">
   <div class="search">
-    <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
+    <input class="recherche" type="text" name="searchedMat" (change)="filterAgents()" [(ngModel)]="searchedMat"
+      placeholder="Entrez la matricule ">
     <a href="#"><i class="fa fa-search"></i></a>
   </div>
   <div class="tableau">
@@ -14,123 +15,71 @@
           <th>Résidence</th>
           <th>Num téléphone</th>
         </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
+        <tr *ngFor="let agent of filtredAgents" (click)="setSelectedAgent(agent._id)">
+          <td>{{agent.matricule}}</td>
+          <td>{{agent.nom}} {{agent.prenom}}</td>
+          <td>{{agent.situation}}</td>
+          <td>{{agent.poste}}</td>
+          <td>{{agent.residence}}</td>
+          <td>{{agent.numTel}}</td>
           <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
-            <button type="submit" class="submit">Modifier</button>
-          </td>
-        </tr>
-        <tr>
-          <td>31351</td>
-          <td>mohamed ali</td>
-          <td>agent</td>
-          <td>chef service</td>
-          <td>D.R TT bizerte</td>
-          <td>92******</td>
-          <td>
-            <button class="submit" type="submit">Supprimer</button>
+            <button class="submit" type="submit" (click)="onDeleteAgent(agent._id)">Supprimer</button>
             <button type="submit" class="submit">Modifier</button>
           </td>
         </tr>
       </table>
-      <button type="submit" class="bouton">Sortir</button>
     </div>
   </div>
+  <div *ngIf="selectedAgent">
+    <div class="consultform">
+      <h1>{{selectedAgent.nom}} {{selectedAgent.prenom}}</h1>
+    </div>
+    <div class="main">
+      <div>
+        <h2 class="name">Num de matricule:
+          <span class="field-value">{{selectedAgent.matricule}}</span>
+        </h2>
+      </div>
+      <div>
+        <h2 class="name">Situation:
+          <span class="field-value">{{selectedAgent.situation}}</span>
+        </h2>
 
-  <div class="consultform">
-    <h1>Nom&prénom</h1>
-  </div>
-  <div class="main">
-    <form>
-      <div id="name">
-        <h2 class="name">Num de matricule:</h2>
       </div>
-      <div id="name">
-        <h2 class="name"></h2>
+      <div>
+        <h2 class="name">Date de naissance:
+          <span class="field-value">{{selectedAgent.date_n}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Situation:</h2>
+      <div>
+        <h2 class="name">Lieu de naissance:
+          <span class="field-value">{{selectedAgent.lieu_n}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Date de naissance:</h2>
+      <div>
+        <h2 class="name">Sexe:
+          <span class="field-value">{{selectedAgent.genre}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Lieu de naissance:</h2>
+      <div>
+        <h2 class="name">Poste:
+          <span class="field-value">{{selectedAgent.poste}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Sexe:</h2>
+      <div>
+        <h2 class="name">Date de recrutement:
+          <span class="field-value">{{selectedAgent.recuretement_date}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Poste:</h2>
+      <div>
+        <h2 class="name">Résidence:
+          <span class="field-value">{{selectedAgent.residence}}</span>
+        </h2>
       </div>
-      <div id="name">
-        <h2 class="name">Date de recrutement:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Date de recrutement:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Résidence:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Num de téléphone:</h2>
-      </div>
-      <div id="name">
-        <h2 class="name">Date de recrutement:</h2>
+      <div>
+        <h2 class="name">Num de téléphone:
+          <span class="field-value">{{selectedAgent.numTel}}</span>
+        </h2>
       </div>
       <div>
         <h2 class="name">Sa famille</h2>
@@ -145,68 +94,22 @@
               <th>Sexe</th>
               <th>Rang</th>
             </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
+            <tr *ngFor="let member of selectedAgent.familyMembers">
+              <td>{{selectedAgent.matricule}}</td>
+              <td>{{selectedAgent.nom}} {{selectedAgent.prenom}}</td>
+              <td>{{selectedAgent.qualite}}</td>
+              <td>{{selectedAgent.date_n}}</td>
+              <td>{{selectedAgent.lieu_n}}</td>
+              <td>{{selectedAgent.genre}}</td>
+              <td>{{selectedAgent.rang}}</td>
 
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>conjoint</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>femme</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>31351</td>
-              <td>mariem ali</td>
-              <td>enfant</td>
-              <td>02/01/1987</td>
-              <td>bizerte</td>
-              <td>homme</td>
-              <td>1</td>
             </tr>
           </table>
         </div>
       </div>
 
-    </form>
-    <button type="submit" class="bouton">Fermer</button>
+    </div>
   </div>
+
 
 </div>

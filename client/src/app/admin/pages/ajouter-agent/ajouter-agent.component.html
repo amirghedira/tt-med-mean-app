@@ -6,68 +6,87 @@
     <div class="main">
       <div id="name">
         <h2 class="name">Num de matricule</h2>
-        <input class="matricule" type="number" name="num_matricule">
+        <input class="matricule" type="number" name="agent.matricule" [(ngModel)]="agent.matricule" />
       </div>
       <h2 class="name">Situation</h2>
-      <select class="option" name="Qualité">
-        <option disabled="disabled" selected="selected">--choisir une option-- </option>
-        <option>Agent</option>
-        <option>Retrété</option>
+      <select class="option" name="agent.situation" [(ngModel)]="agent.situation">
+        <option value="none" disabled="disabled">
+          --choisir une option--
+        </option>
+        <option value="active">Agent</option>
+        <option value="retired">Retrété</option>
       </select>
       <div id="name">
         <h2 class="name">Nom</h2>
-        <input class="firstname" type="text" name="first_name">
+        <input class="firstname" type="text" name="agent.nom" [(ngModel)]="agent.nom" />
         <label class="firstlabel">Prénom</label>
-        <input class="lastname" type="text" name="last_name">
+        <input class="lastname" type="text" name="agent.prenom" [(ngModel)]="agent.prenom" />
         <label class="lastlabel">Nom</label>
       </div>
 
       <h2 class="name">Date de naissance</h2>
-      <input class="naissance" type="date" name="date_naissance">
+      <input class="naissance" type="date" name="agent.date_n" [(ngModel)]="agent.date_n" />
 
 
       <h2 class="name">Lieu de naissance</h2>
-      <input class="lieu" type="text" name="lieu_naissance">
+      <input class="lieu" type="text" name="agent.lieu_n" [(ngModel)]="agent.lieu_n" />
 
 
       <h2 class="name">Sexe</h2>
-      <label class="radio">
-        <input class="radio-one" type="radio" checked="checked" name="">
-        <span class="checkmark"></span>
-        Homme
-      </label>
-      <label class="radio">
-        <input class="radio-two" type="radio" name="">
-        <span class="checkmark"></span>
-        Femme
-      </label>
+      <mat-radio-group aria-label="Select an option" name="agent.genre" [(ngModel)]="agent.genre">
+        <mat-radio-button value="homme">Homme</mat-radio-button>
+        <mat-radio-button value="femme">Femme</mat-radio-button>
+      </mat-radio-group>
 
 
       <h2 class="name">Poste</h2>
-      <input class="poste" type="text" name="poste_travail">
+      <input class="poste" type="text" name="agent.poste" [(ngModel)]="agent.poste" />
 
 
       <h2 class="name">Date de recrutement</h2>
-      <input class="date_rec" type="date" name="date_recrutement">
+      <input class="date_rec" type="date" name="agent.recrutement_date" [(ngModel)]="agent.recrutement_date" />
 
       <h2 class="name">Résidence</h2>
-      <input class="residence" type="text" name="residence">
+      <input class="residence" type="text" name="agent.residence" [(ngModel)]="agent.residence" />
       <div id="name">
         <h2 class="name">Num téléphone</h2>
-        <input class="code" type="text" name="area_code">
-        <label class="area_code">area code</label>
-        <input class="phone" type="text" name="phone number">
-        <label class="phone_number">numéro</label>
+        <input class="phone" type="text" name="agent.numTel" [(ngModel)]="agent.numTel" />
+      </div>
+      <div>
+        <h2 class="name">Les membres de sa famille</h2>
+        <div class="table">
+          <table class="tablefamille">
+            <tr id="header">
+              <th>Num de matricule</th>
+              <th>Nom&prénom</th>
+              <th>Qualité</th>
+              <th>Date de naissance</th>
+              <th>Lieu de naissance</th>
+              <th>Sexe</th>
+              <th>Rang</th>
+            </tr>
+            <tr *ngFor="let familyMember of agent.familyMembers">
+              <td>{{agent.matricule}}</td>
+              <td>{{familyMember.nom}} {{familyMember.prenom}}</td>
+              <td>{{familyMember.qualite}}</td>
+              <td>{{familyMember.date_n}}</td>
+              <td>{{familyMember.lieu_n}}</td>
+              <td>{{familyMember.genre}}</td>
+              <td>{{familyMember.rang}}</td>
+
+            </tr>
+
+          </table>
+        </div>
+        <button type="button" class="ajout" data-toggle="modal" data-target="#toggleModal" #toggleModal>
+          Ajouter les membres de sa famille
+        </button>
       </div>
 
-      <button type="button" class="ajout" data-toggle="modal" data-target="#exampleModal">
-        Ajouter les membres de sa famille
-      </button>
-      <button type="submit" class="submit">Valider</button>
-      <button type="submit" class="submit">Retour</button>
+      <button type="submit" class="submit" (click)="onAddAgent()">Ajouter</button>
     </div>
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="toggleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -77,44 +96,39 @@
         <div class="main">
           <div id="name">
             <h2 class="name">Nom</h2>
-            <input class="firstname" type="text" name="first_name">
+            <input class="firstname" type="text" name="member.nom" [(ngModel)]="member.nom" />
             <label class="firstlabel">Prénom</label>
-            <input class="lastname" type="text" name="last_name">
+            <input class="lastname" type="text" name="member.prenom" [(ngModel)]="member.prenom" />
             <label class="lastlabel">Nom</label>
           </div>
 
           <h2 class="name">Date de naissance</h2>
-          <input class="naissance" type="date" name="date_naissance">
+          <input class="naissance" type="date" name="member.date_n" [(ngModel)]="member.date_n" />
 
 
           <h2 class="name">Lieu de naissance</h2>
-          <input class="lieu" type="text" name="lieu_naissance">
+          <input class="lieu" type="text" name="member.lieu_n" [(ngModel)]="member.lieu_n" />
 
 
           <h2 class="name">Sexe</h2>
-          <label class="radio">
-            <input class="radio-one" type="radio" checked="checked" name="">
-            <span class="checkmark"></span>
-            Homme
-          </label>
-          <label class="radio">
-            <input class="radio-two" type="radio" name="">
-            <span class="checkmark"></span>
-            Femme
-          </label>
+          <mat-radio-group aria-label="Select an option" name="member.genre" [(ngModel)]="member.genre">
+            <mat-radio-button value="homme">Homme</mat-radio-button>
+            <mat-radio-button value="femme">Femme</mat-radio-button>
+          </mat-radio-group>
+
+
           <h2 class="name">Qualité</h2>
-          <select class="option" name="Qualité">
+          <select class="option" name="Qualité" name="member.qualite" [(ngModel)]="member.qualite">
             <option disabled="disabled" selected="selected">--choisir une option-- </option>
-            <option>Conjoint</option>
-            <option>Enfant</option>
+            <option value="conjoint">Conjoint</option>
+            <option value="enfant">Enfant</option>
           </select>
 
           <h2 class="name">Rang</h2>
-          <input class="rang" type="number" name="rang">
+          <input class="rang" type="number" name="member.rang" [(ngModel)]="member.rang" />
 
 
-          <button type="submit" class="submit">Valider</button>
-          <button type="submit" class="submit">Retour</button>
+          <button class="submit" (click)="onAddFamilyMember()">Ajouter</button>
 
         </div>
       </div>

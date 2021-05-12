@@ -164,10 +164,31 @@ form {
 
 
 .recherche {
-    padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 10px;
   border: 3px solid rgb(108, 180, 221);
   height: 40px;
   width: 300px;
   border-radius: 50px;
 
+}
+
+
+
+.main {
+  background-color: rgba(99, 179, 179, 0.6);
+  width: 700px;
+  margin: auto;
+  padding: 20px;
+
+}
+
+.consultform {
+  width: 700px;
+  background-color: #025d6d;
+  color: #FFFFFF;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
 }

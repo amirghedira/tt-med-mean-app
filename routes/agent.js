@@ -4,7 +4,8 @@ const {
     createAgent,
     getAgent,
     updateAgent,
-    addAgentFamilyMember
+    addAgentFamilyMember,
+    deleteAgent
 } = require('../controller/agent')
 const router = express.Router()
 const AuthGuard = require('../middleware/AuthGuard')
@@ -17,6 +18,7 @@ router.post('/:id/family-member', AuthGuard, addAgentFamilyMember)
 
 
 router.patch('/:id', AuthGuard, updateAgent)
+router.delete('/:id', AuthGuard, deleteAgent)
 
 
 module.exports = router
