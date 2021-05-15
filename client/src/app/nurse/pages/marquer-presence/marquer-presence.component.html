@@ -1,0 +1,31 @@
+<section class="list-consultation">
+  <p> Marquer la présence du médecin:</p>
+  <div class="row">
+    <div class="form">
+      <div class="col-lg-6 col-md-6">
+        <img src="images\avatar.png" id="medecin">
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="txt_field">
+
+          <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
+          <span></span>
+          <label>Matricule du médecin </label>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <button class="submit" (click)="onValidate()">
+          Valider
+        </button>
+      </div>
+      <div class="error-message-container">
+        <h2 class="error-message">
+          {{errorMessage}}
+        </h2>
+      </div>
+
+    </div>
+  </div>
+
+</section>

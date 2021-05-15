@@ -1,5 +1,6 @@
 .main-container {
   min-height: 100vh;
+  width: 100%;
   background-image: url('src/assets/images/bleu.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -9,12 +10,16 @@
 .side-bar {
   min-height: 100vh;
   position: sticky;
-  top: 0px;
   left: 0;
-  width: 100%;
+  top: 0;
   z-index: 999;
-  width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
 
+}
+
+.custom-div {
+  background-color: red;
+  width: 100%;
+  height: 100vh;
 }

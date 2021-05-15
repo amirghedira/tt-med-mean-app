@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="search">
+      <input class="recherche" type="text" name="searchedMatricule" [(ngModel)]="searchedMatricule"
+        placeholder="Entrez la matricule" (input)="filterConsultations()">
+      <a href="#"><i class="fa fa-search"></i></a>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="tableau">
+      <table>
+        <tr id="header">
+          <th>
+            <span class="consult-checkbox">
+              <input type="checkbox" id="selectAll">
+              <label for="selectAll"> Selectionner tous </label>
+            </span>
+          </th>
+          <th>Date</th>
+          <th>Matricule</th>
+          <th>Nom&prénom</th>
+          <th>Qualité</th>
+        </tr>
+        <tr *ngFor="let consultation of filteredConsultations">
+          <td>
+            <span class="consult-checkbox">
+              <input type="checkbox" id="checkbox1">
+            </span>
+          </td>
+          <td>{{formatDate(consultation.date)}}</td>
+          <td>{{consultation.agent_matricule}}</td>
+          <td *ngIf="consultation.agent">{{consultation.agent.nom}} {{consultation.agent.prenom}}</td>
+          <td *ngIf="consultation.familyMember">{{consultation.familyMember.nom}} {{consultation.familyMember.prenom}}
+          </td>
+
+          <td *ngIf="consultation.agent">Agent</td>
+          <td *ngIf="consultation.familyMember">{{consultation.familyMember.qualite}}</td>
+
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center ">
+    <button type="submit" class="bouton">supprimer</button>
+  </div>
+  <div class="row justify-content-center ">
+    <button type="submit" class="bouton">Fermer</button>
+  </div>
+</div>

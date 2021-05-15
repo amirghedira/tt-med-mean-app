@@ -1,0 +1,271 @@
+<div class="container">
+  <div class="page">
+
+    <div class="infophoto">
+      <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
+          <div class="info">
+            <p><strong>Mohamed Ali</strong><br>
+              De matricule: 25161<br>
+              Sa qualité est: agent <br>
+              Né le: 12/20/1988 <br>
+              Ses maladies chroniques sont:
+            </p>
+            <!--ici on trouve les liens de chaque fiche de maladie chronique en cliquant sur le nom de la maladie la fiche s'ouvre à la place de la maladie ordinaire -->
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+          <div class="photo">
+            <img src="images/avatar.png" alt="photo dossier médical" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="sec_gauche">
+            <div class="row">
+              <h2 class="titre">Données anthropomètriques</h2>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="Poids" type="number" name="poids">
+                <label class="label_poids">poids en kg</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="taille" type="number" name="taille">
+                <label class="label_taille">Taille</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="visionpréD" type="number" name="vision prés droite">
+                <label class="label_vpd">vision-prés droite</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="visionpréG" type="number" name="vision prés gauche">
+                <label class="label_vpg">vision-prés gauche</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="visionloinD" type="number" name="vision loin droite">
+                <label class="label_vld">vision-loin droite</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="visionloinG" type="number" name="vision loin gauche">
+                <label class="label_vlg">vision-loin gauche</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="auditionOD" type="number" name="audition oreille droite">
+                <label class="label_od">audition-oreille droite</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="auditionOG" type="number" name="audition oreille gauche">
+                <label class="label_og">audition-oreille gauche</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+          <div class="sec_droite">
+            <div class="row">
+              <h2 class="titre">Données cardio-vasculaires</h2>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="pouls" type="number" name="pouls">
+                <label class="label_pouls">Pouls</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input class="tension" type="number" name="tension">
+                <label class="label_tension">Tension</label>
+              </div>
+            </div>
+            <div class="row">
+              <p class="name">existe t'il un éléctrocardiogramme?</p>
+            </div>
+            <div class="row">
+              <label class="radio">
+                <input class="radio-one" type="radio" checked="checked" name="">
+                <span class="checkmark"></span>
+                Oui
+              </label>
+              <label class="radio">
+                <input class="radio-two" type="radio" name="">
+                <span class="checkmark"></span>
+                Non
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sec_droite">
+          <div class="row align-items justify-content-around">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+              <div class="row">
+                <h2 class="titre">Données biologiques</h2>
+              </div>
+              <div class="row">
+
+                <p class="name">voulez vous importer un fichier?</p>
+              </div>
+              <div class="row">
+                <label class="radio">
+                  <input class="radio-one" type="radio" checked="checked" name="">
+                  <span class="checkmark"></span>
+                  Oui
+                </label>
+                <label class="radio">
+                  <input class="radio-two" type="radio" name="">
+                  <span class="checkmark"></span>
+                  Non
+                </label>
+              </div>
+              <div class="row">
+                <button type="submit" class="scanner">importer</button>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-5 ">
+              <div class="sec_droiteAdmin">
+                <img src="images/scanner.png">
+              </div>
+            </div>
+          </div>
+          <div class="row my-row">
+            <div>
+              <button type="submit" class="scanner">Ajouter des maladies chroniques</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 ">
+              <h2 class="name"> Nom de la maladie </h2>
+            </div>
+            <div class="col-2">
+              <input class="maladie" type="text" name="maladie">
+            </div>
+            <div class="col-2">
+              <button type="submit" class="valider">Valider</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <h2 class="fiche">Fiche médicale ordinaire</h2>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="tableau">
+            <table>
+              <tr id="header">
+                <th>Date</th>
+                <th>Observation</th>
+                <th>Prescription</th>
+                <th>Certificat</th>
+              </tr>
+              <tr>
+                <td>02/05/2021</td>
+                <td>glhjdlkgdjgùkgnrngl</td>
+                <td>dkhnùtoihnthtdnhtiun</td>
+                <td>
+                  <select class="option" name="TypeCertif">
+                    <option disabled="disabled" selected="selected">--choisir un modèle--
+                    </option>
+                    <option>Médical</option>
+                    <option>Exceptionnel</option>
+                    <option>Accompagnement</option>
+                    <option>Lettre de liaison</option>
+                    <option>Ordonnance</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>02/05/2021</td>
+                <td>glhjdlkgdjgùkgnrngl</td>
+                <td>dkhnùtoihnthtdnhtiun</td>
+                <td>
+                  <select class="option" name="TypeCertif">
+                    <option disabled="disabled" selected="selected">--choisir un modèle--
+                    </option>
+                    <option>Médical</option>
+                    <option>Exceptionnel</option>
+                    <option>Accompagnement</option>
+                    <option>Lettre de liaison</option>
+                    <option>Ordonnance</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>02/05/2021</td>
+                <td>glhjdlkgdjgùkgnrngl</td>
+                <td>dkhnùtoihnthtdnhtiun</td>
+                <td>
+                  <select class="option" name="TypeCertif">
+                    <option disabled="disabled" selected="selected">--choisir un modèle--
+                    </option>
+                    <option>Médical</option>
+                    <option>Exceptionnel</option>
+                    <option>Accompagnement</option>
+                    <option>Lettre de liaison</option>
+                    <option>Ordonnance</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>02/05/2021</td>
+                <td>glhjdlkgdjgùkgnrngl</td>
+                <td>dkhnùtoihnthtdnhtiun</td>
+                <td>
+                  <select class="option" name="TypeCertif">
+                    <option disabled="disabled" selected="selected">--choisir un modèle--
+                    </option>
+                    <option>Médical</option>
+                    <option>Exceptionnel</option>
+                    <option>Accompagnement</option>
+                    <option>Lettre de liaison</option>
+                    <option>Ordonnance</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col">
+            <button class="valider" type="submit">Créer une autre fiche</button>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-0 col-xs-0"></div>
+          <div class="col-2">
+            <button class="submit" type="submit">Valider</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-0 col-xs-0"></div>
+          <div class="col-2">
+            <button class="submit" type="submit">Annuler</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-0 col-xs-0"></div>
+          <div class="col-2">
+            <button class="submit" type="submit">Retour</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

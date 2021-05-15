@@ -21,10 +21,17 @@ app.use(cors())
 
 //routes imports 
 const userRoutes = require('./routes/user')
+const DossierMedicalRoutes = require('./routes/dossierMedical')
+const consultationRoutes = require('./routes/consultation')
+
 const agentRoutes = require('./routes/agent')
 
 // app routes
 app.use('/user', userRoutes);
 app.use('/agent', agentRoutes)
+app.use('/dossier-medical', DossierMedicalRoutes)
+app.use('/consultation', consultationRoutes)
+
+
 
 module.exports = app;

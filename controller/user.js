@@ -1,7 +1,32 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+const moment = require('moment')
 
+
+exports.markDoctorPresent = async (req, res) => {
+    try {
+        const doctor = await User.findOne({ matricule: req.params.matricule })
+        if (doctor) {
+            const todayPresenceIndex = doctor.workingHours.findIndex(workingHour => {
+                return moment(new Date(workingHour)).isSame(moment(new Date()), 'day')
+            })
+            if (todayPresenceIndex === -1) {
+                const nowDate = new Date()
+                await User.updateOne({ _id: doctor._id }, { $push: { workingHours: nowDate.toISOString() } })
+                res.status(200).json({ message: 'doctor presence marked successfully', nom: doctor.nom, prenom: doctor.prenom })
+            } else {
+                res.status(400).json({ message: 'Doctor already present' })
+            }
+        } else {
+            res.status(404).json({ message: 'doctor not found' })
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: error.message })
+
+    }
+}
 exports.getConnectedUser = async (req, res) => {
     try {
         const connectedUser = await User.findOne({ _id: req.user._id })

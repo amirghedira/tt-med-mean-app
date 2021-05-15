@@ -10,16 +10,23 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
-import { SideBarComponent } from './admin/components/side-bar/side-bar.component';
-import { NavBarComponent } from './admin/components/nav-bar/nav-bar.component';
+import { AdminSideBarComponent } from './admin/components/side-bar/side-bar.component';
+import { AdminNavBarComponent } from './admin/components/nav-bar/nav-bar.component';
+import { NurseComponent } from './nurse/nurse.component';
+import { NurseNavBarComponent } from './nurse/components/nav-bar/nav-bar.component';
+import { NurseSideBarComponent } from './nurse/components/side-bar/side-bar.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         AuthComponent,
         AdminComponent,
-        SideBarComponent,
-        NavBarComponent,
+        NurseComponent,
+        AdminNavBarComponent,
+        AdminSideBarComponent,
+        NurseNavBarComponent,
+        NurseSideBarComponent
     ],
     imports: [
         BrowserModule,

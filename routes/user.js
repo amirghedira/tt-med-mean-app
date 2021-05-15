@@ -17,7 +17,8 @@ const {
     getDoctors,
     getNurses,
     getDoctor,
-    getNurse
+    getNurse,
+    markDoctorPresent
 } = require('../controller/user')
 
 
@@ -35,6 +36,7 @@ router.post('/doctor', AuthGuard, addDoctor)
 router.post('/nurse', AuthGuard, addNurse)
 
 router.patch('/', AuthGuard, updateUserInfo)
+router.patch('/presence/:matricule', AuthGuard, markDoctorPresent)
 router.patch('/nurse/:id', AuthGuard, updateNurse)
 router.patch('/doctor/:id', AuthGuard, updateDoctor)
 router.patch('/password', AuthGuard, updateUserPassword)

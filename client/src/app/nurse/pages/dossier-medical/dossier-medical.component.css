@@ -1,0 +1,157 @@
+.page {
+  width: 800px;
+  margin: auto;
+  font-family: Calibri, sans-serif;
+  font-size: 16px;
+  background-color: rgba(89, 136, 136, 0.6);
+}
+
+.infophoto {
+  min-height: 250px;
+  padding: 20px;
+
+
+}
+
+img {
+  border-radius: 50%;
+}
+
+.info {
+  float: left;
+  font-size: 30px;
+  color: white;
+
+}
+
+.photo {
+
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.section {
+  margin-bottom: 70px;
+  text-align: justify;
+}
+
+.sec_droiteAdmin {
+  float: 500;
+}
+
+.col-6 {
+  padding: 0px 10px;
+}
+
+.titre {
+
+  width: 300px;
+  color: rgb(186, 250, 241);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+
+.row {
+  margin-top: 30px;
+}
+
+label {
+
+
+  width: 155px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.submit {
+  background-color: #68ebf5;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid rgb(28, 110, 124);
+  padding: 10px 50px;
+  margin-top: 20px;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  transition: 0.25px;
+  box-shadow: 0 0 10px #4bf0f0;
+  transition-duration: 0.3s;
+}
+
+.submit:hover {
+  box-shadow: 0 0 20px #8fb7bc;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+
+}
+
+
+
+
+
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  height: 200px;
+  border: 1px solid rgb(30, 166, 207);
+  box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
+
+
+}
+
+tr {
+  transition: all .2s ease-in;
+  cursor: pointer;
+  background-color: rgba(81, 145, 145, 0.6);
+}
+
+#header {
+  background-color: #025d6d;
+  color: white;
+
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid rgb(27, 204, 235);
+  color: white;
+
+}
+
+.fiche {
+  width: 97%;
+  font-weight: 600;
+  text-align: center;
+  background-color: #025d6d;
+  color: white;
+  padding: 10px 0px;
+}
+
+tr:hover {
+  background-color: #41acbe;
+  transform: scale(1.02);
+  box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
+  transition-duration: 0.3s;
+}
+
+.img {
+  width: 250px;
+}
+
+
+#para {
+  border-left-width: 10px;
+  font-family: calibri;
+  line-height: 20px;
+  margin-left: 20px;
+
+
+}

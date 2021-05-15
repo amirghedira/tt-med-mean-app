@@ -3,11 +3,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Admin } from 'src/app/types/Admin';
 
 @Component({
-    selector: 'app-admin-nav-bar',
+    selector: 'app-nurse-nav-bar',
     templateUrl: './nav-bar.component.html',
     styleUrls: ['./nav-bar.component.css']
 })
-export class AdminNavBarComponent implements OnInit {
+export class NurseNavBarComponent implements OnInit {
 
     user: Admin;
     constructor(private authService: AuthService) { }
