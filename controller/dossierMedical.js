@@ -23,7 +23,6 @@ exports.searchDossierMedical = async (req, res) => {
 
         })
         if (dossierMedicals.length == 1) {
-            console.log(dossierMedicals)
             res.status(200).json({ dossierMedical: dossierMedicals[0] })
         } else {
             res.status(404).json({ message: 'dossier medical not found' })
@@ -46,6 +45,41 @@ exports.getDossierMedical = async (req, res) => {
             res.status(404).json({ message: 'dossier medical not found' })
 
 
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+
+    }
+}
+exports.uploadDossierMedicalImage = async (req, res) => {
+    try {
+        await DossierMedical.updateOne({ _id: req.params.dossierId }, { $set: { image: req.file.secure_url } })
+
+        res.status(200).json({ newImage: req.file.secure_url })
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+
+    }
+}
+exports.uploadBiologyImage = async (req, res) => {
+    try {
+        const dossierMedical = await DossierMedical.findOne({ _id: req.params.dossierId })
+        if (dossierMedical.biologiques.current)
+            dossierMedical.biologiques.history.push(dossierMedical.biologiques.current)
+        dossierMedical.biologiques.current = req.file.secure_url
+        await dossierMedical.save()
+        res.status(200).json({ newImage: req.file.secure_url })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: error.message })
+
+    }
+}
+exports.updateDossierMedical = async (req, res) => {
+    try {
+        await DossierMedical.updateOne({ _id: req.params.dossierId }, { $set: { ...req.body.dossierMedical } })
+        res.status(200).json({ message: 'dossier medical updated' })
     } catch (error) {
         res.status(500).json({ error: error.message })
 

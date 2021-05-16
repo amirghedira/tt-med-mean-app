@@ -8,18 +8,20 @@ import { MatRadioModule, MatFormFieldModule, MatInputModule } from '@angular/mat
 import { RouterModule } from '@angular/router';
 import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
 import { ConsultationsComponent } from './pages/consultations/consultations.component';
-import { UpdateConsultationComponent } from './pages/update-consultation/update-consultation.component';
 import { ChercherDossierComponent } from './pages/chercher-dossier/chercher-dossier.component';
 import { MarquerPresenceComponent } from './pages/marquer-presence/marquer-presence.component';
 import { NurseService } from './nurse.service';
 import { TokenInterceptorService } from '../services/token-interceptor.service';
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
 @NgModule({
-    declarations: [AjouterConsultationComponent, DossierMedicalComponent, ConsultationsComponent, UpdateConsultationComponent, ChercherDossierComponent, MarquerPresenceComponent],
+    declarations: [AjouterConsultationComponent, DossierMedicalComponent, ConsultationsComponent, ChercherDossierComponent, MarquerPresenceComponent],
     imports: [
         CommonModule,
+        NgxSpinnerModule,
         FormsModule,
         ReactiveFormsModule,
         MatRadioModule,
@@ -29,11 +31,13 @@ import { TokenInterceptorService } from '../services/token-interceptor.service';
         HttpClientModule,
         NurseRoutingModule
     ],
-    providers: [NurseService,
+    providers: [NurseService, NgxSpinnerService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptorService,
             multi: true
-        }]
+        }],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class NurseModule { }

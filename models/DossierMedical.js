@@ -6,7 +6,8 @@ const medicalFileSchema = new mongoose.Schema({
     familyMember: { type: mongoose.Schema.Types.ObjectId, ref: 'FamilyMember' },
     agent: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent' },
     image: { type: String },
-    anthropomètriques: {
+    haveElectrocardiogramme: { type: Boolean, default: false },
+    anthropometriques: {
         poid: { type: String, default: '' },
         taille: { type: String, default: '' },
         vision_pre_droite: { type: String, default: '' },

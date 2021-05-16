@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Admin } from '../types/Admin';
+import { User } from '../types/User';
 
 @Injectable({
     providedIn: 'root'
@@ -9,20 +9,26 @@ import { Admin } from '../types/Admin';
 export class AuthService {
 
     token: string;
-    loggedUser: BehaviorSubject<Admin>;
+    loggedUser: BehaviorSubject<User>;
+    isConnected: BehaviorSubject<Boolean>
     constructor(private http: HttpClient) {
         this.token = localStorage.getItem('access_token')
         this.loggedUser = new BehaviorSubject(null)
+        this.isConnected = new BehaviorSubject(null)
     }
 
     checkUser() {
         if (this.token) {
             this.getConnectedUser().subscribe((reponse: any) => {
                 this.setCurrentUser(reponse.connectedUser);
+                this.isConnected.next(true)
+
 
             }, err => {
                 this.userLogout()
             })
+        } else {
+            this.isConnected.next(false)
         }
     }
     userLogin(username: string, password: string) {
@@ -32,13 +38,14 @@ export class AuthService {
     userLogout() {
         localStorage.removeItem('access_token')
         this.token = null;
+        this.isConnected.next(false)
         this.setCurrentUser(null)
     }
     getConnectedUser() {
         console.log('heee')
-        return this.http.get<Admin>('http://localhost:5000/user/connected-user')
+        return this.http.get<User>('http://localhost:5000/user/connected-user')
     }
-    setCurrentUser(user: Admin) {
+    setCurrentUser(user: User) {
         this.loggedUser.next(user)
     }
     getCurrentUser() {

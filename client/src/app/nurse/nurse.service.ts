@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Agent } from '../types/Agent';
+import { DossierMedical } from '../types/DossierMedical';
 
 @Injectable()
 export class NurseService {
@@ -28,5 +29,16 @@ export class NurseService {
 
     getAgent(mat: string) {
         return this.http.get<Agent>(`http://localhost:5000/agent/${mat}`)
+    }
+    updateDossierMedical(dossierId: string, newDossier: DossierMedical) {
+        return this.http.patch(`http://localhost:5000/dossier-medical/${dossierId}`, { dossierMedical: newDossier })
+    }
+    uploadDossierMedicalImage(dossierId: string, fd: FormData) {
+        return this.http.patch(`http://localhost:5000/dossier-medical/dossier-image/${dossierId}`, fd)
+
+    }
+    uploadBiologyImage(dossierId: string, fd: FormData) {
+        return this.http.patch(`http://localhost:5000/dossier-medical/biology-image/${dossierId}`, fd)
+
     }
 }
