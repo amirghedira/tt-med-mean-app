@@ -12,7 +12,7 @@
         <tr id="header">
           <th>
             <span class="consult-checkbox">
-              <input type="checkbox" id="selectAll">
+              <input type="checkbox" id="selectAll" [checked]="checkCheckedAllItems()" (input)=" onCheckUncheckAll()">
               <label for="selectAll"> Selectionner tous </label>
             </span>
           </th>
@@ -24,7 +24,8 @@
         <tr *ngFor="let consultation of filteredConsultations">
           <td>
             <span class="consult-checkbox">
-              <input type="checkbox" id="checkbox1">
+              <input type="checkbox" id="checkbox1" [checked]="isCheckedItem(consultation._id)"
+                (input)="onChangeChecked(consultation._id)">
             </span>
           </td>
           <td>{{formatDate(consultation.date)}}</td>
@@ -42,8 +43,8 @@
     </div>
   </div>
 
-  <div class="row justify-content-center ">
-    <button type="submit" class="bouton">supprimer</button>
+  <div *ngIf="checkedConsultations.length >0" class="row justify-content-center ">
+    <button type="submit" class="bouton" (click)="onDeleteConsultations()">supprimer</button>
   </div>
   <div class="row justify-content-center ">
     <button type="submit" class="bouton">Fermer</button>

@@ -1,13 +1,14 @@
 const express = require('express')
+const AuthGuard = require('../middleware/AuthGuard')
 const router = express.Router()
 
-const { addConsultation, getConsultations } = require('../controller/consultation')
+const { addConsultation, getConsultations, deleteConsultations } = require('../controller/consultation')
 
 
 
-router.post('/', addConsultation)
-router.get('/', getConsultations)
-
+router.post('/', AuthGuard, addConsultation)
+router.get('/', AuthGuard, getConsultations)
+router.patch('/delete', AuthGuard, deleteConsultations)
 
 
 

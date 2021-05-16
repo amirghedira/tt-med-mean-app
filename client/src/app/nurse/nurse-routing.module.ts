@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'marquer-presence', component: MarquerPresenceComponent },
     { path: 'ajouter-consultation', component: AjouterConsultationComponent },
     { path: 'chercher-dossier', component: ChercherDossierComponent },
-    { path: 'dossier-medical', component: DossierMedicalComponent },
+    { path: 'dossier-medical/:id', component: DossierMedicalComponent },
     { path: 'consultations', component: ConsultationsComponent },
     { path: '**', redirectTo: 'ajouter-consultation' },
 

@@ -59,7 +59,7 @@
 
 }
 
-.form h2 {
+.field-text {
   text-align: center;
   letter-spacing: 1px;
   margin-bottom: 1rem;
@@ -118,4 +118,18 @@
 
 .option option {
   font-size: 20px;
+}
+
+.error-message {
+  color: #DC143C;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0px 10px 0px;
+}
+
+.error-message-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
