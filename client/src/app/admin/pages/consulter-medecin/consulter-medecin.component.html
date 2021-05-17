@@ -1,8 +1,8 @@
 <div class="main-container">
   <div>
     <div class="search">
-      <input class="recherche" type="text" name="box" placeholder="Entrez la matricule ">
-      <a (change)="filterDoctors()"><i class="fa fa-search"></i></a>
+      <input class="recherche" type="text" name="searchedMat" [(ngModel)]="searchedMat"
+        placeholder="Entrez la matricule " (input)="filterDoctors()">
     </div>
     <div class="tableau">
       <div>
