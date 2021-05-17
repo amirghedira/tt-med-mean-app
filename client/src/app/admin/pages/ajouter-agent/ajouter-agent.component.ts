@@ -14,6 +14,7 @@ export class AjouterAgentComponent implements OnInit {
     agent: Agent;
     matricule: string = '0';
     member: FamilyMember;
+    errorMessage: string;
     @ViewChild('toggleModal', { static: true }) toggleModal: ElementRef;
 
     constructor(private adminService: AdminService) {
@@ -22,7 +23,9 @@ export class AjouterAgentComponent implements OnInit {
         this.resetMember()
 
     }
-
+    onResetMessage() {
+        this.errorMessage = ''
+    }
     onChangeMatricule(event) {
         if (event.target.value.length > 5)
             this.agent.matricule = event.target.value.slice(0, 4)
@@ -32,6 +35,16 @@ export class AjouterAgentComponent implements OnInit {
             this.agent.numTel = event.target.value.slice(0, 7)
     }
     onAddAgent() {
+        if (this.agent.matricule === 0 ||
+            !this.agent.nom.trim().length ||
+            !this.agent.situation.trim().length ||
+            !this.agent.genre.trim().length ||
+            !this.agent.poste.trim().length ||
+            !this.agent.numTel.toString().trim().length)
+            return this.errorMessage = 'Please fill the whole inputs'
+        if (this.agent.numTel.toString().length !== 8)
+            return this.errorMessage = 'invalid phone number'
+
         this.adminService.addAgent(this.agent)
             .subscribe(res => {
                 Swal.fire(

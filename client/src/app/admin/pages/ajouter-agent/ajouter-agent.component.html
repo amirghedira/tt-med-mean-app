@@ -83,7 +83,11 @@
           Ajouter les membres de sa famille
         </button>
       </div>
-
+      <div class="error-message-container">
+        <h2 class="error-message">
+          {{errorMessage}}
+        </h2>
+      </div>
       <button type="submit" class="submit" (click)="onAddAgent()">Ajouter</button>
     </div>
   </div>
