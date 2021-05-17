@@ -29,6 +29,7 @@ export class AjouterMedecinComponent implements OnInit {
             prenom: '',
             role: 'doctor',
             numTel: '',
+            workingHours: []
         }
         this.rePassword = ''
     }

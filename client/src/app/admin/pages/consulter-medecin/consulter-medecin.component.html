@@ -59,10 +59,14 @@
           </h2>
         </div>
         <div id="name">
-          <h2 class="name">Nombre d'heures de travail</h2>
-          <input class="firstname" type="number" name="first_name">
+          <h2 class="name">Nombre d'heures de travail:
+            <span class="field-value">{{selectedDoctorHours}}</span>
+          </h2>
+          <input class="firstname" type="number" name="workingHoursMonth" [(ngModel)]="workingHoursMonth"
+            (input)="getDoctorHours()">
           <label class="firstlabel">Mois</label>
-          <input class="lastname" type="number" name="last_name">
+          <input class="lastname" type="number" name="workingHoursYear" [(ngModel)]="workingHoursYear"
+            (input)="getDoctorHours()">
           <label class="lastlabel">Année</label>
         </div>
       </div>

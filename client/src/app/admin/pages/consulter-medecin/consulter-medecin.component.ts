@@ -13,16 +13,19 @@ export class ConsulterMedecinComponent implements OnInit {
     filtredDoctors: Doctor[];
     selectedDoctor: Doctor;
     searchedMat: string;
+    selectedDoctorHours: string;
+    workingHoursMonth: string;
+    workingHoursYear: string;
     constructor(private adminService: AdminService) { }
 
     ngOnInit() {
         this.adminService.getDoctors()
             .subscribe((data: any) => {
-                console.log(data)
                 this.doctors = data.doctors
                 this.filtredDoctors = data.doctors
             })
     }
+
     onDeleteDoctor(doctorId: string) {
         this.adminService.deleteUser(doctorId)
             .subscribe(() => {
@@ -35,8 +38,16 @@ export class ConsulterMedecinComponent implements OnInit {
     filterDoctors() {
         this.filtredDoctors = this.doctors.filter((doctor) => doctor.matricule.toString().includes(this.searchedMat))
     }
+    getDoctorHours() {
+        this.adminService.getDoctorWorkingHours(this.selectedDoctor._id, this.workingHoursMonth, this.workingHoursYear)
+            .subscribe((res: any) => {
+                this.selectedDoctorHours = res.totalHours;
+            })
+    }
     setSelectedDoctor(doctorId) {
         const doctorIndex = this.doctors.findIndex(doctor => doctor._id === doctorId)
         this.selectedDoctor = this.doctors[doctorIndex]
+        this.selectedDoctorHours = this.doctors[doctorIndex].workingHours.length.toString();
+
     }
 }

@@ -18,16 +18,18 @@ const {
     getNurses,
     getDoctor,
     getNurse,
-    markDoctorPresent
+    markDoctorPresent,
+    getWorkingHours
 } = require('../controller/user')
 
 
 router.get('/connected-user', AuthGuard, getConnectedUser)
-router.get('/', getUsers)
-router.get('/doctor', getDoctors)
-router.get('/nurse', getNurses)
-router.get('/doctor/:mat', getDoctor)
-router.get('/nurse/:mat', getNurse)
+router.get('/', AuthGuard, getUsers)
+router.get('/doctor', AuthGuard, getDoctors)
+router.get('/nurse', AuthGuard, getNurses)
+router.get('/doctor/working-hours/:doctorId', AuthGuard, getWorkingHours)
+router.get('/doctor/:mat', AuthGuard, getDoctor)
+router.get('/nurse/:mat', AuthGuard, getNurse)
 
 router.get('/:userId', getUser)
 router.post('/', createUser)

@@ -212,6 +212,26 @@ exports.addDoctor = async (req, res) => {
     }
 
 }
+
+exports.getWorkingHours = async (req, res) => {
+    try {
+
+        const { month, year } = req.query
+        const doctor = await User.findOne({ _id: req.params.doctorId })
+        if (doctor) {
+            const workingHours = doctor.workingHours.filter(workingHour => {
+                return ((new Date(workingHour)).getMonth() == +month &&
+                    (new Date(workingHour)).getFullYear() == +year)
+            })
+            res.status(200).json({ totalHours: workingHours.length })
+        } else {
+            res.status(404).json({ message: 'doctor not found' })
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+
+    }
+}
 exports.addNurse = async (req, res) => {
     try {
         const existNurse = await User.findOne({ matricule: req.body.nurse.matricule })

@@ -75,4 +75,9 @@ export class AdminService {
         return this.http.patch(`http://localhost:5000/agent/${agentId}/family-member`, familyMember)
 
     }
+    getDoctorWorkingHours(doctorId: string, month: string, year: string) {
+        return this.http.get(`http://localhost:5000/user/doctor/working-hours/${doctorId}?month=${month}&year=${year}`)
+
+    }
+
 }

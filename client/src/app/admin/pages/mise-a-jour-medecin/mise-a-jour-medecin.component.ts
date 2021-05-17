@@ -25,6 +25,7 @@ export class MiseAJourMedecinComponent implements OnInit {
             prenom: '',
             role: 'doctor',
             numTel: '',
+            workingHours: []
         }
     }
     ngOnInit() {

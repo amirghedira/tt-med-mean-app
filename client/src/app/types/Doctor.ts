@@ -8,4 +8,5 @@ export interface Doctor {
     prenom: string,
     role: string,
     numTel: string,
+    workingHours: string[]
 }
