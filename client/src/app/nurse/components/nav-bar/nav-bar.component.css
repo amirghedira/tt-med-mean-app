@@ -20,7 +20,19 @@
 
 }
 
+
+.disconnect-button {
+  color: red;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .nav-item {
+  list-style: none;
+}
+
+.nav-button {
   display: flex;
   justify-content: center;
   background-color: white;

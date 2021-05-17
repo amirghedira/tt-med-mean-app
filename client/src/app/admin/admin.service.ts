@@ -11,7 +11,7 @@ export class AdminService {
     constructor(private http: HttpClient) { }
 
     addAgent(agent: Agent) {
-        return this.http.post('http://localhost:5000/agent', agent)
+        return this.http.post('http://localhost:5000/agent', agent, { observe: 'response' })
     }
     getAgent(mat: string) {
         return this.http.get(`http://localhost:5000/agent/${mat}`)
@@ -62,12 +62,12 @@ export class AdminService {
 
     }
     addDoctor(doctor: Doctor) {
-        return this.http.post(`http://localhost:5000/user/doctor`, { doctor: doctor })
+        return this.http.post(`http://localhost:5000/user/doctor`, { doctor: doctor }, { observe: 'response' })
 
     }
 
     addNurse(nurse: Nurse) {
-        return this.http.post(`http://localhost:5000/user/nurse`, { nurse: nurse })
+        return this.http.post(`http://localhost:5000/user/nurse`, { nurse: nurse }, { observe: 'response' })
 
     }
 

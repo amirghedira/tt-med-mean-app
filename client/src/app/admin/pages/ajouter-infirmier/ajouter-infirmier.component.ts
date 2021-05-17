@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
 export class AjouterInfirmierComponent implements OnInit {
 
     nurse: Nurse;
+    errorMessage: string;
     rePassword: string;
     constructor(private adminService: AdminService) {
         this.resetNurse()
@@ -29,12 +30,35 @@ export class AjouterInfirmierComponent implements OnInit {
         }
         this.rePassword = ''
     }
+    onResetMessage() {
+        this.errorMessage = ''
+    }
+    onChangeMatricule(event) {
+        if (event.target.value.length > 5)
+            this.nurse.matricule = event.target.value.slice(0, 4)
+    }
+    onChangePhoneNumber(event) {
+        if (event.target.value.length > 8)
+            this.nurse.numTel = event.target.value.slice(0, 7)
+    }
     onAddNurse() {
+        if (this.nurse.matricule === 0 ||
+            !this.nurse.email.trim().length ||
+            !this.nurse.nom.trim().length ||
+            !this.nurse.username.trim().length ||
+            !this.nurse.prenom.trim().length ||
+            !this.nurse.password.trim().length ||
+            !this.rePassword.trim().length)
+            return this.errorMessage = 'Please fill the whole inputs'
+        if (this.nurse.numTel.toString().length !== 8)
+            return this.errorMessage = 'invalid phone number'
+        if (this.rePassword !== this.nurse.password)
+            return this.errorMessage = 'Passwords didnt match';
         this.adminService.addNurse(this.nurse)
             .subscribe(res => {
                 Swal.fire(
                     'Sucess',
-                    'Doctor successfully added!',
+                    'Nurse successfully added!',
                     'success'
                 ).then((result) => {
                     if (result.isConfirmed) {
@@ -42,10 +66,16 @@ export class AjouterInfirmierComponent implements OnInit {
                     }
                 })
             }, err => {
-                Swal.fire(
-                    'Error',
-                    'Something went wrong!'
-                )
+                if (err.status === 400)
+                    Swal.fire(
+                        'Error',
+                        'Nurse with this matricule already exists'
+                    )
+                else
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
             })
     }
     ngOnInit() {

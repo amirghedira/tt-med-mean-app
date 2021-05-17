@@ -13,6 +13,7 @@ export class AjouterMedecinComponent implements OnInit {
 
     doctor: Doctor;
     rePassword: string;
+    errorMessage: string;
     constructor(private adminService: AdminService) {
         this.resetDoctor()
     }
@@ -31,7 +32,30 @@ export class AjouterMedecinComponent implements OnInit {
         }
         this.rePassword = ''
     }
+    onChangeMatricule(event) {
+        if (event.target.value.length > 5)
+            this.doctor.matricule = event.target.value.slice(0, 4)
+    }
+    onChangePhoneNumber(event) {
+        if (event.target.value.length > 8)
+            this.doctor.numTel = event.target.value.slice(0, 7)
+    }
+    onResetMessage() {
+        this.errorMessage = ''
+    }
     onAddDoctor() {
+        if (this.doctor.matricule === 0 ||
+            !this.doctor.email.trim().length ||
+            !this.doctor.nom.trim().length ||
+            !this.doctor.username.trim().length ||
+            !this.doctor.prenom.trim().length ||
+            !this.doctor.password.trim().length ||
+            !this.rePassword.trim().length)
+            return this.errorMessage = 'Please fill the whole inputs'
+        if (this.doctor.numTel.toString().length !== 8)
+            return this.errorMessage = 'invalid phone number'
+        if (this.rePassword !== this.doctor.password)
+            return this.errorMessage = 'Passwords didnt match';
         this.adminService.addDoctor(this.doctor)
             .subscribe(res => {
                 Swal.fire(
@@ -44,10 +68,16 @@ export class AjouterMedecinComponent implements OnInit {
                     }
                 })
             }, err => {
-                Swal.fire(
-                    'Error',
-                    'Something went wrong!'
-                )
+                if (err.status === 400)
+                    Swal.fire(
+                        'Error',
+                        'Nurse with this matricule already exists'
+                    )
+                else
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
             })
     }
     ngOnInit() {

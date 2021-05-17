@@ -53,7 +53,7 @@ export class MiseAJourInfirmierComponent implements OnInit {
             .subscribe(res => {
                 Swal.fire(
                     'Sucess',
-                    'Agent successfully added!',
+                    'Nurse successfully updated!',
                     'success')
             }, err => {
                 Swal.fire(

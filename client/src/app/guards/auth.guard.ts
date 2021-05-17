@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-    constructor(private injector: Injector) {
+    constructor(private injector: Injector, private router: Router) {
 
     }
     canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -16,6 +16,8 @@ export class AuthGuard implements CanActivate {
         let observerActivate = new Observable<boolean>((obs) => {
             authService.isConnected.subscribe((isConnected: Boolean) => {
                 if (isConnected !== null) {
+                    if (!isConnected)
+                        this.router.navigate(['auth', 'login'])
                     obs.next(isConnected === true)
                 }
             })

@@ -6,27 +6,38 @@ const FamilyMember = require('../models/FamilyMember')
 exports.createAgent = async (req, res) => {
     try {
 
-        const agentId = new mongoose.Types.ObjectId()
-        const familyMembers = req.body.familyMembers.map(familyMember => {
-            return {
-                ...familyMember,
-                _id: new mongoose.Types.ObjectId(),
-                agent: agentId,
+        const existAgent = await Agent.findOne({ matricule: req.body.matricule })
+        if (existAgent) {
+            res.status(400).json({ message: 'agent with this matricule already exists' })
+        } else {
+            const agentId = new mongoose.Types.ObjectId()
+            let createdAgent;
+            if (req.body.familyMembers.lengh > 0) {
+                const familyMembers = req.body.familyMembers.map(familyMember => {
+                    return {
+                        ...familyMember,
+                        _id: new mongoose.Types.ObjectId(),
+                        agent: agentId,
+                    }
+                })
+                const createdFamilyMembers = await FamilyMember.create(familyMembers)
+                createdAgent = await Agent.create({ ...req.body, _id: agentId, familyMembers: createdFamilyMembers })
+                await DossierMedical.create({ agent: agentId, agent_matricule: createdAgent.matricule })
+                familyMembersDossierMedical = createdFamilyMembers.map(familyMember => {
+                    return {
+                        familyMember: familyMember._id,
+                        type: 'other',
+                        agent_matricule: createdAgent.matricule
+                    }
+                })
+                await DossierMedical.create(familyMembersDossierMedical)
+            } else {
+                createdAgent = await Agent.create({ ...req.body, _id: agentId, familyMembers: [] })
+                await DossierMedical.create({ agent: agentId, agent_matricule: createdAgent.matricule })
             }
-        })
-        const createdFamilyMembers = await FamilyMember.create(familyMembers)
-        const createdAgent = await Agent.create({ ...req.body, _id: agentId, familyMembers: createdFamilyMembers })
-        await DossierMedical.create({ agent: agentId, agent_matricule: createdAgent.matricule })
-        familyMembersDossierMedical = createdFamilyMembers.map(familyMember => {
-            return {
-                familyMember: familyMember._id,
-                type: 'other',
-                agent_matricule: createdAgent.matricule
-            }
-        })
-        await DossierMedical.create(familyMembersDossierMedical)
 
-        res.status(200).json({ createdAgent: createdAgent })
+            res.status(200).json({ createdAgent: createdAgent })
+        }
 
     } catch (error) {
         console.log(error)

@@ -193,10 +193,17 @@ exports.userLogin = async (req, res) => {
 
 exports.addDoctor = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.doctor.password, 11)
-        req.body.doctor.password = hashedPassword;
-        const createdDoctor = await User.create(req.body.doctor)
-        res.status(200).json({ doctor: createdDoctor })
+        const existDoctor = await User.findOne({ matricule: req.body.doctor.matricule })
+        if (existDoctor) {
+            res.status(400).json({ message: 'Doctor with this matricule already exists' })
+
+        } else {
+            const hashedPassword = await bcrypt.hash(req.body.doctor.password, 11)
+            req.body.doctor.password = hashedPassword;
+            const createdDoctor = await User.create(req.body.doctor)
+            res.status(200).json({ doctor: createdDoctor })
+        }
+
 
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -207,10 +214,16 @@ exports.addDoctor = async (req, res) => {
 }
 exports.addNurse = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.nurse.password, 11)
-        req.body.nurse.password = hashedPassword;
-        const createdNurse = await User.create(req.body.nurse)
-        res.status(200).json({ user: createdNurse })
+        const existNurse = await User.findOne({ matricule: req.body.nurse.matricule })
+        if (existNurse) {
+            res.status(400).json({ message: 'Nurse with this matricule already exists' })
+
+        } else {
+            const hashedPassword = await bcrypt.hash(req.body.nurse.password, 11)
+            req.body.nurse.password = hashedPassword;
+            const createdNurse = await User.create(req.body.nurse)
+            res.status(200).json({ user: createdNurse })
+        }
 
     } catch (error) {
         res.status(500).json({ error: error.message });

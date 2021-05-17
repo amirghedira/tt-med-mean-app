@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 export class AjouterAgentComponent implements OnInit {
 
     agent: Agent;
+    matricule: string = '0';
     member: FamilyMember;
     @ViewChild('toggleModal', { static: true }) toggleModal: ElementRef;
 
@@ -22,6 +23,14 @@ export class AjouterAgentComponent implements OnInit {
 
     }
 
+    onChangeMatricule(event) {
+        if (event.target.value.length > 5)
+            this.agent.matricule = event.target.value.slice(0, 4)
+    }
+    onChangePhoneNumber(event) {
+        if (event.target.value.length > 8)
+            this.agent.numTel = event.target.value.slice(0, 7)
+    }
     onAddAgent() {
         this.adminService.addAgent(this.agent)
             .subscribe(res => {
@@ -35,10 +44,16 @@ export class AjouterAgentComponent implements OnInit {
                     }
                 })
             }, err => {
-                Swal.fire(
-                    'Error',
-                    'Something went wrong!'
-                )
+                if (err.status === 400)
+                    Swal.fire(
+                        'Error',
+                        'Agent with this matricule already exists'
+                    )
+                else
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
             })
     }
     onAddFamilyMember() {

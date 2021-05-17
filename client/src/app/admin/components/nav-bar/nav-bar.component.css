@@ -20,7 +20,19 @@
 
 }
 
+
+.disconnect-button {
+  color: red;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .nav-item {
+  list-style: none;
+}
+
+.nav-button {
   display: flex;
   justify-content: center;
   background-color: white;
@@ -38,8 +50,8 @@
 
 
 /* .nav-item:hover {
-    background-color: #68ebf5;
-    color: black;
-    box-shadow: 0 0 10px #4bf0f0;
-  }
-   */
+      background-color: #68ebf5;
+      color: black;
+      box-shadow: 0 0 10px #4bf0f0;
+    }
+     */

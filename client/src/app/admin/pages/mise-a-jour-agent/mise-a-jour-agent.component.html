@@ -8,7 +8,7 @@
     <h1>Formulaire mettre à jour un agent</h1>
   </div>
   <div class="main">
-    <form>
+    <div>
       <h2 class="name">Situation</h2>
       <select class="option" name="agent.situation" [(ngModel)]="agent.situation">
         <option disabled="disabled">--choisir une option-- </option>
@@ -55,11 +55,61 @@
 
           </table>
         </div>
-        <button class="ajout" type="submit">Ajouter un nouveau membre</button>
+        <button class="ajout" data-toggle="modal" data-target="#toggleModal" #toggleModal>Ajouter un
+          nouveau membre</button>
       </div>
 
-    </form>
-    <button type="submit" class="bouton" (click)="onSave()">Sauvegarder</button>
+    </div>
+    <button class="bouton" (click)="onSave()">Sauvegarder</button>
   </div>
+  <div class="modal fade" id="toggleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="consultform">
+          <h1>Formulaire membres de famille</h1>
+        </div>
+        <div class="main">
+          <div id="name">
+            <h2 class="name">Nom</h2>
+            <input class="firstname" type="text" name="member.nom" [(ngModel)]="member.nom" />
+            <label class="firstlabel">Prénom</label>
+            <input class="lastname" type="text" name="member.prenom" [(ngModel)]="member.prenom" />
+            <label class="lastlabel">Nom</label>
+          </div>
 
+          <h2 class="name">Date de naissance</h2>
+          <input class="naissance" type="date" name="member.date_n" [(ngModel)]="member.date_n" />
+
+
+          <h2 class="name">Lieu de naissance</h2>
+          <input class="lieu" type="text" name="member.lieu_n" [(ngModel)]="member.lieu_n" />
+
+
+          <h2 class="name">Sexe</h2>
+          <mat-radio-group aria-label="Select an option" name="member.genre" [(ngModel)]="member.genre">
+            <mat-radio-button value="homme">Homme</mat-radio-button>
+            <mat-radio-button value="femme">Femme</mat-radio-button>
+          </mat-radio-group>
+
+
+          <h2 class="name">Qualité</h2>
+          <select class="option" name="Qualité" name="member.qualite" [(ngModel)]="member.qualite">
+            <option disabled="disabled" selected="selected">--choisir une option-- </option>
+            <option value="conjoint">Conjoint</option>
+            <option value="enfant">Enfant</option>
+          </select>
+
+          <div *ngIf="member.qualite== 'enfant'">
+            <h2 class="name">Rang</h2>
+            <input class="rang" type="number" name="member.rang" [(ngModel)]="member.rang" />
+          </div>
+
+
+          <button class="ajout" (click)="onAddFamilyMember()">Ajouter</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

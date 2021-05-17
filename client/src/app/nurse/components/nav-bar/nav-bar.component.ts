@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Admin } from 'src/app/types/Admin';
 
@@ -10,7 +11,7 @@ import { Admin } from 'src/app/types/Admin';
 export class NurseNavBarComponent implements OnInit {
 
     user: Admin;
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
 
     ngOnInit() {
 
@@ -19,6 +20,11 @@ export class NurseNavBarComponent implements OnInit {
                 console.log(user)
                 this.user = user
             })
+
+    }
+    onLogout() {
+        this.authService.userLogout()
+        this.router.navigate(['auth', 'login'])
 
     }
 

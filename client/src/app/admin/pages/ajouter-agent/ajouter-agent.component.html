@@ -6,7 +6,7 @@
     <div class="main">
       <div id="name">
         <h2 class="name">Num de matricule</h2>
-        <input class="matricule" type="number" name="agent.matricule" [(ngModel)]="agent.matricule" />
+        <input class="matricule" type="number" [(ngModel)]="agent.matricule" (input)="onChangeMatricule($event)" />
       </div>
       <h2 class="name">Situation</h2>
       <select class="option" name="agent.situation" [(ngModel)]="agent.situation">
@@ -50,7 +50,8 @@
       <input class="residence" type="text" name="agent.residence" [(ngModel)]="agent.residence" />
       <div id="name">
         <h2 class="name">Num téléphone</h2>
-        <input class="phone" type="text" name="agent.numTel" [(ngModel)]="agent.numTel" />
+        <input class="phone" type="text" name="agent.numTel" [(ngModel)]="agent.numTel"
+          (input)="onChangePhoneNumber($event)" />
       </div>
       <div>
         <h2 class="name">Les membres de sa famille</h2>
@@ -124,8 +125,10 @@
             <option value="enfant">Enfant</option>
           </select>
 
-          <h2 class="name">Rang</h2>
-          <input class="rang" type="number" name="member.rang" [(ngModel)]="member.rang" />
+          <div *ngIf="member.qualite== 'enfant'">
+            <h2 class="name">Rang</h2>
+            <input class="rang" type="number" name="member.rang" [(ngModel)]="member.rang" />
+          </div>
 
 
           <button class="submit" (click)="onAddFamilyMember()">Ajouter</button>

@@ -1,6 +1,6 @@
 import { Injector } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from '../types/User';
@@ -9,7 +9,7 @@ import { User } from '../types/User';
     providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-    constructor(private injector: Injector) {
+    constructor(private injector: Injector, router: Router) {
 
     }
     canActivate(
@@ -23,7 +23,7 @@ export class RoleGuard implements CanActivate {
                 .subscribe(isConnected => {
                     if (isConnected !== null) {
                         authService.getCurrentUser().subscribe((user: User) => {
-                            obs.next(user.role === next.data.role)
+                            obs.next(user !== null && user.role === next.data.role)
                         })
                     }
                 })
