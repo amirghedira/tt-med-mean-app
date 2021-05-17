@@ -74,7 +74,16 @@ exports.getAgents = async (req, res) => {
 
 exports.updateAgent = async (req, res) => {
     try {
-        await Agent.updateOne({ _id: req.params.id }, { $set: { ...req.body.newAgent } })
+        const familyMembers = req.body.newAgent.familyMembers.map(familyMember => {
+            return {
+                ...familyMember,
+                _id: new mongoose.Types.ObjectId(),
+                agent: req.body.newAgent._id,
+            }
+        })
+        const createdFamilyMembers = await FamilyMember.create(familyMembers)
+        const agent = await Agent.findOneAndUpdate({ _id: req.params.id }, { $set: { ...req.body.newAgent, familyMembers: createdFamilyMembers } })
+        await FamilyMember.deleteMany({ _id: { $in: agent.familyMembers } })
         return res.status(200).json({ message: 'agent successfully updated' })
 
     } catch (error) {
