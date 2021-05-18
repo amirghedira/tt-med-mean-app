@@ -29,8 +29,7 @@ export class GuestGuard implements CanActivate {
                     }
                     obs.next(isConnected === false)
 
-                } else
-                    obs.next(false)
+                }
             })
         })
         return observerActivate
