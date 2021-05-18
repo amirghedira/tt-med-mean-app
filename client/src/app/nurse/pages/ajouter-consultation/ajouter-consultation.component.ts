@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { NurseService } from '../../nurse.service';
 import Swal from 'sweetalert2'
+import { FamilyMember } from 'src/app/types/FamilyMember';
 
 @Component({
     selector: 'app-ajouter-consultation',
@@ -19,6 +20,7 @@ export class AjouterConsultationComponent implements OnInit {
     firstNameControl = new FormControl();
     formCtrlSub: Subscription;
     selectedMember: string;
+    familyMembers: FamilyMember[];
 
 
     constructor(private nurseService: NurseService) {
@@ -96,6 +98,11 @@ export class AjouterConsultationComponent implements OnInit {
 
 
             })
+    }
+    onChangeQualite(event) {
+        console.log(this.qualite)
+        this.familyMembers = this.agent.familyMembers.filter(familyMember => familyMember.qualite == event.target.value)
+
     }
     onChangeMember() {
         if (!this.selectedMember) {

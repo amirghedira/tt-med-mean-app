@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     prenom: { type: String },
     numTel: { type: String },
     role: { type: String, enum: ['admin', 'doctor', 'nurse'] },
-    workingHours: [{ type: String }]
+    workingHours: [{ type: String }],
+    lastMarkedPresence: { type: String }
 })
 
 

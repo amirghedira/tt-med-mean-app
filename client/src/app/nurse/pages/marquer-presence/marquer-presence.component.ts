@@ -27,6 +27,8 @@ export class MarquerPresenceComponent implements OnInit {
             }, err => {
                 if (err.status === 404)
                     this.errorMessage = 'Aucun docteur avec cette matricule'
+                else if (err.status === 409)
+                    this.errorMessage = 'Vous avez deja marquer la presence d\'un medecin'
                 else if (err.status === 400)
                     this.errorMessage = 'Ce medecin est deja marqué present'
                 else

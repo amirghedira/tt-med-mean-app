@@ -18,16 +18,19 @@ export class ConsulterAgentComponent implements OnInit {
     ngOnInit() {
         this.adminService.getAgents()
             .subscribe((data: any) => {
-                this.agents = data.agents
-                this.filtredAgents = data.agents
+                this.agents = JSON.parse(JSON.stringify(data.agents))
+                this.filtredAgents = JSON.parse(JSON.stringify(data.agents))
             })
     }
     onDeleteAgent(agentId: string) {
         this.adminService.deleteAgent(agentId)
             .subscribe(() => {
                 const agentIndex = this.agents.findIndex((agent) => agent._id === agentId)
+                const filteredAgentIndex = this.filtredAgents.findIndex((agent) => agent._id === agentId)
                 this.agents.splice(agentIndex, 1)
-                this.filterAgents()
+                this.filtredAgents.splice(filteredAgentIndex, 1)
+                if (this.selectedAgent && this.selectedAgent._id === agentId)
+                    this.selectedAgent = null;
 
             })
 

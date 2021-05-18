@@ -44,27 +44,31 @@
         </div>
         <div class="row">
           <div class="col">
-            <select class="option" name="qualite" [(ngModel)]="qualite">
+            <select class="option" name="qualite" [(ngModel)]="qualite" (input)="onChangeQualite($event)">
               <option value="agent" selected="selected">Agent </option>
               <option value="conjoint">Conjoint</option>
               <option value="enfant">Enfant</option>
             </select>
           </div>
         </div>
-        <div class="row">
+        <div *ngIf="qualite !='agent'" class="row">
           <div class="col">
-            <h2 class="name">Liste des enfants </h2>
-          </div>
-        </div>
-        <div class="row justify-content-end">
-          <div class="col-6 justify-content-end" style="display: flex;">
-            <select class="option" name="selectedMember" [(ngModel)]="selectedMember" (change)="onChangeMember()">
-              <option value="default">--choisir une option-- </option>
-              <option *ngFor="let familyMember of agent?.familyMembers" [value]="familyMember._id">{{familyMember.nom}}
-                {{familyMember.prenom}}
-              </option>
+            <div class="row">
+              <div class="col">
+                <h2 class="name">Liste des {{qualite}}s </h2>
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-6 justify-content-end" style="display: flex;">
+                <select class="option" name="selectedMember" [(ngModel)]="selectedMember" (change)="onChangeMember()">
+                  <option value="default">--choisir une option-- </option>
+                  <option *ngFor="let familyMember of familyMembers" [value]="familyMember._id">{{familyMember.nom}}
+                    {{familyMember.prenom}}
+                  </option>
 
-            </select>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 

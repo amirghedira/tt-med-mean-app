@@ -167,12 +167,17 @@ h1 {
   border: 2px solid #302dff;
   outline: none;
 
-  margin: 0px 250px 10px;
-
 }
 
-.col-5 {
-  height: 100%;
+.side-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-row {
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .txt_field label {
@@ -182,7 +187,13 @@ h1 {
   font-size: 20px;
 }
 
-input[type="submit"] {
+.mark-presence-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 20px;
+}
+
+.submit {
   width: 150px;
   height: 30px;
   border: 1px solid;
@@ -196,7 +207,7 @@ input[type="submit"] {
   margin-bottom: 10px;
 }
 
-input[type="submit"]:hover {
+.submit:hover {
   border-color: #90EE90;
   transition: .5s;
 }

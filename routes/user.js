@@ -19,7 +19,6 @@ const {
     getDoctor,
     getNurse,
     markDoctorPresent,
-    getWorkingHours
 } = require('../controller/user')
 
 
@@ -27,7 +26,6 @@ router.get('/connected-user', AuthGuard, getConnectedUser)
 router.get('/', AuthGuard, getUsers)
 router.get('/doctor', AuthGuard, getDoctors)
 router.get('/nurse', AuthGuard, getNurses)
-router.get('/doctor/working-hours/:doctorId', AuthGuard, getWorkingHours)
 router.get('/doctor/:mat', AuthGuard, getDoctor)
 router.get('/nurse/:mat', AuthGuard, getNurse)
 

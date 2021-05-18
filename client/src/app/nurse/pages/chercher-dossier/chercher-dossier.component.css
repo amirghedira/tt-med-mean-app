@@ -1,48 +1,46 @@
-.matricule {
-  height: 100vh;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.form {
-  padding: 80px 40pc 40px;
-  background: rgba(88, 124, 122, 0.6);
+.main-container {
+  background-color: rgba(88, 124, 122, 0.6);
   color: rgb(255, 255, 255);
   box-shadow: rgba(88, 124, 122, 0.4);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
-.form::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  pointer-events: none;
-  margin-left: 550px;
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.form img {
-  position: absolute;
-  top: -50px;
-  left: calc(50% -50px);
-  width: 100px;
-  background: rgba(255, 255, 255, 0.08);
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  height: 100px;
+  margin-top: -50px;
   border-radius: 50%;
 
 }
 
-.form .input input {
+.input {
+  display: block;
+}
+
+.main-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.input-field {
   padding: 10px 0;
   font-size: 1rem;
   letter-spacing: 1px;
-  margin-bottom: 20px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -51,8 +49,7 @@
 
 }
 
-.form .input label {
-  padding: 10px 0;
+.label-field {
   font-size: 15px;
   pointer-events: none;
   transition: .3s ease-out;
@@ -69,7 +66,7 @@
   font-family: calibri;
 }
 
-.form .input input:focus+label {
+.main-container .input input:focus+label {
   transform: translateY(-10px);
   color: rgb(74, 248, 248);
   font-size: 17px;
@@ -104,15 +101,10 @@
 
 
 .option {
-  position: relative;
-
-  bottom: 10px;
   line-height: 50px;
-  width: 200px;
+  width: 100%;
   border-radius: 6px;
-  padding: 0 22px;
   font-size: 16px;
-  outline: none;
   color: #555;
 }
 

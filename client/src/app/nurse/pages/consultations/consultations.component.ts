@@ -17,8 +17,8 @@ export class ConsultationsComponent implements OnInit {
     ngOnInit() {
         this.nurseService.getConsultations()
             .subscribe((res: any) => {
-                this.consultations = res.consultations
-                this.filteredConsultations = res.consultations
+                this.consultations = JSON.parse(JSON.stringify(res.consultations))
+                this.filteredConsultations = JSON.parse(JSON.stringify(res.consultations))
             })
 
     }
@@ -33,7 +33,6 @@ export class ConsultationsComponent implements OnInit {
         return this.checkedConsultations.length === this.filteredConsultations.length
     }
     onChangeChecked(consultationId) {
-        console.log(this.checkedConsultations)
         const consultationIndex = this.checkedConsultations.findIndex(checkedConsultation => checkedConsultation === consultationId)
         if (consultationIndex >= 0) {
             this.checkedConsultations.splice(consultationIndex, 1)
@@ -49,7 +48,6 @@ export class ConsultationsComponent implements OnInit {
         }
     }
     onDeleteConsultations() {
-        console.log(this.checkedConsultations)
         this.nurseService.deleteConsultations(this.checkedConsultations)
             .subscribe(res => {
                 this.checkedConsultations.forEach(consultationId => {
@@ -58,6 +56,7 @@ export class ConsultationsComponent implements OnInit {
                     this.filteredConsultations.splice(filteredConsultationIndex, 1)
                     this.consultations.splice(consultationIndex, 1)
                 })
+                this.checkedConsultations = []
             })
     }
     filterConsultations() {
@@ -65,7 +64,7 @@ export class ConsultationsComponent implements OnInit {
         if (this.searchedMatricule && this.searchedMatricule.trim().length > 0)
             this.filteredConsultations = this.consultations.filter(consultation => consultation.agent_matricule.includes(this.searchedMatricule))
         else
-            this.filteredConsultations = this.consultations
+            this.filteredConsultations = JSON.parse(JSON.stringify(this.consultations))
 
 
     }

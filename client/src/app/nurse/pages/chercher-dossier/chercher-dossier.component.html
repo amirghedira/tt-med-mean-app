@@ -1,64 +1,81 @@
-<div class="matricule">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col">
-        <div class="form">
-          <div class="row justify-content-center">
-            <div class="row align-items-start">
-              <img src="images/agent.PNG">
-            </div>
-          </div>
-          <div class="row">
-            <h2 class="field-text">Matricule</h2>
-          </div>
-          <div class="row">
-            <div class="input">
-              <input type="number" name="matricule" (focus)="resetErrorMessage()" [(ngModel)]="matricule">
-              <label for=matriculeAgent>Matricule patient</label>
-            </div>
-          </div>
-          <div class="row">
-            <h2 class="field-text">Qualité</h2>
-          </div>
-          <div class="row">
-            <div class="input">
-              <select class="option" name="qualite" (focus)="resetErrorMessage()" [(ngModel)]="qualite">
-                <option value="agent">Agent </option>
-                <option value="conjoint">Conjoint</option>
-                <option value="enfant">Enfant</option>
-              </select>
-            </div>
-          </div>
-          <div *ngIf="qualite=='enfant'" class="row">
-            <div class="col">
-              <div class="row">
-                <h2 class="field-text">Rang</h2>
+      <div class="col-3">
+        <div class="row main-container">
+          <div class="col-12">
+            <div class="row justify-content-center">
+              <div class="col image-container">
+                <img class="img" src="/assets/images/search-document.png">
               </div>
-              <div class="row">
-                <div class="input">
-                  <input type="number" name="rang" (focus)="resetErrorMessage()" [(ngModel)]="rang">
-                  <label for=matriculeAgent>rang patient</label>
+            </div>
+            <div class="row main-row">
+              <div class="col">
+                <h2 class="field-text">Matricule</h2>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col input">
+                <div class="row">
+                  <div class="col">
+                    <input class="input-field" type="number" name="matricule" (focus)="resetErrorMessage()"
+                      [(ngModel)]="matricule">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label class="label-field" for=matriculeAgent>Matricule patient</label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col error-message-container">
-              <h2 class="error-message">
-                {{errorMessage}}
-              </h2>
+            <div class="row main-row">
+              <div class="col">
+                <h2 class="field-text">Qualité</h2>
+              </div>
             </div>
-          </div>
-          <div class="row">
+            <div class="row main-row">
+              <div class="col input">
+                <select class="option" name="qualite" (focus)="resetErrorMessage()" [(ngModel)]="qualite">
+                  <option value="agent">Agent </option>
+                  <option value="conjoint">Conjoint</option>
+                  <option value="enfant">Enfant</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="qualite=='enfant'" class="row main-row">
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <h2 class="field-text">Rang</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col input">
+                    <input class="input-field" type="number" name="rang" (focus)="resetErrorMessage()"
+                      [(ngModel)]="rang">
+                    <label class="label-field" for=matriculeAgent>rang patient</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col error-message-container">
+                <h2 class="error-message">
+                  {{errorMessage}}
+                </h2>
+              </div>
+            </div>
+            <div class="row main-row">
 
-            <button class="submit" (click)="onValidate()">
-              Valider
-            </button>
+              <div class="col">
+                <button class="submit" (click)="onValidate()">
+                  Valider
+                </button>
 
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-</div>

@@ -16,11 +16,10 @@ export class ConsulterInfirmierComponent implements OnInit {
     constructor(private adminService: AdminService) { }
 
     ngOnInit() {
-        console.log('heyeyeyey')
         this.adminService.getNurses()
             .subscribe((data: any) => {
-                this.nurses = data.nurses
-                this.filtredNurses = data.nurses
+                this.nurses = JSON.parse(JSON.stringify(data.nurses))
+                this.filtredNurses = JSON.parse(JSON.stringify(data.nurses))
             }, err => {
                 console.log(err)
             })
@@ -28,9 +27,10 @@ export class ConsulterInfirmierComponent implements OnInit {
     onDeleteNurse(nurseId: string) {
         this.adminService.deleteUser(nurseId)
             .subscribe(() => {
-                const doctorIndex = this.nurses.findIndex((nurse) => nurse._id === nurseId)
-                this.nurses.splice(doctorIndex, 1)
-                this.filterNurses()
+                const nurseIndex = this.nurses.findIndex((nurse) => nurse._id === nurseId)
+                const filteredNurseIndex = this.filtredNurses.findIndex(nurse => nurse._id === nurseId)
+                this.filtredNurses.splice(filteredNurseIndex, 1)
+                this.nurses.splice(nurseIndex, 1)
             })
 
     }

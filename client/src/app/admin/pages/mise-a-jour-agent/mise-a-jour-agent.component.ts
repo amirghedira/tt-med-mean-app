@@ -73,6 +73,11 @@ export class MiseAJourAgentComponent implements OnInit {
             date_n: '',
         };
     }
+    onDeleteFamilyMember(memberId) {
+        const memberIndex = this.agent.familyMembers.findIndex(familyMember => familyMember._id === memberId)
+        this.agent.familyMembers.splice(memberIndex, 1)
+
+    }
     onSave() {
         this.adminService.updateAgent(this.agent._id, this.agent)
             .subscribe(res => {

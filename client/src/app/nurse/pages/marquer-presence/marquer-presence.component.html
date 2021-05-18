@@ -1,31 +1,27 @@
-<section class="list-consultation">
+<div class="list-consultation">
   <p> Marquer la présence du médecin:</p>
-  <div class="row">
-    <div class="form">
-      <div class="col-lg-6 col-md-6">
-        <img src="images\avatar.png" id="medecin">
+  <div class="row main-row">
+    <div class="col-6 side-container">
+      <img src="/assets/images/mark-presence-doctor.png" class="mark-presence-image">
+    </div>
+    <div class="col-6 side-container">
+      <div class="txt_field">
+        <label>Matricule du médecin </label>
+        <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
       </div>
-      <div class="col-lg-6 col-md-6">
-        <div class="txt_field">
-
-          <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
-          <span></span>
-          <label>Matricule du médecin </label>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <button class="submit" (click)="onValidate()">
-          Valider
-        </button>
-      </div>
-      <div class="error-message-container">
-        <h2 class="error-message">
-          {{errorMessage}}
-        </h2>
-      </div>
-
     </div>
   </div>
+  <div class="row main-row">
+    <div class="col error-message-container">
+      <h2 class="error-message">
+        {{errorMessage}}
+      </h2>
+    </div>
+  </div>
+  <div class="row justify-content-center main-row">
+    <button class="submit" (click)="onValidate()">
+      Valider
+    </button>
+  </div>
 
-</section>
+</div>

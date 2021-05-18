@@ -13,7 +13,7 @@ export class ConsulterMedecinComponent implements OnInit {
     filtredDoctors: Doctor[];
     selectedDoctor: Doctor;
     searchedMat: string;
-    selectedDoctorHours: string;
+    selectedDoctorHours: number;
     workingHoursMonth: string;
     workingHoursYear: string;
     constructor(private adminService: AdminService) { }
@@ -21,8 +21,8 @@ export class ConsulterMedecinComponent implements OnInit {
     ngOnInit() {
         this.adminService.getDoctors()
             .subscribe((data: any) => {
-                this.doctors = data.doctors
-                this.filtredDoctors = data.doctors
+                this.doctors = JSON.parse(JSON.stringify(data.doctors))
+                this.filtredDoctors = JSON.parse(JSON.stringify(data.doctors))
             })
     }
 
@@ -30,8 +30,9 @@ export class ConsulterMedecinComponent implements OnInit {
         this.adminService.deleteUser(doctorId)
             .subscribe(() => {
                 const doctorIndex = this.doctors.findIndex((doctor) => doctor._id === doctorId)
+                const filteredDoctorIndex = this.filtredDoctors.findIndex((doctor) => doctor._id === doctorId)
                 this.doctors.splice(doctorIndex, 1)
-                this.filterDoctors()
+                this.filtredDoctors.splice(filteredDoctorIndex, 1)
             })
 
     }
@@ -39,15 +40,18 @@ export class ConsulterMedecinComponent implements OnInit {
         this.filtredDoctors = this.doctors.filter((doctor) => doctor.matricule.toString().includes(this.searchedMat))
     }
     getDoctorHours() {
-        this.adminService.getDoctorWorkingHours(this.selectedDoctor._id, this.workingHoursMonth, this.workingHoursYear)
-            .subscribe((res: any) => {
-                this.selectedDoctorHours = res.totalHours;
-            })
+
+        const _workingHours = this.selectedDoctor.workingHours.filter(workingHour => {
+            return ((new Date(workingHour)).getMonth() + 1 == +this.workingHoursMonth &&
+                (new Date(workingHour)).getFullYear() == +this.workingHoursYear)
+        })
+        this.selectedDoctorHours = _workingHours.length;
+
     }
     setSelectedDoctor(doctorId) {
         const doctorIndex = this.doctors.findIndex(doctor => doctor._id === doctorId)
         this.selectedDoctor = this.doctors[doctorIndex]
-        this.selectedDoctorHours = this.doctors[doctorIndex].workingHours.length.toString();
+        this.selectedDoctorHours = this.doctors[doctorIndex].workingHours.length;
 
     }
 }

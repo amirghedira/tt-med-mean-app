@@ -16,8 +16,8 @@
 
 
           </tr>
-          <tr *ngFor="let doctor of filtredDoctors" (click)="setSelectedDoctor(doctor._id)">
-            <td>{{doctor.matricule}}</td>
+          <tr *ngFor="let doctor of filtredDoctors">
+            <td (click)="setSelectedDoctor(doctor._id)" style="text-decoration: underline;">{{doctor.matricule}}</td>
             <td>{{doctor.nom}} {{doctor.prenom}}</td>
             <td>{{doctor.numTel}}</td>
             <td>{{doctor.username}}</td>

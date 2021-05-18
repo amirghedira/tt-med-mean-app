@@ -14,8 +14,8 @@
           <th>Résidence</th>
           <th>Num téléphone</th>
         </tr>
-        <tr *ngFor="let agent of filtredAgents" (click)="setSelectedAgent(agent._id)">
-          <td>{{agent.matricule}}</td>
+        <tr *ngFor="let agent of filtredAgents">
+          <td (click)="setSelectedAgent(agent._id)" style="text-decoration: underline;">{{agent.matricule}}</td>
           <td>{{agent.nom}} {{agent.prenom}}</td>
           <td>{{agent.situation}}</td>
           <td>{{agent.poste}}</td>
@@ -102,7 +102,6 @@
               <td>{{member.lieu_n}}</td>
               <td>{{member.genre}}</td>
               <td>{{member.rang}}</td>
-
             </tr>
           </table>
         </div>
