@@ -15,18 +15,18 @@ import { AdminNavBarComponent } from './admin/components/nav-bar/nav-bar.compone
 import { NurseComponent } from './nurse/nurse.component';
 import { NurseNavBarComponent } from './nurse/components/nav-bar/nav-bar.component';
 import { NurseSideBarComponent } from './nurse/components/side-bar/side-bar.component';
+import { DoctorNavBarComponent } from './doctor/components/nav-bar/nav-bar.component';
+import { DoctorSideBarComponent } from './doctor/components/side-bar/side-bar.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorModule } from './doctor/doctor.module';
+import { AdminModule } from './admin/admin.module';
+import { NurseModule } from './nurse/nurse.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        AuthComponent,
-        AdminComponent,
-        NurseComponent,
-        AdminNavBarComponent,
-        AdminSideBarComponent,
-        NurseNavBarComponent,
-        NurseSideBarComponent
     ],
     imports: [
         BrowserModule,
@@ -37,6 +37,10 @@ import { NurseSideBarComponent } from './nurse/components/side-bar/side-bar.comp
         MatRadioModule,
         MatFormFieldModule,
         MatInputModule,
+        AuthModule,
+        AdminModule,
+        DoctorModule,
+        NurseModule
 
 
     ],

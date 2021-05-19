@@ -16,11 +16,18 @@ import { AdminService } from './admin.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../services/token-interceptor.service';
 import { RouterModule } from '@angular/router';
+import { AdminNavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AdminSideBarComponent } from './components/side-bar/side-bar.component';
+import { AdminComponent } from './admin.component';
 
 
 
 @NgModule({
-    declarations: [AjouterAgentComponent, AjouterInfirmierComponent, ConsulterAgentComponent, ConsulterMedecinComponent, MiseAJourMedecinComponent, MiseAJourAgentComponent, MiseAJourInfirmierComponent, ConsulterInfirmierComponent, AjouterMedecinComponent],
+    declarations: [AjouterAgentComponent,
+        AjouterInfirmierComponent, ConsulterAgentComponent,
+        ConsulterMedecinComponent, MiseAJourMedecinComponent,
+        MiseAJourAgentComponent, MiseAJourInfirmierComponent,
+        ConsulterInfirmierComponent, AjouterMedecinComponent, AdminNavBarComponent, AdminSideBarComponent, AdminComponent],
     imports: [
         CommonModule,
         FormsModule,

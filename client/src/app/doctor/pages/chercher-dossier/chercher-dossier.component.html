@@ -1,0 +1,80 @@
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <div class="row main-container">
+          <div class="col-12">
+            <div class="row justify-content-center">
+              <div class="col image-container">
+                <img class="img" src="/assets/images/search-document.png">
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col">
+                <h2 class="field-text">Matricule</h2>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col" style="display: block;">
+                <div class="row">
+                  <div class="col input">
+                    <input class="input-field" type="number" name="matricule" (focus)="resetErrorMessage()"
+                      [(ngModel)]="matricule">
+                    <label class="label-field" for=matriculeAgent>Matricule patient</label>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col">
+                <h2 class="field-text">Qualité</h2>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col input">
+                <select class="option" name="qualite" (focus)="resetErrorMessage()" [(ngModel)]="qualite">
+                  <option value="agent">Agent </option>
+                  <option value="conjoint">Conjoint</option>
+                  <option value="enfant">Enfant</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="qualite=='enfant'" class="row main-row">
+              <div class="col" style="display: block;">
+                <div class="row">
+                  <div class="col">
+                    <h2 class="field-text">Rang</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="input">
+                      <input class="input-field" type="number" name="rang" (focus)="resetErrorMessage()"
+                        [(ngModel)]="rang">
+                      <label class="label-field" for=matriculeAgent>rang patient</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row main-row">
+              <div class="col error-message-container">
+                <h2 class="error-message">
+                  {{errorMessage}}
+                </h2>
+              </div>
+            </div>
+            <div class="row main-row">
+
+              <div class="col">
+                <button class="submit" (click)="onValidate()">
+                  Valider
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

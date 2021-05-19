@@ -14,11 +14,16 @@ import { NurseService } from './nurse.service';
 import { TokenInterceptorService } from '../services/token-interceptor.service';
 import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NurseSideBarComponent } from './components/side-bar/side-bar.component';
+import { NurseNavBarComponent } from './components/nav-bar/nav-bar.component';
+import { NurseComponent } from './nurse.component';
 
 
 
 @NgModule({
-    declarations: [AjouterConsultationComponent, DossierMedicalComponent, ConsultationsComponent, ChercherDossierComponent, MarquerPresenceComponent],
+    declarations: [AjouterConsultationComponent,
+        DossierMedicalComponent, ConsultationsComponent,
+        ChercherDossierComponent, MarquerPresenceComponent, NurseSideBarComponent, NurseNavBarComponent, NurseComponent],
     imports: [
         CommonModule,
         NgxSpinnerModule,

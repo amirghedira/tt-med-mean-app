@@ -1,0 +1,129 @@
+.main-container {
+  background-color: rgba(88, 124, 122, 0.6);
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(88, 124, 122, 0.4);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  height: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+
+}
+
+.input {
+  display: block;
+}
+
+.main-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  padding: 10px 0;
+  font-size: 1rem;
+  width: 100%;
+  letter-spacing: 1px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+
+
+}
+
+.label-field {
+  font-size: 15px;
+  margin-top: 10px;
+  pointer-events: none;
+  transition: .3s ease-out;
+
+}
+
+.field-text {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: rgb(253, 253, 253);
+  width: 200px;
+  font-size: 20px;
+  font-family: calibri;
+}
+
+.main-container .input input:focus+label {
+  transform: translateY(-10px);
+  color: rgb(74, 248, 248);
+  font-size: 17px;
+
+}
+
+.submit {
+  background-color: #68ebf5;
+
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid rgb(27, 204, 235);
+  padding: 14px 50px;
+  outline: none;
+  color: rgb(8, 8, 8);
+  cursor: pointer;
+  transition: 0.25px;
+  box-shadow: 0 0 10px #4bf0f0;
+  transition-duration: 0.3s;
+}
+
+.submit:hover {
+  box-shadow: 0 0 20px #46fcf3;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+
+}
+
+
+.option {
+  line-height: 50px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+}
+
+.option option {
+  font-size: 20px;
+}
+
+.error-message {
+  color: #DC143C;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 10px 0px 10px 0px;
+}
+
+.error-message-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}

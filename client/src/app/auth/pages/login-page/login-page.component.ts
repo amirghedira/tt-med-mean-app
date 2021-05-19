@@ -31,9 +31,6 @@ export class LoginPageComponent implements OnInit {
                 this.authService.setCurrentUser(data.user)
                 this.authService.setToken(data.accessToken)
                 this.authService.isConnected.next(true)
-                console.log(data)
-                if (data.user.role === 'admin')
-                    this.router.navigate(['/admin'])
             }, error => {
                 this.errorMessage = 'Invalid username or password'
             })

@@ -20,10 +20,13 @@ export class GuestGuard implements CanActivate {
                         authService.getCurrentUser()
                             .subscribe((user: User) => {
                                 if (user.role == 'admin')
-                                    this.router.navigate(['/admin'])
+                                    this.router.navigate(['admin'])
 
                                 else if (user.role == 'nurse')
-                                    this.router.navigate(['/nurse'])
+                                    this.router.navigate(['nurse'])
+                                else if (user.role == 'doctor')
+                                    this.router.navigate(['doctor'])
+
 
                             })
                     }
