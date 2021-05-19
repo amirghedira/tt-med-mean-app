@@ -54,6 +54,18 @@ export class MiseAJourAgentComponent implements OnInit {
         this.adminService.getAgent(this.searchedMat)
             .subscribe((data: any) => {
                 this.agent = { ...data.agent }
+            }, err => {
+                if (err.status === 404) {
+                    Swal.fire(
+                        'Ouups',
+                        'Agent not found!'
+                    )
+                } else {
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
+                }
             })
     }
     onAddFamilyMember() {

@@ -65,8 +65,9 @@
               <th>Lieu de naissance</th>
               <th>Sexe</th>
               <th>Rang</th>
+              <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let familyMember of agent.familyMembers">
+            <tr *ngFor="let familyMember of agent.familyMembers;let i = index">
               <td>{{agent.matricule}}</td>
               <td>{{familyMember.nom}} {{familyMember.prenom}}</td>
               <td>{{familyMember.qualite}}</td>
@@ -74,6 +75,9 @@
               <td>{{familyMember.lieu_n}}</td>
               <td>{{familyMember.genre}}</td>
               <td>{{familyMember.rang}}</td>
+              <td (click)="onDeleteFamilyMember(i)">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </td>
 
             </tr>
 

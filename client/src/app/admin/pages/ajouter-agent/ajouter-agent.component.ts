@@ -34,6 +34,9 @@ export class AjouterAgentComponent implements OnInit {
         if (event.target.value.length > 8)
             this.agent.numTel = event.target.value.slice(0, 7)
     }
+    onDeleteFamilyMember(i) {
+        this.agent.familyMembers.splice(i, 1)
+    }
     onAddAgent() {
         if (this.agent.matricule === 0 ||
             !this.agent.nom.trim().length ||

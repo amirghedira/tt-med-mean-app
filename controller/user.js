@@ -272,6 +272,7 @@ exports.updateDoctor = async (req, res) => {
 exports.getDoctors = async (req, res) => {
     try {
         const doctors = await User.find({ role: 'doctor' })
+            .sort({ _id: -1 })
         res.status(200).json({ doctors: doctors })
     } catch (error) {
         console.log(error)
@@ -284,6 +285,8 @@ exports.getDoctors = async (req, res) => {
 exports.getNurses = async (req, res) => {
     try {
         const nurses = await User.find({ role: 'nurse' })
+            .sort({ _id: -1 })
+
         res.status(200).json({ nurses: nurses })
     } catch (error) {
         res.status(500).json({ error: error.message });

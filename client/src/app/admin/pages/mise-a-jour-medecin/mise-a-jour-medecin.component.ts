@@ -47,6 +47,18 @@ export class MiseAJourMedecinComponent implements OnInit {
         this.adminService.getDoctor(this.searchedMat)
             .subscribe((data: any) => {
                 this.doctor = { ...data.doctor, password: '' }
+            }, err => {
+                if (err.status === 404) {
+                    Swal.fire(
+                        'Ouups',
+                        'Doctor not found!'
+                    )
+                } else {
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
+                }
             })
     }
     onSave() {

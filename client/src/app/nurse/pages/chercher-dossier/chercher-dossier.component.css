@@ -40,6 +40,7 @@
 .input-field {
   padding: 10px 0;
   font-size: 1rem;
+  width: 100%;
   letter-spacing: 1px;
   border: none;
   border-bottom: 1px solid #fff;
@@ -51,6 +52,7 @@
 
 .label-field {
   font-size: 15px;
+  margin-top: 10px;
   pointer-events: none;
   transition: .3s ease-out;
 

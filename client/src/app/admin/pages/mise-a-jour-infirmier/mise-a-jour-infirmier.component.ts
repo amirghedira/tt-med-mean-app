@@ -46,6 +46,18 @@ export class MiseAJourInfirmierComponent implements OnInit {
         this.adminService.getNurse(this.searchedMat)
             .subscribe((data: any) => {
                 this.nurse = { ...data.nurse, password: '' }
+            }, err => {
+                if (err.status === 404) {
+                    Swal.fire(
+                        'Ouups',
+                        'Nurse not found!'
+                    )
+                } else {
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
+                }
             })
     }
     onSave() {

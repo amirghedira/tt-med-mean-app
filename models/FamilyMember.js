@@ -9,7 +9,7 @@ const familyMemberSchema = mongoose.Schema(
         lieu_n: { type: String },
         genre: { type: String, enum: ['homme', 'femme'] },
         date_n: { type: String },
-        agentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }
+        agent: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent' }
     }
 )
 

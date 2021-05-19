@@ -12,7 +12,7 @@ exports.createAgent = async (req, res) => {
         } else {
             const agentId = new mongoose.Types.ObjectId()
             let createdAgent;
-            if (req.body.familyMembers.lengh > 0) {
+            if (req.body.familyMembers.length > 0) {
                 const familyMembers = req.body.familyMembers.map(familyMember => {
                     return {
                         ...familyMember,
@@ -65,6 +65,7 @@ exports.getAgents = async (req, res) => {
     try {
         const agents = await Agent.find()
             .populate('familyMembers')
+            .sort({ _id: -1 })
 
         res.status(200).json({ agents: agents })
     } catch (error) {
