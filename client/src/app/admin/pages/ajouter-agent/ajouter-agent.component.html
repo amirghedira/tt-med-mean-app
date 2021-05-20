@@ -6,52 +6,99 @@
     <div class="main">
       <div id="name">
         <h2 class="name">Num de matricule</h2>
-        <input class="matricule" type="number" [(ngModel)]="agent.matricule" (input)="onChangeMatricule($event)" />
+        <input
+          class="matricule"
+          type="number"
+          [(ngModel)]="agent.matricule"
+          (input)="onChangeMatricule($event)"
+        />
       </div>
       <h2 class="name">Situation</h2>
-      <select class="option" name="agent.situation" [(ngModel)]="agent.situation">
-        <option value="none" disabled="disabled">
-          --choisir une option--
-        </option>
-        <option value="active">Active</option>
-        <option value="retired">Retrété</option>
+      <select
+        class="option"
+        name="agent.situation"
+        [(ngModel)]="agent.situation"
+      >
+        <option value="none" disabled="disabled">--choisir une option--</option>
+        <option value="active">Actif</option>
+        <option value="retired">Retraité</option>
       </select>
       <div id="name">
         <h2 class="name">Nom</h2>
-        <input class="firstname" type="text" name="agent.nom" [(ngModel)]="agent.nom" />
+        <input
+          class="firstname"
+          type="text"
+          name="agent.nom"
+          [(ngModel)]="agent.nom"
+        />
         <label class="firstlabel">Prénom</label>
-        <input class="lastname" type="text" name="agent.prenom" [(ngModel)]="agent.prenom" />
+        <input
+          class="lastname"
+          type="text"
+          name="agent.prenom"
+          [(ngModel)]="agent.prenom"
+        />
         <label class="lastlabel">Nom</label>
       </div>
 
       <h2 class="name">Date de naissance</h2>
-      <input class="naissance" type="date" name="agent.date_n" [(ngModel)]="agent.date_n" />
-
+      <input
+        class="naissance"
+        type="date"
+        name="agent.date_n"
+        [(ngModel)]="agent.date_n"
+      />
 
       <h2 class="name">Lieu de naissance</h2>
-      <input class="lieu" type="text" name="agent.lieu_n" [(ngModel)]="agent.lieu_n" />
-
+      <input
+        class="lieu"
+        type="text"
+        name="agent.lieu_n"
+        [(ngModel)]="agent.lieu_n"
+      />
 
       <h2 class="name">Sexe</h2>
-      <mat-radio-group aria-label="Select an option" name="agent.genre" [(ngModel)]="agent.genre">
+      <mat-radio-group
+        aria-label="Select an option"
+        name="agent.genre"
+        [(ngModel)]="agent.genre"
+      >
         <mat-radio-button value="homme">Homme</mat-radio-button>
         <mat-radio-button value="femme">Femme</mat-radio-button>
       </mat-radio-group>
 
-
       <h2 class="name">Poste</h2>
-      <input class="poste" type="text" name="agent.poste" [(ngModel)]="agent.poste" />
-
+      <input
+        class="poste"
+        type="text"
+        name="agent.poste"
+        [(ngModel)]="agent.poste"
+      />
 
       <h2 class="name">Date de recrutement</h2>
-      <input class="date_rec" type="date" name="agent.recrutement_date" [(ngModel)]="agent.recrutement_date" />
+      <input
+        class="date_rec"
+        type="date"
+        name="agent.recrutement_date"
+        [(ngModel)]="agent.recrutement_date"
+      />
 
       <h2 class="name">Résidence</h2>
-      <input class="residence" type="text" name="agent.residence" [(ngModel)]="agent.residence" />
+      <input
+        class="residence"
+        type="text"
+        name="agent.residence"
+        [(ngModel)]="agent.residence"
+      />
       <div id="name">
         <h2 class="name">Num téléphone</h2>
-        <input class="phone" type="text" name="agent.numTel" [(ngModel)]="agent.numTel"
-          (input)="onChangePhoneNumber($event)" />
+        <input
+          class="phone"
+          type="text"
+          name="agent.numTel"
+          [(ngModel)]="agent.numTel"
+          (input)="onChangePhoneNumber($event)"
+        />
       </div>
       <div>
         <h2 class="name">Les membres de sa famille</h2>
@@ -67,36 +114,48 @@
               <th>Rang</th>
               <th>Supprimer</th>
             </tr>
-            <tr *ngFor="let familyMember of agent.familyMembers;let i = index">
-              <td>{{agent.matricule}}</td>
-              <td>{{familyMember.nom}} {{familyMember.prenom}}</td>
-              <td>{{familyMember.qualite}}</td>
-              <td>{{familyMember.date_n}}</td>
-              <td>{{familyMember.lieu_n}}</td>
-              <td>{{familyMember.genre}}</td>
-              <td>{{familyMember.rang}}</td>
+            <tr *ngFor="let familyMember of agent.familyMembers; let i = index">
+              <td>{{ agent.matricule }}</td>
+              <td>{{ familyMember.nom }} {{ familyMember.prenom }}</td>
+              <td>{{ familyMember.qualite }}</td>
+              <td>{{ familyMember.date_n }}</td>
+              <td>{{ familyMember.lieu_n }}</td>
+              <td>{{ familyMember.genre }}</td>
+              <td>{{ familyMember.rang }}</td>
               <td (click)="onDeleteFamilyMember(i)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
               </td>
-
             </tr>
-
           </table>
         </div>
-        <button type="button" class="ajout" data-toggle="modal" data-target="#toggleModal" #toggleModal>
+        <button
+          type="button"
+          class="ajout"
+          data-toggle="modal"
+          data-target="#toggleModal"
+          #toggleModal
+        >
           Ajouter les membres de sa famille
         </button>
       </div>
       <div class="error-message-container">
         <h2 class="error-message">
-          {{errorMessage}}
+          {{ errorMessage }}
         </h2>
       </div>
-      <button type="submit" class="submit" (click)="onAddAgent()">Ajouter</button>
+      <button type="submit" class="submit" (click)="onAddAgent()">
+        Ajouter
+      </button>
     </div>
   </div>
-  <div class="modal fade" id="toggleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="toggleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="consultform">
@@ -105,42 +164,73 @@
         <div class="main">
           <div id="name">
             <h2 class="name">Nom</h2>
-            <input class="firstname" type="text" name="member.nom" [(ngModel)]="member.nom" />
+            <input
+              class="firstname"
+              type="text"
+              name="member.nom"
+              [(ngModel)]="member.nom"
+            />
             <label class="firstlabel">Prénom</label>
-            <input class="lastname" type="text" name="member.prenom" [(ngModel)]="member.prenom" />
+            <input
+              class="lastname"
+              type="text"
+              name="member.prenom"
+              [(ngModel)]="member.prenom"
+            />
             <label class="lastlabel">Nom</label>
           </div>
 
           <h2 class="name">Date de naissance</h2>
-          <input class="naissance" type="date" name="member.date_n" [(ngModel)]="member.date_n" />
-
+          <input
+            class="naissance"
+            type="date"
+            name="member.date_n"
+            [(ngModel)]="member.date_n"
+          />
 
           <h2 class="name">Lieu de naissance</h2>
-          <input class="lieu" type="text" name="member.lieu_n" [(ngModel)]="member.lieu_n" />
-
+          <input
+            class="lieu"
+            type="text"
+            name="member.lieu_n"
+            [(ngModel)]="member.lieu_n"
+          />
 
           <h2 class="name">Sexe</h2>
-          <mat-radio-group aria-label="Select an option" name="member.genre" [(ngModel)]="member.genre">
+          <mat-radio-group
+            aria-label="Select an option"
+            name="member.genre"
+            [(ngModel)]="member.genre"
+          >
             <mat-radio-button value="homme">Homme</mat-radio-button>
             <mat-radio-button value="femme">Femme</mat-radio-button>
           </mat-radio-group>
 
-
           <h2 class="name">Qualité</h2>
-          <select class="option" name="Qualité" name="member.qualite" [(ngModel)]="member.qualite">
-            <option disabled="disabled" selected="selected">--choisir une option-- </option>
+          <select
+            class="option"
+            name="Qualité"
+            name="member.qualite"
+            [(ngModel)]="member.qualite"
+          >
+            <option disabled="disabled" selected="selected">
+              --choisir une option--
+            </option>
             <option value="conjoint">Conjoint</option>
             <option value="enfant">Enfant</option>
           </select>
 
-          <div *ngIf="member.qualite== 'enfant'">
+          <div *ngIf="member.qualite == 'enfant'">
             <h2 class="name">Rang</h2>
-            <input class="rang" type="number" name="member.rang" [(ngModel)]="member.rang" />
+            <input
+              class="rang"
+              type="number"
+              name="member.rang"
+              [(ngModel)]="member.rang"
+            />
           </div>
 
-
           <button class="submit" (click)="onAddFamilyMember()">Ajouter</button>
-
         </div>
       </div>
     </div>

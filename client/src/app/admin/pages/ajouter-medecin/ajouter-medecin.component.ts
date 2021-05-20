@@ -34,8 +34,8 @@ export class AjouterMedecinComponent implements OnInit {
         this.rePassword = ''
     }
     onChangeMatricule(event) {
-        if (event.target.value.length > 5)
-            this.doctor.matricule = event.target.value.slice(0, 4)
+        if (event.target.value.length > 8)
+            this.doctor.matricule = event.target.value.slice(0, 7)
     }
     onChangePhoneNumber(event) {
         if (event.target.value.length > 8)

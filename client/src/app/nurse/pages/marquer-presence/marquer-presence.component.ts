@@ -21,14 +21,14 @@ export class MarquerPresenceComponent implements OnInit {
         this.nurseService.markDoctorPresent(this.matricule)
             .subscribe(res => {
                 Swal.fire(
-                    'Presence marquer',
-                    `la presence de ${res.body.nom} ${res.body.prenom} a été marquer`,
+                    'Presence marqué',
+                    `la presence de ${res.body.nom} ${res.body.prenom} a été marquée`,
                 )
             }, err => {
                 if (err.status === 404)
-                    this.errorMessage = 'Aucun docteur avec cette matricule'
+                    this.errorMessage = 'Aucun docteur avec cette cin'
                 else if (err.status === 409)
-                    this.errorMessage = 'Vous avez deja marquer la presence d\'un medecin'
+                    this.errorMessage = 'Vous avez deja marqué la presence d\'un medecin'
                 else if (err.status === 400)
                     this.errorMessage = 'Ce medecin est deja marqué present'
                 else

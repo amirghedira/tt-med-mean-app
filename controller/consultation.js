@@ -15,7 +15,7 @@ exports.getConsultations = async (req, res) => {
 }
 exports.deleteConsultations = async (req, res) => {
     try {
-        // await Consultation.deleteMany({ _id: { $in: req.body.consultations } })
+     await Consultation.deleteMany({ _id: { $in: req.body.consultations } })
         res.status(200).json({ message: 'consultations successfully deleted' })
     } catch (error) {
         res.status(500).json({ message: error.message })

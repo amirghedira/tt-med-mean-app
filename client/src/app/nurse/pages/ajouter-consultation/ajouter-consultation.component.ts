@@ -36,7 +36,7 @@ export class AjouterConsultationComponent implements OnInit {
                     .subscribe(res => {
                         Swal.fire(
                             'Sucess',
-                            'La consultation a été ajouter',
+                            'La consultation a été ajoutée',
                         )
                             .then(() => {
                                 this.agent = null;
@@ -55,7 +55,7 @@ export class AjouterConsultationComponent implements OnInit {
                     .subscribe(res => {
                         Swal.fire(
                             'Sucess',
-                            'La consultation a été ajouter',
+                            'La consultation a été ajoutée',
                         ).then(() => {
                             this.agent = null;
                             this.qualite = "agent";

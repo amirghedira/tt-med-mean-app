@@ -109,7 +109,7 @@ export class DossierMedicalComponent implements OnInit {
             .subscribe(res => {
                 Swal.fire(
                     'Sucess',
-                    'Le dossier a été modifier',
+                    'Le dossier a été modifié',
                 )
                 this.isEditing = false;
             })
