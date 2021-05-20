@@ -1,52 +1,96 @@
 <div class="main-container">
   <div class="consultform">
-    <h1>Formulaire infirmier</h1>
+    <h1>Fiche infirmier</h1>
   </div>
   <div class="main">
     <div id="name">
-      <h2 class="name"> matricule</h2>
-      <input class="matricule" type="number" name="nurse.matricule" (focus)="onResetMessage()"
-        (input)="onChangeMatricule($event)" [(ngModel)]="nurse.matricule">
+      <h2 class="name">matricule</h2>
+      <input
+        class="matricule"
+        type="number"
+        name="nurse.matricule"
+        (focus)="onResetMessage()"
+        (input)="onChangeMatricule($event)"
+        [(ngModel)]="nurse.matricule"
+      />
     </div>
     <div id="name">
       <h2 class="name">Nom</h2>
-      <input class="firstname" type="text" name="nurse.prenom" (focus)="onResetMessage()" [(ngModel)]="nurse.prenom">
+      <input
+        class="firstname"
+        type="text"
+        name="nurse.prenom"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.prenom"
+      />
       <label class="firstlabel">Prénom</label>
-      <input class="lastname" type="text" name="nurse.nom" (focus)="onResetMessage()" [(ngModel)]="nurse.nom">
+      <input
+        class="lastname"
+        type="text"
+        name="nurse.nom"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.nom"
+      />
       <label class="lastlabel">Nom</label>
     </div>
     <div id="name">
       <h2 class="name">Num de téléphone</h2>
-      <input class="matricule" type="number" name="nurse.numTel" (input)="onChangePhoneNumber($event)"
-        (focus)="onResetMessage()" [(ngModel)]="nurse.numTel">
+      <input
+        class="matricule"
+        type="number"
+        name="nurse.numTel"
+        (input)="onChangePhoneNumber($event)"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.numTel"
+      />
     </div>
 
     <div id="name">
       <h2 class="name">Nom d'utilisateur</h2>
-      <input class="matricule" type="text" name="nurse.username" (focus)="onResetMessage()"
-        [(ngModel)]="nurse.username">
+      <input
+        class="matricule"
+        type="text"
+        name="nurse.username"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.username"
+      />
     </div>
     <div id="name">
       <h2 class="name">Mail</h2>
-      <input class="matricule" type="text" name="nurse.email" (focus)="onResetMessage()" [(ngModel)]="nurse.email">
+      <input
+        class="matricule"
+        type="text"
+        name="nurse.email"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.email"
+      />
     </div>
     <div id="name">
       <h2 class="name">Mot de passe</h2>
-      <input class="matricule" type="password" name="nurse.password" (focus)="onResetMessage()"
-        [(ngModel)]="nurse.password">
+      <input
+        class="matricule"
+        type="password"
+        name="nurse.password"
+        (focus)="onResetMessage()"
+        [(ngModel)]="nurse.password"
+      />
     </div>
     <div id="name">
       <h2 class="name">Confirmer mot de passe</h2>
-      <input class="matricule" type="password" name="rePassword" (focus)="onResetMessage()" [(ngModel)]="rePassword">
+      <input
+        class="matricule"
+        type="password"
+        name="rePassword"
+        (focus)="onResetMessage()"
+        [(ngModel)]="rePassword"
+      />
     </div>
     <div class="error-message-container">
       <h2 class="error-message">
-        {{errorMessage}}
+        {{ errorMessage }}
       </h2>
     </div>
 
     <button type="submit" (click)="onAddNurse()">Ajouter</button>
-
   </div>
-
 </div>

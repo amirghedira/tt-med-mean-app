@@ -72,7 +72,7 @@ export class AjouterMedecinComponent implements OnInit {
                 if (err.status === 400)
                     Swal.fire(
                         'Error',
-                        'Nurse with this matricule already exists'
+                        'Doctor with this matricule already exists'
                     )
                 else
                     Swal.fire(
