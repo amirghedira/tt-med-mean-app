@@ -31,11 +31,11 @@ export class AdminService {
 
     }
     updateDoctor(userId: string, newDoctor: Doctor) {
-        return this.http.patch(`http://localhost:5000/user/doctor/${userId}`, { newDoctor: newDoctor })
+        return this.http.patch(`http://localhost:5000/user/doctor/${userId}`, { newDoctor: newDoctor }, { observe: 'response' })
 
     }
     updateNurse(userId: string, newNurse: Nurse) {
-        return this.http.patch(`http://localhost:5000/user/nurse/${userId}`, { newNurse: newNurse })
+        return this.http.patch(`http://localhost:5000/user/nurse/${userId}`, { newNurse: newNurse }, { observe: 'response' })
 
     }
 

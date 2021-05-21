@@ -8,8 +8,8 @@ export class NurseService {
 
     constructor(private http: HttpClient) { }
 
-    markDoctorPresent(matricule: string) {
-        return this.http.patch<{ message: string, nom: string, prenom: string }>(`http://localhost:5000/user/presence/${matricule}`, {}, { observe: "response" })
+    markDoctorPresent(matricule: string, presenceDate: string) {
+        return this.http.patch<{ message: string, nom: string, prenom: string }>(`http://localhost:5000/user/presence/${matricule}`, { presenceDate }, { observe: "response" })
     }
     getDossierMedical(dossierId: string) {
         return this.http.get(`http://localhost:5000/dossier-medical/${dossierId}`)

@@ -5,9 +5,15 @@
       <img src="/assets/images/mark-presence-doctor.png" class="mark-presence-image">
     </div>
     <div class="col-6 side-container">
-      <div class="txt_field">
-        <label>Matricule du médecin </label>
-        <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
+      <div>
+        <div class="txt_field">
+          <label>Matricule du médecin </label>
+          <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
+        </div>
+        <div class="txt_field">
+          <label>Date de presence </label>
+          <input type="date" name="matricule" [(ngModel)]="presenceDate" (focus)="resetErrorMessage()">
+        </div>
       </div>
     </div>
   </div>

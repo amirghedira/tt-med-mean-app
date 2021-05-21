@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Admin } from '../types/Admin';
 import { User } from '../types/User';
 
 @Injectable({
@@ -40,6 +41,9 @@ export class AuthService {
         this.token = null;
         this.isConnected.next(false)
         this.setCurrentUser(null)
+    }
+    createUser(newUser: Admin, telecomPass: string) {
+        return this.http.post('http://localhost:5000/user', { user: newUser, telecomPass }, { observe: 'response' })
     }
     getConnectedUser() {
         console.log('heee')

@@ -41,6 +41,9 @@ export class AjouterInfirmierComponent implements OnInit {
         if (event.target.value.length > 8)
             this.nurse.numTel = event.target.value.slice(0, 7)
     }
+    validateEmail(mail) {
+        return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+    }
     onAddNurse() {
         if (this.nurse.matricule === 0 ||
             !this.nurse.email.trim().length ||
@@ -50,6 +53,8 @@ export class AjouterInfirmierComponent implements OnInit {
             !this.nurse.password.trim().length ||
             !this.rePassword.trim().length)
             return this.errorMessage = 'Please fill the whole inputs'
+        if (!this.validateEmail(this.nurse.email))
+            return this.errorMessage = 'Invalid email'
         if (this.nurse.numTel.toString().length !== 8)
             return this.errorMessage = 'invalid phone number'
         if (this.rePassword !== this.nurse.password)

@@ -11,14 +11,14 @@ export class MarquerPresenceComponent implements OnInit {
 
     matricule: string;
     errorMessage: string;
+    presenceDate: string;
     constructor(private nurseService: NurseService) {
-
     }
 
     ngOnInit() {
     }
     onValidate() {
-        this.nurseService.markDoctorPresent(this.matricule)
+        this.nurseService.markDoctorPresent(this.matricule, this.presenceDate)
             .subscribe(res => {
                 Swal.fire(
                     'Presence marqué',

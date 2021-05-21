@@ -12,19 +12,26 @@
     <form>
       <div id="name">
         <h2 class="name">Nom d'utilisateur</h2>
-        <input class="code" type="text" name="doctor.username" [(ngModel)]="doctor.username">
+        <input class="code" type="text" name="doctor.username" (focus)="resetErrorMessage()"
+          [(ngModel)]="doctor.username">
       </div>
       <div id="name">
         <h2 class="name">Nouvelle mot de passe</h2>
-        <input class="code" type="text" name="doctor.password" [(ngModel)]="doctor.password">
+        <input class="code" type="password" name="doctor.password" (focus)="resetErrorMessage()"
+          [(ngModel)]="doctor.password">
       </div>
       <div id="name">
         <h2 class="name">Confirmer mot de passe</h2>
-        <input class="code" type="text" name="rePassword" [(ngModel)]="rePassword">
+        <input class="code" type="password" name="rePassword" (focus)="resetErrorMessage()" [(ngModel)]="rePassword">
       </div>
       <div id="name">
         <h2 class="name">Num de téléphone</h2>
-        <input class="code" type="text" name="doctor.numTel" [(ngModel)]="doctor.numTel">
+        <input class="code" type="text" name="doctor.numTel" (focus)="resetErrorMessage()" [(ngModel)]="doctor.numTel">
+      </div>
+      <div class="error-message-container">
+        <h2 class="error-message">
+          {{errorMessage}}
+        </h2>
       </div>
       <button type="submit" class="bouton2" (click)="onSave()">Sauvegarder</button>
     </form>

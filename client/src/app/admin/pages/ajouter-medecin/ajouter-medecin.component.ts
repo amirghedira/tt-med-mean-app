@@ -44,6 +44,9 @@ export class AjouterMedecinComponent implements OnInit {
     onResetMessage() {
         this.errorMessage = ''
     }
+    validateEmail(mail) {
+        return (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+    }
     onAddDoctor() {
         if (this.doctor.matricule === 0 ||
             !this.doctor.email.trim().length ||
@@ -53,6 +56,8 @@ export class AjouterMedecinComponent implements OnInit {
             !this.doctor.password.trim().length ||
             !this.rePassword.trim().length)
             return this.errorMessage = 'Please fill the whole inputs'
+        if (!this.validateEmail(this.doctor.email))
+            return this.errorMessage = 'Invalid email'
         if (this.doctor.numTel.toString().length !== 8)
             return this.errorMessage = 'invalid phone number'
         if (this.rePassword !== this.doctor.password)

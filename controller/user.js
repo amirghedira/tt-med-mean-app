@@ -1,7 +1,8 @@
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-const moment = require('moment')
+const moment = require('moment');
+const e = require('cors');
 
 
 exports.markDoctorPresent = async (req, res) => {
@@ -9,21 +10,12 @@ exports.markDoctorPresent = async (req, res) => {
         const doctor = await User.findOne({ matricule: req.params.matricule })
         if (doctor) {
             const todayPresenceIndex = doctor.workingHours.findIndex(workingHour => {
-                return moment(new Date(workingHour)).isSame(moment(new Date()), 'day')
+                return moment(new Date(workingHour)).isSame(moment(new Date(req.body.presenceDate)), 'day')
             })
             if (todayPresenceIndex === -1) {
-                const nowDate = new Date()
-                console.log(req.user._id)
-                const nurse = await User.findOne({ _id: req.user._id })
-                if (!moment(new Date(nurse.lastMarkedPresence)).isSame(nowDate, 'day')) {
-                    nurse.lastMarkedPresence = nowDate.toISOString()
-                    await nurse.save()
-                    await User.updateOne({ _id: doctor._id }, { $push: { workingHours: nowDate.toISOString() } })
-                    res.status(200).json({ message: 'doctor presence marked successfully', nom: doctor.nom, prenom: doctor.prenom })
-                } else {
-                    res.status(409).json({ message: 'You already marked the presence of a doctor' })
-
-                }
+                const presenceDate = new Date(req.body.presenceDate)
+                await User.updateOne({ _id: doctor._id }, { $push: { workingHours: presenceDate.toISOString() } })
+                res.status(200).json({ message: 'doctor presence marked successfully', nom: doctor.nom, prenom: doctor.prenom })
 
             } else {
                 res.status(400).json({ message: 'Doctor already present' })
@@ -152,10 +144,21 @@ exports.deleteUser = async (req, res) => {
 exports.createUser = async (req, res) => {
     try {
         if (req.body.telecomPass === process.env.telecomPass) {
-            const hashedPassword = await bcrypt.hash(req.body.user.password, 11)
-            req.body.user.password = hashedPassword;
-            const createdUser = await User.create(req.body.user)
-            res.status(200).json({ user: createdUser })
+            const existUser = await User.findOne({
+                $or: [
+                    { username: req.body.user.username },
+                    { email: req.body.user.email },
+                ]
+            })
+            if (existUser) {
+                res.status(409).json({ message: 'unvalid telecom password' })
+
+            } else {
+                const hashedPassword = await bcrypt.hash(req.body.user.password, 11)
+                req.body.user.password = hashedPassword;
+                const createdUser = await User.create(req.body.user)
+                res.status(200).json({ user: createdUser })
+            }
         } else {
             res.status(400).json({ message: 'unvalid telecom password' })
         }
@@ -203,7 +206,13 @@ exports.userLogin = async (req, res) => {
 
 exports.addDoctor = async (req, res) => {
     try {
-        const existDoctor = await User.findOne({ matricule: req.body.doctor.matricule })
+        const existDoctor = await User.findOne({
+            $or: [
+                { matricule: req.body.doctor.matricule },
+                { username: req.body.doctor.username },
+                { email: req.body.doctor.email },
+            ]
+        })
         if (existDoctor) {
             res.status(400).json({ message: 'Doctor with this matricule already exists' })
 
@@ -224,7 +233,14 @@ exports.addDoctor = async (req, res) => {
 }
 exports.addNurse = async (req, res) => {
     try {
-        const existNurse = await User.findOne({ matricule: req.body.nurse.matricule })
+        const existNurse = await User.findOne({
+            $or: [
+                { matricule: req.body.nurse.matricule },
+                { username: req.body.nurse.username },
+                { email: req.body.nurse.email },
+
+            ]
+        })
         if (existNurse) {
             res.status(400).json({ message: 'Nurse with this matricule already exists' })
 
@@ -244,10 +260,19 @@ exports.addNurse = async (req, res) => {
 }
 exports.updateNurse = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.newNurse.password, 11)
-        req.body.newNurse.password = hashedPassword;
-        await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newNurse } });
-        res.status(200).json({ message: "nurse updated successfully", });
+        const existNurse = await User.findOne({ username: req.body.newNurse.username })
+        if (existNurse && existNurse._id.toString() != req.body.newNurse._id.toString()) {
+            res.status(409).json({ message: "username already in use", });
+        }
+        else {
+            if (req.body.newNurse.password.length > 0) {
+                const hashedPassword = await bcrypt.hash(req.body.newNurse.password, 11)
+                req.body.newNurse.password = hashedPassword;
+            }
+            await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newNurse } });
+            res.status(200).json({ message: "nurse updated successfully", });
+        }
+
 
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -256,13 +281,19 @@ exports.updateNurse = async (req, res) => {
 }
 exports.updateDoctor = async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.newDoctor.password, 11)
-        req.body.newDoctor.password = hashedPassword;
+        const existDoctor = await User.findOne({ username: req.body.newDoctor.username })
+        if (existDoctor && existDoctor._id.toString() != req.body.newDoctor._id.toString()) {
+            res.status(409).json({ message: "username already in use", });
+        } else {
+            if (req.body.newDoctor.password.length > 0) {
+                const hashedPassword = await bcrypt.hash(req.body.newDoctor.password, 11)
+                req.body.newDoctor.password = hashedPassword;
+            }
 
-        await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newDoctor } });
-        res.status(200).json({ message: "doctor updated successfully", });
+            await User.updateOne({ _id: req.params.id }, { $set: { ...req.body.newDoctor } });
+            res.status(200).json({ message: "doctor updated successfully", });
+        }
     } catch (error) {
-        console.log(error)
         res.status(500).json({ error: error.message });
 
 

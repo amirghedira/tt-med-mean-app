@@ -10,23 +10,30 @@
     <form>
       <div id="name">
         <h2 class="name">Nom d'utilisateur</h2>
-        <input class="code" type="text" name="nurse.username" [(ngModel)]="nurse.username">
+        <input class="code" type="text" name="nurse.username" (focus)="resetErrorMessage()"
+          [(ngModel)]="nurse.username">
 
       </div>
       <div id="name">
         <h2 class="name"> Nouvelle mot de passe</h2>
-        <input class="code" type="text" name="nurse.password" [(ngModel)]="nurse.password">
+        <input class="code" type="password" name="nurse.password" (focus)="resetErrorMessage()"
+          [(ngModel)]="nurse.password">
 
       </div>
       <div id="name">
         <h2 class="name">Confirmer mot de passe</h2>
-        <input class="code" type="text" name="rePassword" [(ngModel)]="rePassword">
+        <input class="code" type="password" name="rePassword" (focus)="resetErrorMessage()" [(ngModel)]="rePassword">
 
       </div>
       <div id="name">
         <h2 class="name">Num de téléphone:</h2>
-        <input class="code" name="nurse.numTel" [(ngModel)]="nurse.numTel">
+        <input class="code" name="nurse.numTel" (focus)="resetErrorMessage()" [(ngModel)]="nurse.numTel">
 
+      </div>
+      <div class="error-message-container">
+        <h2 class="error-message">
+          {{errorMessage}}
+        </h2>
       </div>
       <button type="submit" class="bouton2" (click)="onSave()">Sauvegarder</button>
     </form>

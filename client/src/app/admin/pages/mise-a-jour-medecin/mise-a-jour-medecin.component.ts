@@ -14,6 +14,7 @@ export class MiseAJourMedecinComponent implements OnInit {
     doctor: Doctor
     searchedMat: string;
     rePassword: string;
+    errorMessage: string;
     constructor(private route: ActivatedRoute, private adminService: AdminService, private router: Router) {
         this.doctor = {
             _id: null,
@@ -27,6 +28,7 @@ export class MiseAJourMedecinComponent implements OnInit {
             numTel: '',
             workingHours: []
         }
+        this.rePassword = ''
     }
     ngOnInit() {
         this.route.queryParams
@@ -61,7 +63,15 @@ export class MiseAJourMedecinComponent implements OnInit {
                 }
             })
     }
+    resetErrorMessage() {
+        this.errorMessage = ''
+    }
     onSave() {
+        if (!this.doctor.username || !this.doctor.numTel)
+            return this.errorMessage = 'Fill the whole inputs';
+
+        if (this.rePassword !== this.doctor.password)
+            return this.errorMessage = 'Passwords didnt match';
         this.adminService.updateDoctor(this.doctor._id, this.doctor)
             .subscribe(res => {
                 Swal.fire(
@@ -69,10 +79,16 @@ export class MiseAJourMedecinComponent implements OnInit {
                     'Dctor successfully updated!',
                     'success')
             }, err => {
-                Swal.fire(
-                    'Error',
-                    'Something went wrong!'
-                )
+                if (err.status === 409)
+                    Swal.fire(
+                        'Error',
+                        'Username already in use'
+                    )
+                else
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
             })
     }
 

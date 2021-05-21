@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
     numTel: { type: String },
     role: { type: String, enum: ['admin', 'doctor', 'nurse'] },
     workingHours: [{ type: String }],
-    lastMarkedPresence: { type: String }
 })
 
 

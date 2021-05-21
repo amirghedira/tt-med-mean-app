@@ -14,6 +14,7 @@ export class MiseAJourInfirmierComponent implements OnInit {
     nurse: Nurse
     searchedMat: string;
     rePassword: string;
+    errorMessage: string;
     constructor(private route: ActivatedRoute, private adminService: AdminService, private router: Router) {
         this.nurse = {
             _id: null,
@@ -26,6 +27,7 @@ export class MiseAJourInfirmierComponent implements OnInit {
             role: 'nurse',
             numTel: '',
         }
+        this.rePassword = ''
     }
     ngOnInit() {
         this.route.queryParams
@@ -42,7 +44,11 @@ export class MiseAJourInfirmierComponent implements OnInit {
                 }
             })
     }
+    resetErrorMessage() {
+        this.errorMessage = ''
+    }
     onSearch() {
+
         this.adminService.getNurse(this.searchedMat)
             .subscribe((data: any) => {
                 this.nurse = { ...data.nurse, password: '' }
@@ -61,6 +67,11 @@ export class MiseAJourInfirmierComponent implements OnInit {
             })
     }
     onSave() {
+        if (!this.nurse.username || !this.nurse.numTel)
+            return this.errorMessage = 'Fill the whole inputs';
+
+        if (this.rePassword !== this.nurse.password)
+            return this.errorMessage = 'Passwords didnt match';
         this.adminService.updateNurse(this.nurse._id, this.nurse)
             .subscribe(res => {
                 Swal.fire(
@@ -68,10 +79,16 @@ export class MiseAJourInfirmierComponent implements OnInit {
                     'Nurse successfully updated!',
                     'success')
             }, err => {
-                Swal.fire(
-                    'Error',
-                    'Something went wrong!'
-                )
+                if (err.status === 409)
+                    Swal.fire(
+                        'Error',
+                        'Username already in use'
+                    )
+                else
+                    Swal.fire(
+                        'Error',
+                        'Something went wrong!'
+                    )
             })
     }
 
