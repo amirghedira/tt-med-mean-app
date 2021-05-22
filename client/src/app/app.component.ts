@@ -8,11 +8,10 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
     title: string = 'tt-med';
-
     constructor(private authService: AuthService) { }
     ngOnInit() {
 
         this.authService.checkUser()
     }
-}
 
+}

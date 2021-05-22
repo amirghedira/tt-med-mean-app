@@ -17,7 +17,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class DossierMedicalComponent implements OnInit {
 
     dossierMedical: DossierMedical;
-    maladieToAdd: string;
     editedDossierMedical: any;
     loadingUploadDossierImage: boolean = false;
     loadingUploadBiologyImage: boolean = false;
@@ -52,10 +51,6 @@ export class DossierMedicalComponent implements OnInit {
             })
     }
 
-    onAddMaladie() {
-        this.editedDossierMedical.maladieChronique.push(this.maladieToAdd)
-        this.maladieToAdd = ''
-    }
     onChangeBiologyImage(event) {
         const fd = new FormData()
         fd.append('biology-image', event.target.files[0])

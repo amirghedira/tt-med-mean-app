@@ -24,7 +24,7 @@ export class ChercherDossierComponent implements OnInit {
             return this.errorMessage = 'Entrez la matricule'
         this.doctorService.chercherDossierMedical(this.matricule, this.qualite, this.rang)
             .subscribe((res: any) => {
-                this.router.navigate(['nurse', 'dossier-medical', res.body.dossierMedical._id])
+                this.router.navigate(['doctor', 'dossier-medical', res.body.dossierMedical._id])
             }, err => {
                 if (err.status === 404)
                     this.errorMessage = 'Aucun dossier medical'

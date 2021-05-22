@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Admin } from '../types/Admin';
 import { User } from '../types/User';
-
 @Injectable({
     providedIn: 'root'
 })

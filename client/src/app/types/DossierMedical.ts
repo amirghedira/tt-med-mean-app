@@ -25,6 +25,6 @@ export interface DossierMedical {
         current: string,
         history: string[]
     },
-    fiche_medical: FicheMedical[],
-    maladieChronique: string[]
+    fiche_medical_ordinaire: FicheMedical,
+    fiche_medical_chronique: FicheMedical[]
 }

@@ -10,19 +10,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ConsultationsComponent } from './pages/consultations/consultations.component';
-import { AddConsultationComponent } from './pages/add-consultation/add-consultation.component';
-import { RendezVousComponent } from './pages/rendez-vous/rendez-vous.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
 import { DoctorNavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DoctorSideBarComponent } from './components/side-bar/side-bar.component';
+import { AjouterConsultationComponent } from './pages/ajouter-consultation/ajouter-consultation.component';
+import { ChercherDossierComponent } from './pages/chercher-dossier/chercher-dossier.component';
 
 
 
 @NgModule({
-    declarations: [DoctorComponent, ConsultationsComponent,
-        AddConsultationComponent, RendezVousComponent, HomeComponent, DossierMedicalComponent,
-        DoctorNavBarComponent, DoctorSideBarComponent],
+    declarations: [
+        DoctorComponent,
+        ConsultationsComponent,
+        AjouterConsultationComponent,
+        HomeComponent,
+        DossierMedicalComponent,
+        ChercherDossierComponent,
+        DoctorNavBarComponent,
+        DoctorSideBarComponent
+    ],
     imports: [
         CommonModule,
         NgxSpinnerModule,

@@ -1,0 +1,161 @@
+ul {
+  list-style: none;
+}
+
+.list-consultation {
+  width: 100%;
+}
+
+h1 {
+  color: #000033;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.head div {
+  width: 50%;
+  margin-left: 2px;
+}
+
+#para {
+  border-left-width: 10px;
+  font-family: calibri;
+  line-height: 20px;
+  margin-left: 20px;
+}
+
+.list-consultation p {
+  font-family: calibri;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: #80e6ff9a;
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 100%;
+}
+
+.list-consultation {
+  right: 0;
+  top: 0;
+  padding: 0%;
+  margin: auto;
+  background-color: #ccf5ff;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom: 20px solid #80e5ff;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.box {
+  width: 500px;
+  margin: auto;
+  border-bottom: 20px solid #80e5ff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.box h3 {
+  font-family: calibri;
+  background: #80e5ff;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  text-align: center;
+}
+
+.box ul {
+  position: center;
+  background: #ccf5ff;
+  font-family: "calibri";
+}
+
+.box ul li {
+  list-style: none;
+  box-shadow: 0 5px 25px #f0f0f5;
+  transition: transform 0.5s;
+}
+
+.box ul li:hover {
+  transform: scale(1.1);
+  z-index: 100;
+  background: #ccf5ff;
+  box-shadow: 0 5px 25px #80e5ff;
+  color: #00bfff;
+}
+
+.box ul li span {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: #ccf5ff;
+  color: #00bfff;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: 600;
+  transform: translateY(-2px);
+}
+
+.box ul li:hover span {
+  background: #00bfff;
+  color: #ffffff;
+}
+
+#nav:after {
+  content: "";
+  display: table;
+}
+
+#nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#nav ul {
+  margin: 20px 0 0 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+#nav li:hover>ul {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+  left: 400px;
+  width: 200px;
+}
+
+#nav ul ul {
+  left: 150px;
+}
+
+.deconnecter {
+  background-color: #68ebf5;
+
+  margin-top: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 2px solid rgb(27, 204, 235);
+  padding: 14px 50px;
+  outline: none;
+  color: rgb(8, 8, 8);
+  cursor: pointer;
+  transition: 0.25px;
+  box-shadow: 0 0 10px #4bf0f0;
+  transition-duration: 0.3s;
+}
+
+.deconnecter:hover {
+  box-shadow: 0 0 20px #46fcf3;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}

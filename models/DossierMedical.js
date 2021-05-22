@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const medicalFileSchema = new mongoose.Schema({
+const FicheMedical = require('./FicheMedical')
+const DossierMedicalSchema = new mongoose.Schema({
     agent_matricule: { type: String },
     type: { type: String, enum: ['agent', 'other'], default: 'agent' },
     familyMember: { type: mongoose.Schema.Types.ObjectId, ref: 'FamilyMember' },
@@ -23,9 +23,19 @@ const medicalFileSchema = new mongoose.Schema({
         current: { type: String },
         history: [{ type: String }]
     },
-    fiche_medical: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FicheMedical' }],
-    maladieChronique: [{ type: String }]
+    fiche_medical_ordinaire: { type: mongoose.Schema.Types.ObjectId, ref: 'FicheMedical' },
+    fiche_medical_chronique: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FicheMedical' }],
 })
 
+DossierMedicalSchema.pre('save', function (next) {
+    const newFicheMedical = new FicheMedical({
+        type: 'ordinaire'
+    })
+    newFicheMedical.save()
+        .then(createdFicheMedicalOrdinaire => {
+            this.fiche_medical_ordinaire = createdFicheMedicalOrdinaire._id
+            next()
+        })
 
-module.exports = mongoose.model('DossierMedical', medicalFileSchema)
+});
+module.exports = mongoose.model('DossierMedical', DossierMedicalSchema)

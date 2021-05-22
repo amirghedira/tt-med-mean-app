@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col">
+    <div class="row header-tilte justify-content-center">
+      <div class="col-8 consultform">
+        <h1>Formulaire consultation</h1>
+      </div>
+    </div>
+    <div class="row content-container justify-content-center">
+      <div class="col-8 main">
+        <div class="row">
+          <div class="col">
+            <h2 class="name">Num de matricule</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input
+              class="matricule"
+              type="number"
+              name="matricule"
+              [(ngModel)]="matricule"
+              [formControl]="firstNameControl"
+            />
+          </div>
+        </div>
+
+        <div id="name">
+          <div class="row">
+            <div class="col">
+              <h2 class="name">Nom du patient</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input
+                class="firstname"
+                disabled
+                type="text"
+                [value]="agent?.prenom"
+              />
+              <label class="firstlabel">Prénom</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input
+                class="lastname"
+                disabled
+                type="text"
+                [value]="agent?.nom"
+              />
+              <label class="lastlabel">Nom</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h2 class="name">Qualité</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <select
+              class="option"
+              name="qualite"
+              [(ngModel)]="qualite"
+              (input)="onChangeQualite($event)"
+            >
+              <option value="agent" selected="selected">Agent</option>
+              <option value="conjoint">Conjoint</option>
+              <option value="enfant">Enfant</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="qualite != 'agent'" class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <h2 class="name">Liste des {{ qualite }}s</h2>
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-6 justify-content-end" style="display: flex">
+                <select
+                  class="option"
+                  name="selectedMember"
+                  [(ngModel)]="selectedMember"
+                  (change)="onChangeMember()"
+                >
+                  <option value="default">--choisir une option--</option>
+                  <option
+                    *ngFor="let familyMember of familyMembers"
+                    [value]="familyMember._id"
+                  >
+                    {{ familyMember.nom }}
+                    {{ familyMember.prenom }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div
+            class="col-md-4 col-sm-12 col-xs-12 justify-content-end"
+            style="display: flex"
+          >
+            <button type="submit" (click)="onValidate()">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
