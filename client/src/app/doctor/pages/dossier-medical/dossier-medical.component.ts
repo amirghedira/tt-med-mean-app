@@ -114,7 +114,7 @@ export class DossierMedicalComponent implements OnInit {
     }
     selectFicheMaladieChronique(ficheId) {
         const ficheMaladieChroniqueIndex = this.dossierMedical.fiche_medical_chronique.findIndex(maladieChronique => maladieChronique._id === ficheId)
-        this.selectedFichedMedicalChronique = this.dossierMedical.fiche_medical_chronique[ficheMaladieChroniqueIndex]
+        this.selectedFichedMedicalChronique = JSON.parse(JSON.stringify(this.dossierMedical.fiche_medical_chronique[ficheMaladieChroniqueIndex]))
     }
     onAddAppointment() {
         this.doctorService.addAppointment(this.selectedFicheToAddAppointment, this.newAppointment)
