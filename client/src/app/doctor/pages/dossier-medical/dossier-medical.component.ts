@@ -140,8 +140,8 @@ export class DossierMedicalComponent implements OnInit {
         this.doctorService.addFicheMedicalChronique(this.dossierMedical._id, this.maladieToAdd)
             .subscribe((res: any) => {
                 const buttonOpenAddMaladieModal = document.getElementById('button-add-maladie')
-                this.editedDossierMedical.fiche_medical_chronique.push(JSON.parse(JSON.stringify(res.ficheMedical)))
-                this.dossierMedical.fiche_medical_chronique.push(JSON.parse(JSON.stringify(res.ficheMedical)))
+                this.editedDossierMedical.fiche_medical_chronique = [...this.editedDossierMedical.fiche_medical_chronique, res.ficheMedical]
+                this.dossierMedical.fiche_medical_chronique = [...this.dossierMedical.fiche_medical_chronique, res.ficheMedical]
                 this.selectedFichedMedicalChronique = res.ficheMedical
                 this.maladieToAdd = ''
                 buttonOpenAddMaladieModal.click()
