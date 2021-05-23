@@ -127,6 +127,7 @@ export class DossierMedicalComponent implements OnInit {
                     this.dossierMedical.fiche_medical_chronique[ficheMedicalChroniqueIndex].appointments.push(this.newAppointment)
                     const editedFicheMedicalChroniqueIndex = this.editedDossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
                     this.editedDossierMedical.fiche_medical_chronique[editedFicheMedicalChroniqueIndex].appointments.push(this.newAppointment)
+                    this.selectedFichedMedicalChronique = this.editedDossierMedical.fiche_medical_chronique[editedFicheMedicalChroniqueIndex]
                 }
                 const buttonOpenAddAppointment = document.getElementById('button-add-appointment')
                 buttonOpenAddAppointment.click()
