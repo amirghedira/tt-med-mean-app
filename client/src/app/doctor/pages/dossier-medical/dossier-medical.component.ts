@@ -121,6 +121,7 @@ export class DossierMedicalComponent implements OnInit {
             .subscribe(res => {
                 if (this.dossierMedical.fiche_medical_ordinaire._id == this.selectedFicheToAddAppointment) {
                     this.dossierMedical.fiche_medical_ordinaire.appointments.push(this.newAppointment)
+                    this.editedDossierMedical.fiche_medical_ordinaire.appointments.push(this.newAppointment)
                 } else {
                     const ficheMedicalChroniqueIndex = this.dossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
                     this.dossierMedical.fiche_medical_chronique[ficheMedicalChroniqueIndex].appointments.push(this.newAppointment)
