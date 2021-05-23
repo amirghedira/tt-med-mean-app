@@ -2,8 +2,6 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
-const e = require('cors');
-
 
 exports.markDoctorPresent = async (req, res) => {
     try {

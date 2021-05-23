@@ -6,6 +6,7 @@ const consultationSchema = new mongoose.Schema({
     agent: { type: mongoose.Schema.Types.ObjectId, ref: 'Agent' },
     familyMember: { type: mongoose.Schema.Types.ObjectId, ref: 'FamilyMember' },
     date: { type: String },
+    clickDate: { type: String }
 })
 
 

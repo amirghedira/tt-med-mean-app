@@ -135,6 +135,12 @@ h1 {
   left: 150px;
 }
 
+.link {
+  color: #2474f1 !important;
+  cursor: pointer;
+  font-weight: 800;
+}
+
 .deconnecter {
   background-color: #68ebf5;
 

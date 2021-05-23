@@ -17,6 +17,13 @@ export class DoctorService {
     getConsultations() {
         return this.http.get('http://localhost:5000/consultation')
     }
+    getTodayConsultations() {
+        return this.http.get('http://localhost:5000/consultation/today')
+    }
+    updateConsultationClickDate(consultationId: string) {
+        return this.http.patch(`http://localhost:5000/consultation/click-date/${consultationId}`, {})
+
+    }
     deleteConsultations(consultations: string[]) {
         return this.http.patch('http://localhost:5000/consultation/delete', { consultations: consultations })
     }
