@@ -8,6 +8,7 @@ import { ViewChild } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { DoctorService } from '../../doctor.service';
 import { FicheMedical } from 'src/app/types/FicheMedical';
+import { Appointment } from 'src/app/types/Appointment';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class DossierMedicalComponent implements OnInit {
     selectedFichedMedicalChronique: FicheMedical;
     selectedFicheToAddAppointment: string;
     maladieToAdd: string;
+    newAppointment: Appointment;
     owner: Agent | FamilyMember;
     isEditing: boolean;
     @ViewChild('fileDossierImage', { static: true }) fileDossierImage: ElementRef;
@@ -34,6 +36,7 @@ export class DossierMedicalComponent implements OnInit {
     constructor(private doctorService: DoctorService, private route: ActivatedRoute, private ngxSpinnerService: NgxSpinnerService) {
         this.isEditing = false;
         this.ngxSpinnerService.show()
+        this.resetNewAppointment()
     }
 
     ngOnInit() {
@@ -56,13 +59,23 @@ export class DossierMedicalComponent implements OnInit {
                     })
             })
     }
+    resetNewAppointment() {
+        this.newAppointment = {
+            _id: null,
+            observation: '',
+            prescription: '',
+            date: new Date().toISOString(),
+            certificat: '',
+            haveOrdonnance: false,
+
+        }
+    }
     onChangeBiologyImage(event) {
         const fd = new FormData()
         fd.append('biology-image', event.target.files[0])
         this.loadingUploadBiologyImage = true;
         this.doctorService.uploadBiologyImage(this.editedDossierMedical._id, fd)
             .subscribe((res: any) => {
-                console.log(res)
                 this.loadingUploadBiologyImage = false;
                 if (this.editedDossierMedical.biologiques)
                     this.editedDossierMedical.biologiques.history.push(this.editedDossierMedical.biologiques.current)
@@ -103,12 +116,33 @@ export class DossierMedicalComponent implements OnInit {
         const ficheMaladieChroniqueIndex = this.dossierMedical.fiche_medical_chronique.findIndex(maladieChronique => maladieChronique._id === ficheId)
         this.selectedFichedMedicalChronique = this.dossierMedical.fiche_medical_chronique[ficheMaladieChroniqueIndex]
     }
+    onAddAppointment() {
+        console.log(this.selectedFicheToAddAppointment)
+        this.doctorService.addAppointment(this.selectedFicheToAddAppointment, this.newAppointment)
+            .subscribe(res => {
+                if (this.dossierMedical.fiche_medical_ordinaire._id == this.selectedFicheToAddAppointment) {
+                    this.dossierMedical.fiche_medical_ordinaire.appointments.push(this.newAppointment)
+                } else {
+                    const ficheMedicalChroniqueIndex = this.dossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
+                    this.dossierMedical.fiche_medical_chronique[ficheMedicalChroniqueIndex].appointments.push(this.newAppointment)
+                    const editedFicheMedicalChroniqueIndex = this.editedDossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
+                    this.editedDossierMedical.fiche_medical_chronique[editedFicheMedicalChroniqueIndex].appointments.push(this.newAppointment)
+                }
+                const buttonOpenAddAppointment = document.getElementById('button-add-appointment')
+                buttonOpenAddAppointment.click()
+
+
+            }, err => {
+                console.log(err)
+            })
+    }
     onAddFicheMedicalChronique() {
         this.doctorService.addFicheMedicalChronique(this.dossierMedical._id, this.maladieToAdd)
             .subscribe((res: any) => {
                 const buttonOpenAddMaladieModal = document.getElementById('button-add-maladie')
                 this.editedDossierMedical.fiche_medical_chronique.push(res.ficheMedical)
                 this.dossierMedical.fiche_medical_chronique.push(res.ficheMedical)
+                this.selectedFichedMedicalChronique = res.ficheMedical
                 buttonOpenAddMaladieModal.click()
             }, err => {
                 console.log(err)

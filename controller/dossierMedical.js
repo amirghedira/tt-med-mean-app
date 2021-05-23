@@ -111,7 +111,7 @@ exports.AddAppointment = async (req, res) => {
             certificat: req.body.appointment.certificat,
             date: new Date().toISOString()
         }
-        await FicheMedical.updateOne({ _id: req.params.dossierId }, { $push: { appointments: newAppointment } })
+        await FicheMedical.updateOne({ _id: req.params.ficheId }, { $push: { appointments: newAppointment } })
         res.status(200).json({ message: 'rendez vous ajouter' })
     } catch (error) {
         res.status(500).json({ error: error.message })

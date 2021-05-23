@@ -195,8 +195,8 @@
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
                       <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.ordonnance">Oui</td>
-                      <td *ngIf="appointment.ordonnance">Non</td>
+                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
 
                   </table>
@@ -226,8 +226,8 @@
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
                       <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.ordonnance">Oui</td>
-                      <td *ngIf="appointment.ordonnance">Non</td>
+                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
                 </div>
@@ -389,16 +389,18 @@
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
                       <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.ordonnance">Oui</td>
-                      <td *ngIf="appointment.ordonnance">Non</td>
+                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
                 </div>
                 <div class="row">
                   <div class="col-1"></div>
                   <div class="col">
-                    <button class="valider" (click)="setFicheToAddAppointment(editedDossierMedical._id)"
-                      data-target="#modalAddAppointment" data-toggle="modal" #modalAddAppointment>
+                    <button class="valider"
+                      (click)="setFicheToAddAppointment(editedDossierMedical.fiche_medical_ordinaire._id)"
+                      data-target="#modalAddAppointment" id="button-add-appointment" data-toggle="modal"
+                      #modalAddAppointment>
                       Ajouter un nouveau rendez-vous
                     </button>
                   </div>
@@ -409,7 +411,7 @@
 
           <div *ngIf="selectedFichedMedicalChronique">
             <div class="row justify-content-center fiche-container">
-              <h2 class="fiche">Fiche médicale chronique</h2>
+              <h2 class="fiche">Fiche médicale {{selectedFichedMedicalChronique.maladie}}</h2>
             </div>
             <div class="row">
               <div class="col">
@@ -427,8 +429,8 @@
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
                       <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.ordonnance">Oui</td>
-                      <td *ngIf="appointment.ordonnance">Non</td>
+                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
                 </div>
@@ -516,7 +518,7 @@
             </div>
             <div class="row justify-content-center field">
               <div class="col-12">
-                <input class="observation" type="text" name="num_matricule" />
+                <input class="observation" type="text" name="num_matricule" [(ngModel)]="newAppointment.observation" />
               </div>
             </div>
             <div class="row justify-content-center nom">
@@ -524,7 +526,7 @@
             </div>
             <div class="row justify-content-center field">
               <div class="col-12">
-                <input class="observation" type="text" name="num_matricule" />
+                <input class="observation" type="text" name="num_matricule" [(ngModel)]="newAppointment.prescription" />
               </div>
             </div>
             <div class="row justify-content-center">
@@ -534,9 +536,9 @@
             </div>
             <div class="row justify-content-center">
               <div class="col">
-                <mat-radio-group aria-label="Select an option">
-                  <mat-radio-button value="homme">Oui</mat-radio-button>
-                  <mat-radio-button value="femme">Non</mat-radio-button>
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="newAppointment.haveOrdonnance">
+                  <mat-radio-button [value]="true">Oui</mat-radio-button>
+                  <mat-radio-button [value]="false">Non</mat-radio-button>
                 </mat-radio-group>
               </div>
             </div>
@@ -546,21 +548,21 @@
               </div>
             </div>
             <div class="row justify-content-center field">
-              <select class="option" name="Qualité">
+              <select class="option" name="Qualité" [(ngModel)]="newAppointment.certificat">
                 <option disabled="disabled" selected="selected">
                   --choisir un modèle--
                 </option>
-                <option>Certificat Médical</option>
-                <option>Certificat Exceptionnel</option>
-                <option>Certificat Accompagnement</option>
-                <option>Certificat de Mariage</option>
-                <option>Lettre de liaison</option>
+                <option value="medical">Certificat Médical</option>
+                <option value="exceptionnel">Certificat Exceptionnel</option>
+                <option value="accompagnement">Certificat Accompagnement</option>
+                <option value="mariage">Certificat de Mariage</option>
+                <option value="liaison">Lettre de liaison</option>
               </select>
             </div>
             <div class="row justify-content-end">
               <div class="col-8"></div>
               <div class="col">
-                <button class="submit">Valider</button>
+                <button class="submit" (click)="onAddAppointment()">Valider</button>
               </div>
             </div>
           </div>

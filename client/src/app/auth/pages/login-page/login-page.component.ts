@@ -8,27 +8,22 @@ import { AuthService } from 'src/app/services/auth.service';
     templateUrl: './login-page.component.html',
     styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
 
     username: string;
     password: string;
     errorMessage: string;
     currentUserSubscriber: Subscription;
-    constructor(private authService: AuthService, private router: Router) { }
-
-    ngOnInit() {
-
-    }
-
+    constructor(private authService: AuthService) { }
     resetErrorMsg() {
         this.errorMessage = ''
     }
 
     onConnectUser() {
         this.authService.userLogin(this.username, this.password)
-            .subscribe((data: any) => {
-                this.authService.setCurrentUser(data.user)
-                this.authService.setToken(data.accessToken)
+            .subscribe((res: any) => {
+                this.authService.setCurrentUser(res.user)
+                this.authService.setToken(res.accessToken)
                 this.authService.isConnected.next(true)
             }, error => {
                 this.errorMessage = 'Invalid username or password'

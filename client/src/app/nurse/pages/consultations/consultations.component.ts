@@ -51,7 +51,7 @@ export class ConsultationsComponent implements OnInit {
         this.nurseService.deleteConsultations(this.checkedConsultations)
             .subscribe(res => {
                 this.checkedConsultations.forEach(consultationId => {
-                    const filteredConsultationIndex = this.filteredConsultations.findIndex(consultation => consultation._id === consultationId)
+                    const filteredConsultationIndex = this.filteredConsultations.findIndex((consultation) => consultation._id === consultationId)
                     const consultationIndex = this.consultations.findIndex(consultation => consultation._id === consultationId)
                     this.filteredConsultations.splice(filteredConsultationIndex, 1)
                     this.consultations.splice(consultationIndex, 1)

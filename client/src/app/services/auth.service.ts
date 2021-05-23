@@ -45,7 +45,6 @@ export class AuthService {
         return this.http.post('http://localhost:5000/user', { user: newUser, telecomPass }, { observe: 'response' })
     }
     getConnectedUser() {
-        console.log('heee')
         return this.http.get<User>('http://localhost:5000/user/connected-user')
     }
     setCurrentUser(user: User) {

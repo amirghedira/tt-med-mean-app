@@ -3,6 +3,6 @@ export interface Appointment {
     date: string,
     observation: string,
     prescription: string,
-    haveOrdonnance: string,
+    haveOrdonnance: boolean,
     certificat: string
 }
