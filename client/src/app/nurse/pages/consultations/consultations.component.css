@@ -5,11 +5,10 @@ table {
   height: 200px;
   border: 1px solid rgb(30, 166, 207);
   box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
-
 }
 
 tr {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   cursor: pointer;
   background-color: rgba(81, 145, 145, 0.6);
 }
@@ -25,14 +24,6 @@ td {
   text-align: center;
   border-bottom: 1px solid rgb(27, 204, 235);
   color: white;
-
-}
-
-tr:hover {
-  background-color: #41acbe;
-  transform: scale(1.02);
-  box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
-  transition-duration: 0.3s;
 }
 
 button {
@@ -51,13 +42,15 @@ button {
   box-shadow: 0 0 10px #4bf0f0;
   transition-duration: 0.3s;
 }
+tr:hover {
+  background-color: #41acbe;
+}
 
 button:hover {
   box-shadow: 0 0 20px #46fcf3;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 .recherche {
@@ -66,7 +59,6 @@ button:hover {
   width: 300px;
   border-radius: 50px;
   margin-bottom: 20px;
-
 }
 
 #para {
@@ -74,6 +66,4 @@ button:hover {
   font-family: calibri;
   line-height: 20px;
   margin-left: 20px;
-
-
 }
