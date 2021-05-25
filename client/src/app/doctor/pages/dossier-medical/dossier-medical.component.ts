@@ -10,7 +10,7 @@ import { DoctorService } from '../../doctor.service';
 import { FicheMedical } from 'src/app/types/FicheMedical';
 import { Appointment } from 'src/app/types/Appointment';
 import { saveAs } from 'file-saver';
-
+import* as moment from 'moment';
 
 @Component({
     selector: 'app-dossier-medical',
@@ -242,6 +242,11 @@ export class DossierMedicalComponent implements OnInit {
                 this.isEditing = false;
             })
 
+    }
+
+    formatDate(date:string){
+        return moment(new Date(date)).format('DD-MM-YYYY')
+    
     }
 
 }
