@@ -8,10 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-    router: string;
 
-    constructor(private _router: Router) {
-        this.router = this._router.url
+
+    constructor() {
+
     }
     ngOnInit() {
     }

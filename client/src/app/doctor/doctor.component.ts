@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
 @Component({
     selector: 'app-doctor',
@@ -7,12 +7,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./doctor.component.css']
 })
 export class DoctorComponent implements OnInit {
-
-    router: string;
-
-    constructor(private _router: Router) {
-        this.router = this._router.url
-    }
 
     ngOnInit() {
     }
