@@ -62,6 +62,7 @@ li {
 }
 
 .logo {
+  cursor: pointer;
 
   list-style: none;
   margin-right: 40px;

@@ -7,11 +7,21 @@ const {
     uploadBiologyImage,
     addFicheMedical,
     AddAppointment,
+    downloadOrdonnancePdf,
+    downloadCertificatPresencePdf,
+    downloadCertificatMedicalPdf,
+    downloadCertificatMariagePdf,
+    downloadCertificatAccompagnementPdf,
 } = require('../controller/dossierMedical')
 
 
 router.get('/:dossierId', AuthGuard, getDossierMedical)
 router.get('/search/:matricule', AuthGuard, searchDossierMedical)
+router.get('/ordannance/:ficheId/:appointmentId', AuthGuard, downloadOrdonnancePdf)
+router.get('/certificat/mariage/:dossierId', AuthGuard, downloadCertificatMariagePdf)
+router.get('/certificat/presence/:dossierId/:ficheId/:appointmentId', AuthGuard, downloadCertificatPresencePdf)
+router.get('/certificat/medical/:dossierId/:ficheId/:appointmentId', AuthGuard, downloadCertificatMedicalPdf)
+router.get('/certificat/accompagnement/:dossierId/:ficheId/:appointmentId', AuthGuard, downloadCertificatAccompagnementPdf)
 
 router.post('/:dossierId/fiche-medicale', AuthGuard, addFicheMedical)
 router.post('/fiche-medicale/:ficheId/appointment', AuthGuard, AddAppointment)
