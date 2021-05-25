@@ -17,9 +17,7 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0;
-
 }
-
 
 .disconnect-button {
   color: red;
@@ -47,7 +45,11 @@
   list-style: none;
 }
 
-
+.logo {
+  float: left;
+  width: 73%;
+  list-style: none;
+}
 
 /* .nav-item:hover {
       background-color: #68ebf5;

@@ -4,11 +4,10 @@ table {
   height: 200px;
   border: 1px solid rgb(30, 166, 207);
   box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
-
 }
 
 tr {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   cursor: pointer;
   background-color: rgba(81, 145, 145, 0.6);
 }
@@ -16,7 +15,6 @@ tr {
 #header {
   background-color: #025d6d;
   color: white;
-
 }
 
 th,
@@ -25,7 +23,6 @@ td {
   text-align: center;
   border-bottom: 1px solid rgb(27, 204, 235);
   color: white;
-
 }
 
 tr:hover {
@@ -34,9 +31,6 @@ tr:hover {
   box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
   transition-duration: 0.3s;
 }
-
-
-
 
 .main-container {
   padding-top: 100px;
@@ -58,7 +52,6 @@ tr:hover {
   width: 800px;
   margin: auto;
   padding: 20px;
-
 }
 
 form {
@@ -68,7 +61,6 @@ form {
 #name {
   width: 100%;
   height: 100px;
-
 }
 
 .modal-content {
@@ -120,9 +112,7 @@ form {
   border-radius: 6px;
   padding: 0 22px;
   font-size: 16px;
-
 }
-
 
 .lastname {
   position: relative;
@@ -132,7 +122,6 @@ form {
   border-radius: 6px;
   padding: 0 22px;
   font-size: 16px;
-
 }
 
 .firstlabel {
@@ -141,11 +130,9 @@ form {
   text-transform: capitalize;
   font-size: 14px;
   left: -45px;
-
 }
 
 .lastlabel {
-
   position: relative;
   color: white;
   text-transform: capitalize;
@@ -211,9 +198,7 @@ form {
   border-radius: 6px;
   padding: 0 22px;
   font-size: 16px;
-
 }
-
 
 .phone {
   position: relative;
@@ -231,11 +216,9 @@ form {
   text-transform: capitalize;
   font-size: 14px;
   left: -45px;
-
 }
 
 .phone_number {
-
   position: relative;
   color: white;
   text-transform: capitalize;
@@ -249,13 +232,11 @@ form {
   margin-right: 10px;
   color: rgb(220, 245, 212);
   margin-left: 20px;
-
 }
 
 .checkmark {
-
-  width: 0.50cm;
-  height: 0.50cm;
+  width: 0.5cm;
+  height: 0.5cm;
   border: 2px solid #5da895;
   border-radius: 50%;
   margin-right: 10px;
@@ -263,8 +244,6 @@ form {
   padding: 1px;
   box-shadow: rgb(126, 238, 229);
 }
-
-
 
 .ajout {
   background-color: #46e3ee;
@@ -285,19 +264,17 @@ form {
 }
 
 .ajout:hover {
-  box-shadow: #8FBC8F;
+  box-shadow: #8fbc8f;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
 }
-
 
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-
 }
 
 .recherche {
@@ -306,7 +283,6 @@ form {
   height: 40px;
   width: 300px;
   border-radius: 50px;
-
 }
 
 #para {
@@ -314,8 +290,6 @@ form {
   font-family: calibri;
   line-height: 20px;
   margin-left: 20px;
-
-
 }
 
 .bouton {
@@ -327,7 +301,7 @@ form {
   border-radius: 12px;
   border: 2px solid rgb(27, 204, 235);
   padding: 14px 50px;
-  margin-left: 600px;
+  margin-left: 550px;
   outline: none;
   color: black;
   cursor: pointer;
@@ -341,5 +315,4 @@ form {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }

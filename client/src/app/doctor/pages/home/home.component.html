@@ -4,19 +4,28 @@
       <!-- liste des consultationd d'aujourd'hui-------------->
       <p>Liste des Consultations d'aujourd'hui:</p>
       <ul>
-        <li><a>nom prénom (matricule, qualité) </a></li>
         <li *ngFor="let consultation of consultations">
-          <a class="link" *ngIf="consultation.agent" (click)="onNavigateDossierMedical(consultation._id)">
-            {{consultation.agent.nom}} {{consultation.agent.prenom}} ({{consultation.agent_matricule}}, agent)
+          <a
+            class="link"
+            *ngIf="consultation.agent"
+            (click)="onNavigateDossierMedical(consultation._id)"
+          >
+            {{ consultation.agent.nom }} {{ consultation.agent.prenom }} ({{
+              consultation.agent_matricule
+            }}, agent)
           </a>
-          <a class="link" *ngIf="consultation.familyMember" (click)="onNavigateDossierMedical(consultation._id)">
-            {{consultation.familyMember.nom}} {{consultation.familyMember.prenom}} ({{consultation.agent_matricule}},
-            {{consultation.familyMember.qualite}})
+          <a
+            class="link"
+            *ngIf="consultation.familyMember"
+            (click)="onNavigateDossierMedical(consultation._id)"
+          >
+            {{ consultation.familyMember.nom }}
+            {{ consultation.familyMember.prenom }} ({{
+              consultation.agent_matricule
+            }}, {{ consultation.familyMember.qualite }})
           </a>
         </li>
-
       </ul>
     </div>
   </div>
-
 </div>

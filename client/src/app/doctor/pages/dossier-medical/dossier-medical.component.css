@@ -9,8 +9,6 @@
 .infophoto {
   min-height: 250px;
   padding: 20px;
-
-
 }
 
 img {
@@ -21,11 +19,9 @@ img {
   float: left;
   font-size: 30px;
   color: white;
-
 }
 
 .photo-container {
-
   margin-top: 20px;
   border-radius: 50%;
 }
@@ -57,18 +53,13 @@ img {
 }
 
 .titre {
-
   width: 300px;
   color: rgb(186, 250, 241);
   font-size: 25px;
   font-weight: 800;
 }
 
-
-
 label {
-
-
   width: 155px;
   color: white;
   font-size: 16px;
@@ -97,13 +88,7 @@ label {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
-
-
-
-
-
 
 table {
   border-collapse: collapse;
@@ -111,12 +96,10 @@ table {
   height: 200px;
   border: 1px solid rgb(30, 166, 207);
   box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
-
-
 }
 
 tr {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   cursor: pointer;
   background-color: rgba(81, 145, 145, 0.6);
 }
@@ -124,7 +107,6 @@ tr {
 #header {
   background-color: #025d6d;
   color: white;
-
 }
 
 th,
@@ -133,7 +115,6 @@ td {
   text-align: center;
   border-bottom: 1px solid rgb(27, 204, 235);
   color: white;
-
 }
 
 .fiche {
@@ -156,14 +137,11 @@ tr:hover {
   width: 250px;
 }
 
-
 #para {
   border-left-width: 10px;
   font-family: calibri;
   line-height: 20px;
   margin-left: 20px;
-
-
 }
 
 img {
@@ -174,11 +152,9 @@ img {
   float: left;
   font-size: 30px;
   color: white;
-
 }
 
 .photo {
-
   margin-top: 20px;
   border-radius: 50%;
 }
@@ -192,10 +168,7 @@ img {
   text-align: justify;
 }
 
-
-
 .titre {
-
   width: 200px;
   color: rgb(186, 250, 241);
   font-size: 22px;
@@ -212,8 +185,7 @@ img {
 }
 
 .label_poids {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -255,7 +227,6 @@ img {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 .taille {
@@ -270,8 +241,7 @@ img {
 }
 
 .label_taille {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -290,8 +260,7 @@ img {
 }
 
 .label_vpd {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -309,8 +278,7 @@ img {
 }
 
 .label_vpg {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -328,8 +296,7 @@ img {
 }
 
 .label_vld {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -347,13 +314,11 @@ img {
 }
 
 .label_vlg {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
   font-weight: 700;
-
 }
 
 .auditionOD {
@@ -367,8 +332,7 @@ img {
 }
 
 .label_od {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -386,8 +350,7 @@ img {
 }
 
 .label_og {
-
-  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100px;
   color: white;
   font-size: 15px;
@@ -402,17 +365,14 @@ img {
   padding: 0 20px;
   font-size: 16px;
   width: 70px;
-
 }
 
 .label_pouls {
-
   margin-top: 30px;
   width: 50px;
   color: white;
   font-size: 15px;
   font-weight: 700;
-
 }
 
 .tension {
@@ -422,11 +382,10 @@ img {
   border-radius: 6px;
   padding: 0 20px;
   font-size: 16px;
-  width: 70px
+  width: 70px;
 }
 
 .label_tension {
-
   margin-top: 30px;
   width: 100px;
   color: white;
@@ -435,7 +394,6 @@ img {
 }
 
 .name {
-
   margin-top: 30px;
   width: 300px;
   color: rgb(198, 248, 250);
@@ -449,13 +407,11 @@ img {
   margin-right: 10px;
   color: rgb(220, 245, 212);
   margin-left: 20px;
-
 }
 
 .checkmark {
-
-  width: 0.50cm;
-  height: 0.50cm;
+  width: 0.5cm;
+  height: 0.5cm;
   border: 2px solid #5d9fa8;
   border-radius: 50%;
 
@@ -486,7 +442,6 @@ img {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 .submit {
@@ -511,13 +466,7 @@ img {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
-
-
-
-
-
 
 table {
   border-collapse: collapse;
@@ -525,11 +474,10 @@ table {
   height: 200px;
   border: 1px solid rgb(30, 166, 207);
   box-shadow: 2px 2px 12px rgb(165, 211, 255), -1px -1px 8px rgba(0, 0, 0, 0);
-
 }
 
 tr {
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   cursor: pointer;
   background-color: rgba(88, 124, 122, 0.6);
 }
@@ -537,7 +485,6 @@ tr {
 #header {
   background-color: #025d6d;
   color: white;
-
 }
 
 th,
@@ -546,7 +493,6 @@ td {
   text-align: center;
   border-bottom: 1px solid rgb(27, 204, 235);
   color: white;
-
 }
 
 .fiche {
@@ -566,7 +512,6 @@ tr:hover {
 }
 
 .img_scan {
-
   width: 400px;
 }
 
@@ -574,7 +519,6 @@ tr:hover {
   border-left-width: 10px;
   font-family: calibri;
   line-height: 20px;
-
 }
 
 .biology-image {
@@ -583,7 +527,6 @@ tr:hover {
   object-fit: cover;
   border-radius: 20px;
 }
-
 
 .page {
   width: 800px;
@@ -602,16 +545,13 @@ tr:hover {
   float: 500;
 }
 
-
 .titre {
-
   margin-top: 30px;
   width: 300px;
   color: rgb(186, 250, 241);
   font-size: 22px;
   font-weight: 800;
 }
-
 
 .maladie {
   position: relative;
@@ -643,13 +583,11 @@ tr:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 #header {
   background-color: #025d6d;
   color: white;
-
 }
 
 .fiche {
@@ -660,17 +598,12 @@ tr:hover {
   padding: 10px 0px;
 }
 
-
-
 #para {
   border-left-width: 10px;
   font-family: calibri;
   line-height: 20px;
   margin-left: 20px;
-
-
 }
-
 
 .edit-container {
   margin-right: 20px;
@@ -683,7 +616,6 @@ tr:hover {
 .container-modal {
   padding: 0;
 }
-
 
 .consultform {
   background-color: #025d6d;
@@ -732,7 +664,6 @@ tr:hover {
   width: 800px;
   margin: auto;
   padding: 20px;
-
 }
 
 form {
@@ -766,7 +697,6 @@ form {
   font-size: 100%;
   width: 600px;
 }
-
 
 .submit {
   background-color: #68ebf5;

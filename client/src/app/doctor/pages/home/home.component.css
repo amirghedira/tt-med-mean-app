@@ -28,7 +28,7 @@ h1 {
   font-family: calibri;
   font-weight: bold;
   font-size: 22px;
-  background-color: #80e6ff9a;
+  background-color: #80c6ff9a;
   text-align: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -40,10 +40,10 @@ h1 {
   top: 0;
   padding: 0%;
   margin: auto;
-  background-color: #ccf5ff;
+  background-color: #ccf5ffc7;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  border-bottom: 20px solid #80e5ff;
+  border-bottom: 20px solid #80d0fa;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -123,7 +123,7 @@ h1 {
   position: absolute;
 }
 
-#nav li:hover>ul {
+#nav li:hover > ul {
   opacity: 1;
   visibility: visible;
   margin: 0;
@@ -136,7 +136,7 @@ h1 {
 }
 
 .link {
-  color: #2474f1 !important;
+  color: #2b62bb !important;
   cursor: pointer;
   font-weight: 800;
 }
