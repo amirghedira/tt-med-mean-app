@@ -14,6 +14,26 @@ export class DoctorService {
     chercherDossierMedical(matricule: string, qualite: string, rang: number) {
         return this.http.get(`http://localhost:5000/dossier-medical/search/${matricule}?type=${qualite}&rang=${rang}`, { observe: 'response' })
     }
+    getOrdonnancePdf(ficheId: string, appointmentId: string) {
+        return this.http.get(`http://localhost:5000/dossier-medical/ordannance/${ficheId}/${appointmentId}`)
+
+    }
+    getCertificatPresencePdf(dossierId: string, ficheId: string, appointmentId: string) {
+        return this.http.get(`http://localhost:5000/dossier-medical/certificat/presence/${dossierId}/${ficheId}/${appointmentId}`)
+
+    }
+    getCertificatMedicalPdf(dossierId: string, ficheId: string, appointmentId: string) {
+        return this.http.get(`http://localhost:5000/dossier-medical/certificat/medical/${dossierId}/${ficheId}/${appointmentId}`)
+
+    }
+    getCertificatMariagePdf(dossierId: string, ficheId: string, appointmentId: string) {
+        return this.http.get(`http://localhost:5000/dossier-medical/certificat/mariage/${dossierId}/${ficheId}/${appointmentId}`)
+
+    }
+    getCertificaAccompagnementPdf(dossierId: string, ficheId: string, appointmentId: string) {
+        return this.http.get(`http://localhost:5000/dossier-medical/certificat/accompagnement/${dossierId}/${ficheId}/${appointmentId}`)
+
+    }
     getConsultations() {
         return this.http.get('http://localhost:5000/consultation')
     }

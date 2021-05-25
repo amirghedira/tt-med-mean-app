@@ -194,8 +194,11 @@
                       <td>{{appointment.date}}</td>
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
-                      <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td (click)="onDownloadPdfCertificat(dossierMedical.fiche_medical_ordinaire._id,appointment)">
+                        {{appointment.certificat}}</td>
+                      <td *ngIf="appointment.haveOrdonnance==true"
+                        (click)="onDownloadPdfOrdonnance(dossierMedical.fiche_medical_ordinaire._id,appointment._id)">
+                        Oui</td>
                       <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
 
@@ -225,8 +228,10 @@
                       <td>{{appointment.date}}</td>
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
-                      <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td (click)="onDownloadPdfCertificat(selectedFichedMedicalChronique._id,appointment)">
+                        {{appointment.certificat}}</td>
+                      <td *ngIf="appointment.haveOrdonnance==true"
+                        (click)="onDownloadPdfOrdonnance(selectedFichedMedicalChronique._id,appointment._id)">Oui</td>
                       <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
@@ -388,8 +393,12 @@
                       <td>{{appointment.date}}</td>
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
-                      <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td
+                        (click)="onDownloadPdfCertificat(editedDossierMedical.fiche_medical_ordinaire._id,appointment)">
+                        {{appointment.certificat}}</td>
+                      <td *ngIf="appointment.haveOrdonnance==true"
+                        (click)="onDownloadPdfOrdonnance(editedDossierMedical.fiche_medical_ordinaire._id,appointment._id)">
+                        Oui</td>
                       <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
@@ -428,8 +437,10 @@
                       <td>{{appointment.date}}</td>
                       <td>{{appointment.observation}}</td>
                       <td>{{appointment.prescription}}</td>
-                      <td>{{appointment.certificat}}</td>
-                      <td *ngIf="appointment.haveOrdonnance==true">Oui</td>
+                      <td (click)="onDownloadPdfCertificat(selectedFichedMedicalChronique._id,appointment)">
+                        {{appointment.certificat}}</td>
+                      <td *ngIf="appointment.haveOrdonnance==true"
+                        (click)="onDownloadPdfOrdonnance(selectedFichedMedicalChronique._id,appointment._id)">Oui</td>
                       <td *ngIf="appointment.haveOrdonnance==false">Non</td>
                     </tr>
                   </table>
@@ -553,10 +564,9 @@
                   --choisir un modèle--
                 </option>
                 <option value="medical">Certificat Médical</option>
-                <option value="exceptionnel">Certificat Exceptionnel</option>
                 <option value="accompagnement">Certificat Accompagnement</option>
                 <option value="mariage">Certificat de Mariage</option>
-                <option value="liaison">Lettre de liaison</option>
+                <option value="presence">Lettre de liaison</option>
               </select>
             </div>
             <div class="row justify-content-end">

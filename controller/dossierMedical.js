@@ -2,6 +2,7 @@ const DossierMedical = require('../models/DossierMedical')
 const FicheMedical = require('../models/FicheMedical')
 const pdf = require('html-pdf')
 const User = require('../models/User')
+const moment = require('moment')
 const ordannancePdfTemplate = require('../pdfs/ordonnance')
 const certifMariagePdfTemplate = require('../pdfs/certificatDeMariage')
 const certifAccompPdfTemplate = require('../pdfs/certificatAccompagnement')
@@ -25,6 +26,7 @@ exports.downloadOrdonnancePdf = async (req, res) => {
                 res.status(200).json({ blob: buffer.toString("base64") })
             });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: error.message })
 
     }

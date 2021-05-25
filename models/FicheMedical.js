@@ -9,7 +9,7 @@ const ficheMedicalSchema = new mongoose.Schema({
         observation: { type: String },
         prescription: { type: String },
         haveOrdonnance: { type: Boolean, default: false },
-        certificat: { type: String, enum: ['medical', 'execptionnel', 'accompagnement', 'lettre de laison', 'ordonnance'] }
+        certificat: { type: String, enum: ['medical', 'accompagnement', 'presence', 'ordonnance', 'mariage'] }
     }]
 })
 

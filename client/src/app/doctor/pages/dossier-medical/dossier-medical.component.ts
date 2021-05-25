@@ -9,6 +9,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { DoctorService } from '../../doctor.service';
 import { FicheMedical } from 'src/app/types/FicheMedical';
 import { Appointment } from 'src/app/types/Appointment';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -39,6 +40,80 @@ export class DossierMedicalComponent implements OnInit {
         this.resetNewAppointment()
     }
 
+
+    onDownloadPdfOrdonnance(ficheId, appointmentId) {
+        this.doctorService.getOrdonnancePdf(ficheId, appointmentId)
+            .subscribe((res: any) => {
+                const byteCharacters = atob(res.blob);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                saveAs(pdfBlob, `${appointmentId}.pdf`);
+            })
+    }
+    onDownloadPdfCertificat(ficheId, appointment) {
+        switch (appointment.certificat) {
+            case 'medical':
+                this.doctorService.getCertificatMedicalPdf(this.dossierMedical._id, ficheId, appointment._id)
+                    .subscribe((res: any) => {
+                        const byteCharacters = atob(res.blob);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                        saveAs(pdfBlob, `${appointment._id}.pdf`);
+                    })
+                break;
+            case 'accompagnement':
+                this.doctorService.getCertificaAccompagnementPdf(this.dossierMedical._id, ficheId, appointment._id)
+                    .subscribe((res: any) => {
+                        const byteCharacters = atob(res.blob);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                        saveAs(pdfBlob, `${appointment._id}.pdf`);
+                    })
+                break;
+            case 'precense':
+                this.doctorService.getCertificatPresencePdf(this.dossierMedical._id, ficheId, appointment._id)
+                    .subscribe((res: any) => {
+                        const byteCharacters = atob(res.blob);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                        saveAs(pdfBlob, `${appointment._id}.pdf`);
+                    })
+                break;
+            case 'mariage':
+                this.doctorService.getCertificatMariagePdf(this.dossierMedical._id, ficheId, appointment._id)
+                    .subscribe((res: any) => {
+                        const byteCharacters = atob(res.blob);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                        saveAs(pdfBlob, `${appointment._id}.pdf`);
+                    })
+                break;
+
+            default:
+                break;
+        }
+
+    }
     ngOnInit() {
         this.route.params
             .subscribe(params => {
