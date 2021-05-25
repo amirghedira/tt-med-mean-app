@@ -1,0 +1,70 @@
+<div *ngIf="userNurse" class="main-container">
+  <div class="consultform">
+    <h1> Parametre</h1>
+  </div>
+  <div class="main">
+    <div>
+      <h2 class="name">Nom d'utilisateur</h2>
+      <input class="code" type="text" name="userNurse.username" (focus)="resetErrorMessage()"
+        [(ngModel)]="userNurse.username">
+
+    </div>
+    <div>
+      <h2 class="name">Email</h2>
+      <input class="code" type="text" name="userNurse.email" (focus)="resetErrorMessage()"
+        [(ngModel)]="userNurse.email">
+
+    </div>
+    <div>
+      <h2 class="name">Nom</h2>
+      <input class="code" type="text" name="userNurse.nom" (focus)="resetErrorMessage()" [(ngModel)]="userNurse.nom">
+
+    </div>
+    <div>
+      <h2 class="name">Prenom</h2>
+      <input class="code" type="text" name="userNurse.prenom" (focus)="resetErrorMessage()"
+        [(ngModel)]="userNurse.prenom">
+
+    </div>
+    <div>
+      <h2 class="name">Numero telephone</h2>
+      <input class="code" type="text" (focus)="resetErrorMessage()" name="userNurse.numTel"
+        [(ngModel)]="userNurse.numTel" (input)="onChangePhoneNumber($event)">
+
+    </div>
+    <div class="control-container">
+      <button type="submit" class="bouton2" (click)="onSaveUserInfo()">Sauvegarder</button>
+    </div>
+    <div>
+      <h2 class="name"> Ancien mot de passe</h2>
+      <input class="code" type="password" name="oldPassword" (focus)="resetErrorMessage()" [(ngModel)]="oldPassword">
+
+    </div>
+    <div>
+      <h2 class="name"> Nouvelle mot de passe</h2>
+      <input class="code" type="password" name="newPassword" (focus)="resetErrorMessage()" [(ngModel)]="newPassword">
+
+    </div>
+    <div>
+      <h2 class="name">Confirmer mot de passe</h2>
+      <input class="code" type="password" name="rePassword" (focus)="resetErrorMessage()" [(ngModel)]="rePassword">
+
+    </div>
+    <div class="control-container">
+      <button type="submit" class="bouton2" (click)="onSavePassword()">Sauvegarder</button>
+    </div>
+    <div>
+      <h2 class="name">Access</h2>
+      <h5 class="role-text">
+        {{userNurse.role}}
+      </h5>
+
+    </div>
+    <div class="error-message-container">
+      <h2 class="error-message">
+        {{errorMessage}}
+      </h2>
+    </div>
+  </div>
+
+</div>

@@ -9,6 +9,7 @@ import { ConsulterMedecinComponent } from './pages/consulter-medecin/consulter-m
 import { MiseAJourAgentComponent } from './pages/mise-a-jour-agent/mise-a-jour-agent.component';
 import { MiseAJourInfirmierComponent } from './pages/mise-a-jour-infirmier/mise-a-jour-infirmier.component';
 import { MiseAJourMedecinComponent } from './pages/mise-a-jour-medecin/mise-a-jour-medecin.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
     { path: 'update-agent', component: MiseAJourAgentComponent },
     { path: 'update-medecin', component: MiseAJourMedecinComponent },
     { path: 'update-infirmier', component: MiseAJourInfirmierComponent },
+    { path: 'settings', component: SettingsComponent },
+
     { path: '**', redirectTo: 'ajouter-agent' },
 
 

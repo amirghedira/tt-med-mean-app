@@ -17,13 +17,21 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NurseSideBarComponent } from './components/side-bar/side-bar.component';
 import { NurseNavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NurseComponent } from './nurse.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
 @NgModule({
-    declarations: [AjouterConsultationComponent,
-        DossierMedicalComponent, ConsultationsComponent,
-        ChercherDossierComponent, MarquerPresenceComponent, NurseSideBarComponent, NurseNavBarComponent, NurseComponent],
+    declarations: [
+        AjouterConsultationComponent,
+        DossierMedicalComponent,
+        ConsultationsComponent,
+        ChercherDossierComponent,
+        MarquerPresenceComponent,
+        NurseSideBarComponent,
+        NurseNavBarComponent,
+        NurseComponent,
+        SettingsComponent],
     imports: [
         CommonModule,
         NgxSpinnerModule,

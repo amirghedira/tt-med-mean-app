@@ -120,11 +120,8 @@ export class DossierMedicalComponent implements OnInit {
         this.doctorService.addAppointment(this.selectedFicheToAddAppointment, this.newAppointment)
             .subscribe(res => {
                 if (this.dossierMedical.fiche_medical_ordinaire._id == this.selectedFicheToAddAppointment) {
-                    this.dossierMedical.fiche_medical_ordinaire.appointments.push(this.newAppointment)
                     this.editedDossierMedical.fiche_medical_ordinaire.appointments.push(this.newAppointment)
                 } else {
-                    const ficheMedicalChroniqueIndex = this.dossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
-                    this.dossierMedical.fiche_medical_chronique[ficheMedicalChroniqueIndex].appointments.push(this.newAppointment)
                     const editedFicheMedicalChroniqueIndex = this.editedDossierMedical.fiche_medical_chronique.findIndex(fiche => fiche._id == this.selectedFicheToAddAppointment)
                     this.editedDossierMedical.fiche_medical_chronique[editedFicheMedicalChroniqueIndex].appointments.push(this.newAppointment)
                     this.selectedFichedMedicalChronique = this.editedDossierMedical.fiche_medical_chronique[editedFicheMedicalChroniqueIndex]
@@ -142,9 +139,9 @@ export class DossierMedicalComponent implements OnInit {
         this.doctorService.addFicheMedicalChronique(this.dossierMedical._id, this.maladieToAdd)
             .subscribe((res: any) => {
                 const buttonOpenAddMaladieModal = document.getElementById('button-add-maladie')
-                this.editedDossierMedical.fiche_medical_chronique = [...this.editedDossierMedical.fiche_medical_chronique, res.ficheMedical]
-                this.dossierMedical.fiche_medical_chronique = [...this.dossierMedical.fiche_medical_chronique, res.ficheMedical]
-                this.selectedFichedMedicalChronique = res.ficheMedical
+
+                this.editedDossierMedical.fiche_medical_chronique.push(JSON.parse(JSON.stringify(res.ficheMedical)))
+                this.selectedFichedMedicalChronique = JSON.parse(JSON.stringify(res.ficheMedical))
                 this.maladieToAdd = ''
                 buttonOpenAddMaladieModal.click()
             }, err => {

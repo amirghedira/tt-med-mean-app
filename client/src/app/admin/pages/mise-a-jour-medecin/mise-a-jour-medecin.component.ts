@@ -76,7 +76,7 @@ export class MiseAJourMedecinComponent implements OnInit {
             .subscribe(res => {
                 Swal.fire(
                     'Sucess',
-                    'Dctor successfully updated!',
+                    'Doctor successfully updated!',
                     'success')
             }, err => {
                 if (err.status === 409)

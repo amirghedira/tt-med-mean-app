@@ -19,11 +19,14 @@
   padding: 0;
 }
 
-.disconnect-button {
-  color: red;
+.dropdown-item {
   cursor: pointer;
   font-size: 13px;
   font-weight: 700;
+}
+
+.disconnect-button {
+  color: red;
 }
 
 .nav-item {
@@ -44,6 +47,7 @@
   cursor: pointer;
   list-style: none;
 }
+
 .logo {
   float: left;
   width: 70%;

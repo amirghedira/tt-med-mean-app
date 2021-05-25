@@ -1,12 +1,12 @@
 <div class="container-fluid main-container">
   <div class="row">
-    <div class="col" style="padding: 0;">
+    <div *ngIf="router != '/doctor/settings'" class="col-2" style="padding: 0;">
       <div class="side-bar">
         <app-doctor-side-bar></app-doctor-side-bar>
 
       </div>
     </div>
-    <div class="col-10">
+    <div class="col">
       <app-doctor-nav-bar></app-doctor-nav-bar>
       <div style="padding-top: 150px;">
         <router-outlet></router-outlet>

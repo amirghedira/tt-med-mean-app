@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { AdminNavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AdminSideBarComponent } from './components/side-bar/side-bar.component';
 import { AdminComponent } from './admin.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
@@ -27,7 +28,7 @@ import { AdminComponent } from './admin.component';
         AjouterInfirmierComponent, ConsulterAgentComponent,
         ConsulterMedecinComponent, MiseAJourMedecinComponent,
         MiseAJourAgentComponent, MiseAJourInfirmierComponent,
-        ConsulterInfirmierComponent, AjouterMedecinComponent, AdminNavBarComponent, AdminSideBarComponent, AdminComponent],
+        ConsulterInfirmierComponent, AjouterMedecinComponent, AdminNavBarComponent, AdminSideBarComponent, AdminComponent, SettingsComponent],
     imports: [
         CommonModule,
         FormsModule,

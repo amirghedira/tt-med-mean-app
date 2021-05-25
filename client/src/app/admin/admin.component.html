@@ -1,11 +1,11 @@
 <div class="container-fluid main-container">
   <div class="row">
-    <div class="col-2 " style="padding: 0;">
+    <div *ngIf="router != '/admin/settings'" class="col-2 " style="padding: 0;">
       <div class="side-bar">
         <app-admin-side-bar></app-admin-side-bar>
       </div>
     </div>
-    <div class="col-10" style="padding: 0;">
+    <div class="col" style="padding: 0;">
       <app-admin-nav-bar></app-admin-nav-bar>
       <router-outlet></router-outlet>
     </div>

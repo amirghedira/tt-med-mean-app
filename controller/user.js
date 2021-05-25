@@ -104,26 +104,36 @@ exports.updateUserPassword = async (req, res) => {
 
 
 exports.updateUserInfo = async (req, res) => {
-    let ops = {};
+    let objToUpdate = {};
+    let testObj = []
     for (let obj of req.body) {
-        ops[obj.propName] = obj.value;
+        objToUpdate[obj.propName] = obj.value;
     }
     try {
+        if (objToUpdate.username || objToUpdate.email) {
+            if (objToUpdate.email && objToUpdate.email != req.user.email)
+                testObj.push({ email: objToUpdate.email })
+            if (objToUpdate.username && objToUpdate.username != req.user.username)
+                testObj.push({ username: objToUpdate.username })
+
+            if (testObj.length > 0) {
+                const existUser = await User.findOne({ $or: testObj })
+                if (existUser && existUser._id.toString() != req.user._id)
+                    return res.status(409).json({ message: "username or email already in use" });
+            }
+        }
         await User.updateOne(
             {
                 _id: req.user._id,
             },
             {
-                $set: ops,
+                $set: objToUpdate,
             }
         );
-        res.status(200).json({
-            message: "user updated successfully",
-        });
+        res.status(200).json({ message: "user updated successfully", });
     } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
+        console.log(error)
+        res.status(500).json({ message: error.message });
     }
 };
 

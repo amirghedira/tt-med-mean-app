@@ -16,6 +16,7 @@ import { DoctorNavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DoctorSideBarComponent } from './components/side-bar/side-bar.component';
 import { AjouterConsultationComponent } from './pages/ajouter-consultation/ajouter-consultation.component';
 import { ChercherDossierComponent } from './pages/chercher-dossier/chercher-dossier.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
@@ -28,7 +29,8 @@ import { ChercherDossierComponent } from './pages/chercher-dossier/chercher-doss
         DossierMedicalComponent,
         ChercherDossierComponent,
         DoctorNavBarComponent,
-        DoctorSideBarComponent
+        DoctorSideBarComponent,
+        SettingsComponent
     ],
     imports: [
         CommonModule,

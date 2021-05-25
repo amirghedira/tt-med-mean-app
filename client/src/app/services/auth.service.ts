@@ -44,6 +44,12 @@ export class AuthService {
     createUser(newUser: Admin, telecomPass: string) {
         return this.http.post('http://localhost:5000/user', { user: newUser, telecomPass }, { observe: 'response' })
     }
+    updateUserInfo(updatedField: { value: string, propName: string }[]) {
+        return this.http.patch('http://localhost:5000/user', updatedField)
+    }
+    updateUserPassword(oldPassword: string, newPassword: string) {
+        return this.http.patch('http://localhost:5000/user/password', { oldPassword, newPassword })
+    }
     getConnectedUser() {
         return this.http.get<User>('http://localhost:5000/user/connected-user')
     }

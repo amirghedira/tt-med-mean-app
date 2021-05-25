@@ -5,6 +5,7 @@ import { ChercherDossierComponent } from './pages/chercher-dossier/chercher-doss
 import { ConsultationsComponent } from './pages/consultations/consultations.component';
 import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 
@@ -14,6 +15,8 @@ const routes: Routes = [
     { path: 'consultations', component: ConsultationsComponent },
     { path: 'chercher-dossier', component: ChercherDossierComponent },
     { path: 'dossier-medical/:id', component: DossierMedicalComponent },
+    { path: 'settings', component: SettingsComponent },
+
     { path: '**', redirectTo: 'home' },
 
 
