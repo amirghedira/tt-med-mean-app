@@ -240,7 +240,9 @@ exports.uploadBiologyImage = async (req, res) => {
 }
 exports.updateDossierMedical = async (req, res) => {
     try {
-        await DossierMedical.updateOne({ _id: req.params.dossierId }, { $set: { ...req.body.dossierMedical } })
+        const dossierMedical = await DossierMedical.findOne({ _id: req.params.dossierId })
+        const newAnthropometriques_history = [...dossierMedical.anthropometriques_history, { ...dossierMedical.anthropometriques, date: new Date().toISOString() }]
+        await DossierMedical.updateOne({ _id: req.params.dossierId }, { $set: { ...req.body.dossierMedical, anthropometriques_history: newAnthropometriques_history } })
         res.status(200).json({ message: 'dossier medical updated' })
     } catch (error) {
         res.status(500).json({ error: error.message })

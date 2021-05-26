@@ -21,6 +21,20 @@ export interface DossierMedical {
         puls: string,
         tension: string
     },
+    anthropometriques_history: [{
+        date: string,
+        _id: string,
+        poid: string,
+        taille: string,
+        vision_pre_droite: string,
+        vision_pre_gauche: string,
+        vision_loin_droite: string,
+        vision_loin_gauche: string,
+        audition_oreille_gauche: string,
+        audition_oreille_droite: string,
+        puls: string,
+        tension: string
+    }],
     biologiques: {
         current: string,
         history: string[]

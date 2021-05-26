@@ -19,6 +19,19 @@ const DossierMedicalSchema = new mongoose.Schema({
         puls: { type: String, default: '' },
         tension: { type: String, default: '' }
     },
+    anthropometriques_history: [{
+        date: { type: String },
+        poid: { type: String, default: '' },
+        taille: { type: String, default: '' },
+        vision_pre_droite: { type: String, default: '' },
+        vision_pre_gauche: { type: String, default: '' },
+        vision_loin_droite: { type: String, default: '' },
+        vision_loin_gauche: { type: String, default: '' },
+        audition_oreille_gauche: { type: String, default: '' },
+        audition_oreille_droite: { type: String, default: '' },
+        puls: { type: String, default: '' },
+        tension: { type: String, default: '' }
+    }],
     biologiques: {
         current: { type: String },
         history: [{ type: String }]
