@@ -10,7 +10,7 @@ import { DoctorService } from '../../doctor.service';
 import { FicheMedical } from 'src/app/types/FicheMedical';
 import { Appointment } from 'src/app/types/Appointment';
 import { saveAs } from 'file-saver';
-import* as moment from 'moment';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-dossier-medical',
@@ -26,6 +26,7 @@ export class DossierMedicalComponent implements OnInit {
     selectedFichedMedicalChronique: FicheMedical;
     selectedFicheToAddAppointment: string;
     maladieToAdd: string;
+    selectedHistoryAnthropometrique;
     newAppointment: Appointment;
     owner: Agent | FamilyMember;
     isEditing: boolean;
@@ -40,7 +41,14 @@ export class DossierMedicalComponent implements OnInit {
         this.resetNewAppointment()
     }
 
-
+    onChangeSelectedHistoryAnthropometrique(event) {
+        if (event.target.value === 'current') {
+            this.selectedHistoryAnthropometrique = this.dossierMedical.anthropometriques
+        } else {
+            const index = this.dossierMedical.anthropometriques_history.findIndex(anthHistory => anthHistory._id == event.target.value)
+            this.selectedHistoryAnthropometrique = this.dossierMedical.anthropometriques_history[index]
+        }
+    }
     onDownloadPdfOrdonnance(ficheId, appointmentId) {
         this.doctorService.getOrdonnancePdf(ficheId, appointmentId)
             .subscribe((res: any) => {
@@ -123,6 +131,7 @@ export class DossierMedicalComponent implements OnInit {
                             res.dossierMedical.image = 'assets/images/default-avatar.png'
                         }
                         this.dossierMedical = JSON.parse(JSON.stringify(res.dossierMedical))
+                        this.selectedHistoryAnthropometrique = this.dossierMedical.anthropometriques;
                         this.editedDossierMedical = JSON.parse(JSON.stringify(res.dossierMedical))
                         if (res.dossierMedical.type === 'agent') {
                             this.owner = res.dossierMedical.agent
@@ -243,10 +252,13 @@ export class DossierMedicalComponent implements OnInit {
             })
 
     }
+    formatDateHistory(date: string) {
+        return moment(new Date(date)).format('DD-MM-YYYY HH:mm:ss')
+    }
 
-    formatDate(date:string){
+    formatDate(date: string) {
         return moment(new Date(date)).format('DD-MM-YYYY')
-    
+
     }
 
 }

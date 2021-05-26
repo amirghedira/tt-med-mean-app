@@ -80,6 +80,20 @@
     <div *ngIf="!isEditing" class="section">
       <div class="section">
         <div class="row justify-content-center">
+          <div class="col justify-content-center" style="display: flex;">
+            <select (input)="onChangeSelectedHistoryAnthropometrique($event)">
+              <option value="current">Current</option>
+              <option *ngFor="let historyAnthropometrique of dossierMedical.anthropometriques_history"
+                [value]="historyAnthropometrique._id">
+                {{formatDateHistory(historyAnthropometrique.date)}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="row justify-content-center">
+
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="sec_gauche">
               <div class="row">
@@ -90,7 +104,7 @@
                   <label
                     >poids en kg:
                     <span>
-                      {{ dossierMedical.anthropometriques.poid }}
+                      {{ selectedHistoryAnthropometrique.poid }}
                     </span>
                   </label>
                 </div>
@@ -98,7 +112,7 @@
                   <label
                     >Taille:
                     <span>
-                      {{ dossierMedical.anthropometriques.taille }}
+                      {{ selectedHistoryAnthropometrique.taille }}
                     </span>
                   </label>
                 </div>
@@ -108,7 +122,7 @@
                   <label
                     >vision prés-droite:
                     <span>
-                      {{ dossierMedical.anthropometriques.vision_pre_droite }}
+                      {{ selectedHistoryAnthropometrique.vision_pre_droite }}
                     </span>
                   </label>
                 </div>
@@ -116,7 +130,7 @@
                   <label
                     >vision prés-gauche:
                     <span>
-                      {{ dossierMedical.anthropometriques.vision_pre_gauche }}
+                      {{ selectedHistoryAnthropometrique.vision_pre_gauche }}
                     </span>
                   </label>
                 </div>
@@ -126,7 +140,7 @@
                   <label
                     >vision loin-droite:
                     <span>
-                      {{ dossierMedical.anthropometriques.vision_loin_droite }}
+                      {{ selectedHistoryAnthropometrique.vision_loin_droite }}
                     </span>
                   </label>
                 </div>
@@ -134,7 +148,7 @@
                   <label
                     >vision loin-gauche:
                     <span>
-                      {{ dossierMedical.anthropometriques.vision_loin_gauche }}
+                      {{ selectedHistoryAnthropometrique.vision_loin_gauche }}
                     </span>
                   </label>
                 </div>
@@ -145,7 +159,7 @@
                     >audition oreille-droite:
                     <span>
                       {{
-                        dossierMedical.anthropometriques.audition_oreille_gauche
+                        selectedHistoryAnthropometrique.audition_oreille_gauche
                       }}
                     </span>
                   </label>
@@ -155,7 +169,7 @@
                     >audition oreille-gauche:
                     <span>
                       {{
-                        dossierMedical.anthropometriques.audition_oreille_droite
+                        selectedHistoryAnthropometrique.audition_oreille_droite
                       }}
                     </span>
                   </label>
@@ -173,7 +187,7 @@
                   <label
                     >Pouls:
                     <span>
-                      {{ dossierMedical.anthropometriques.puls }}
+                      {{ selectedHistoryAnthropometrique.puls }}
                     </span>
                   </label>
                 </div>
@@ -181,7 +195,7 @@
                   <label
                     >Tension:
                     <span>
-                      {{ dossierMedical.anthropometriques.tension }}
+                      {{ selectedHistoryAnthropometrique.tension }}
                     </span>
                   </label>
                 </div>
