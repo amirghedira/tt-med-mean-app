@@ -128,7 +128,6 @@ td {
 
 tr:hover {
   background-color: #41acbe;
-  transform: scale(1.02);
   box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
   transition-duration: 0.3s;
 }
@@ -443,6 +442,10 @@ img {
   transform: scale(1.1);
   transition-duration: 0.3s;
 }
+.col2 {
+  display: flex;
+  align-items: baseline;
+}
 
 .submit {
   background-color: #68ebf5;
@@ -478,7 +481,6 @@ table {
 
 tr {
   transition: all 0.2s ease-in;
-  cursor: pointer;
   background-color: rgba(88, 124, 122, 0.6);
 }
 
@@ -506,7 +508,6 @@ td {
 
 tr:hover {
   background-color: #41acbe;
-  transform: scale(1.02);
   box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
   transition-duration: 0.3s;
 }
@@ -671,7 +672,6 @@ form {
 }
 
 .name {
-  margin-left: 25px;
   margin-bottom: 20px;
   margin-top: 30px;
   color: white;

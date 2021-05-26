@@ -1,5 +1,15 @@
-<input style="display: none" type="file" #fileDossierImage (change)="onChangeDossierImage($event)" />
-<input style="display: none" type="file" #fileBiologyImage (change)="onChangeBiologyImage($event)" />
+<input
+  style="display: none"
+  type="file"
+  #fileDossierImage
+  (change)="onChangeDossierImage($event)"
+/>
+<input
+  style="display: none"
+  type="file"
+  #fileBiologyImage
+  (change)="onChangeBiologyImage($event)"
+/>
 <div *ngIf="dossierMedical && editedDossierMedical && owner" class="container">
   <div class="page">
     <div class="section">
@@ -14,7 +24,8 @@
         <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12">
           <div class="info">
             <p>
-              <strong>{{ owner.nom }} {{ owner.prenom }}</strong><br />
+              <strong>{{ owner.nom }} {{ owner.prenom }}</strong
+              ><br />
               matricule: {{ dossierMedical.agent_matricule }}<br />
               qualité: {{ owner.qualite || "agent" }} <br />
               Né le: {{ owner.date_n }} <br />
@@ -25,7 +36,9 @@
                 </span>
               </span>
               <span *ngIf="isEditing">
-                <span *ngFor="let maladie of editedDossierMedical.maladieChronique">
+                <span
+                  *ngFor="let maladie of editedDossierMedical.maladieChronique"
+                >
                   {{ maladie }}
                 </span>
               </span>
@@ -34,11 +47,23 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
           <div class="photo-container">
-            <img *ngIf="!loadingUploadDossierImage" [src]="editedDossierMedical.image" class="photo" height="200px"
-              width="200px" [ngStyle]="{ cursor: isEditing ? 'pointer' : 'default' }" alt="photo dossier médical"
-              (click)="importDossierImage()" />
-            <ngx-spinner *ngIf="loadingUploadDossierImage" size="medium" color="#fff" type="ball-scale"
-              [fullScreen]="false">
+            <img
+              *ngIf="!loadingUploadDossierImage"
+              [src]="editedDossierMedical.image"
+              class="photo"
+              height="200px"
+              width="200px"
+              [ngStyle]="{ cursor: isEditing ? 'pointer' : 'default' }"
+              alt="photo dossier médical"
+              (click)="importDossierImage()"
+            />
+            <ngx-spinner
+              *ngIf="loadingUploadDossierImage"
+              size="medium"
+              color="#fff"
+              type="ball-scale"
+              [fullScreen]="false"
+            >
             </ngx-spinner>
           </div>
         </div>
@@ -54,14 +79,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>poids en kg:
+                  <label
+                    >poids en kg:
                     <span>
                       {{ dossierMedical.anthropometriques.poid }}
                     </span>
                   </label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>Taille:
+                  <label
+                    >Taille:
                     <span>
                       {{ dossierMedical.anthropometriques.taille }}
                     </span>
@@ -70,14 +97,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>vision prés-droite:
+                  <label
+                    >vision prés-droite:
                     <span>
                       {{ dossierMedical.anthropometriques.vision_pre_droite }}
                     </span>
                   </label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>vision prés-gauche:
+                  <label
+                    >vision prés-gauche:
                     <span>
                       {{ dossierMedical.anthropometriques.vision_pre_gauche }}
                     </span>
@@ -86,14 +115,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>vision loin-droite:
+                  <label
+                    >vision loin-droite:
                     <span>
                       {{ dossierMedical.anthropometriques.vision_loin_droite }}
                     </span>
                   </label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>vision loin-gauche:
+                  <label
+                    >vision loin-gauche:
                     <span>
                       {{ dossierMedical.anthropometriques.vision_loin_gauche }}
                     </span>
@@ -102,7 +133,8 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>audition oreille-droite:
+                  <label
+                    >audition oreille-droite:
                     <span>
                       {{
                         dossierMedical.anthropometriques.audition_oreille_gauche
@@ -111,7 +143,8 @@
                   </label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>audition oreille-gauche:
+                  <label
+                    >audition oreille-gauche:
                     <span>
                       {{
                         dossierMedical.anthropometriques.audition_oreille_droite
@@ -129,14 +162,16 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>Pouls:
+                  <label
+                    >Pouls:
                     <span>
                       {{ dossierMedical.anthropometriques.puls }}
                     </span>
                   </label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <label>Tension:
+                  <label
+                    >Tension:
                     <span>
                       {{ dossierMedical.anthropometriques.tension }}
                     </span>
@@ -148,8 +183,12 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <label *ngIf="dossierMedical.haveElectrocardiogramme">Oui</label>
-                  <label *ngIf="!dossierMedical.haveElectrocardiogramme">Non</label>
+                  <label *ngIf="dossierMedical.haveElectrocardiogramme"
+                    >Oui</label
+                  >
+                  <label *ngIf="!dossierMedical.haveElectrocardiogramme"
+                    >Non</label
+                  >
                 </div>
               </div>
             </div>
@@ -161,16 +200,30 @@
           <div class="row justify-content-center">
             <h2 class="titre">Données biologiques</h2>
           </div>
-          <div *ngIf="
+          <div
+            *ngIf="
               dossierMedical.biologiques?.current && !loadingUploadBiologyImage
-            " class="row justify-content-center">
-            <img [src]="dossierMedical.biologiques?.current" class="biology-image" />
+            "
+            class="row justify-content-center"
+          >
+            <img
+              [src]="dossierMedical.biologiques?.current"
+              class="biology-image"
+            />
           </div>
-          <ngx-spinner *ngIf="loadingUploadBiologyImage" size="medium" color="#fff" type="ball-scale"
-            [fullScreen]="false">
+          <ngx-spinner
+            *ngIf="loadingUploadBiologyImage"
+            size="medium"
+            color="#fff"
+            type="ball-scale"
+            [fullScreen]="false"
+          >
           </ngx-spinner>
           <div class="row">
-            <div *ngFor="let historyImage of dossierMedical.biologiques?.history" class="col-2">
+            <div
+              *ngFor="let historyImage of dossierMedical.biologiques?.history"
+              class="col-2"
+            >
               <img [src]="historyImage" class="biology-image" />
             </div>
           </div>
@@ -188,55 +241,87 @@
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="Poids" type="number" [(ngModel)]="editedDossierMedical.anthropometriques.poid" />
+                  <input
+                    class="Poids"
+                    type="number"
+                    [(ngModel)]="editedDossierMedical.anthropometriques.poid"
+                  />
                   <label class="label_poids">poids en kg</label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="taille" type="number" [(ngModel)]="editedDossierMedical.anthropometriques.taille" />
+                  <input
+                    class="taille"
+                    type="number"
+                    [(ngModel)]="editedDossierMedical.anthropometriques.taille"
+                  />
                   <label class="label_taille">Taille</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="visionpréD" type="number" [(ngModel)]="
+                  <input
+                    class="visionpréD"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques.vision_pre_droite
-                    " />
+                    "
+                  />
                   <label class="label_vpd">vision-prés droite</label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="visionpréG" type="number" [(ngModel)]="
+                  <input
+                    class="visionpréG"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques.vision_pre_gauche
-                    " />
+                    "
+                  />
                   <label class="label_vpg">vision-prés gauche</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="visionloinD" type="number" [(ngModel)]="
+                  <input
+                    class="visionloinD"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques.vision_loin_droite
-                    " />
+                    "
+                  />
                   <label class="label_vld">vision-loin droite</label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="visionloinG" type="number" [(ngModel)]="
+                  <input
+                    class="visionloinG"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques.vision_loin_gauche
-                    " />
+                    "
+                  />
                   <label class="label_vlg">vision-loin gauche</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="auditionOD" type="number" [(ngModel)]="
+                  <input
+                    class="auditionOD"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques
                         .audition_oreille_gauche
-                    " />
+                    "
+                  />
                   <label class="label_od">audition-oreille droite</label>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="auditionOG" type="number" [(ngModel)]="
+                  <input
+                    class="auditionOG"
+                    type="number"
+                    [(ngModel)]="
                       editedDossierMedical.anthropometriques
                         .audition_oreille_droite
-                    " />
+                    "
+                  />
                   <label class="label_og">audition-oreille gauche</label>
                 </div>
               </div>
@@ -249,11 +334,19 @@
               </div>
               <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="pouls" type="number" [(ngModel)]="editedDossierMedical.anthropometriques.puls" />
+                  <input
+                    class="pouls"
+                    type="number"
+                    [(ngModel)]="editedDossierMedical.anthropometriques.puls"
+                  />
                   <label class="label_pouls">Pouls</label>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <input class="tension" type="number" [(ngModel)]="editedDossierMedical.anthropometriques.tension" />
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col2">
+                  <input
+                    class="tension"
+                    type="number"
+                    [(ngModel)]="editedDossierMedical.anthropometriques.tension"
+                  />
                   <label class="label_tension">Tension</label>
                 </div>
               </div>
@@ -262,8 +355,11 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <mat-radio-group aria-label="Select an option" name="editedDossierMedical.haveElectrocardiogramme"
-                    [(ngModel)]="editedDossierMedical.haveElectrocardiogramme">
+                  <mat-radio-group
+                    aria-label="Select an option"
+                    name="editedDossierMedical.haveElectrocardiogramme"
+                    [(ngModel)]="editedDossierMedical.haveElectrocardiogramme"
+                  >
                     <mat-radio-button [value]="true">Oui</mat-radio-button>
                     <mat-radio-button [value]="false">Non</mat-radio-button>
                   </mat-radio-group>
@@ -290,18 +386,24 @@
               <div class="row">
                 <div class="col-lg-5 col-md-5">
                   <div class="sec_droiteAdmin">
-                    <img [src]="
+                    <img
+                      [src]="
                         editedDossierMedical.biologiques.current ||
                         'assets/images/import-image.png'
-                      " class="biology-image" />
+                      "
+                      class="biology-image"
+                    />
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div *ngFor="
+                <div
+                  *ngFor="
                     let historyImage of editedDossierMedical.biologiques
                       ?.history
-                  " class="col-2">
+                  "
+                  class="col-2"
+                >
                   <img [src]="historyImage" class="biology-image" />
                 </div>
               </div>
