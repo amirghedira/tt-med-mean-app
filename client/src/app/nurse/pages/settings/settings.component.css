@@ -1,5 +1,4 @@
 .main-container {
-
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -13,7 +12,7 @@
 .consultform {
   width: 700px;
   background-color: #025d6d;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: auto;
   margin-top: 20px;
   padding: 10px 0px 10px 0px;
@@ -29,7 +28,6 @@
   border-radius: 6px;
   padding: 0 22px;
   font-size: 16px;
-
 }
 
 .name {
@@ -82,15 +80,15 @@
 }
 
 .role-text {
-  color: orangered;
+  color: rgb(0, 47, 255);
   font-weight: bold;
   position: relative;
-  left: 200px;
+  left: 270px;
   top: -37px;
   line-height: 40px;
   border-radius: 6px;
   padding: 0 22px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .bouton2:hover {
@@ -98,7 +96,6 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 .search {
@@ -114,14 +111,10 @@
   height: 40px;
   width: 300px;
   border-radius: 50px;
-
-
 }
 
-
-
 .error-message {
-  color: #DC143C;
+  color: #dc143c;
   font-size: 13px;
   font-weight: 500;
   margin: 10px 0px 10px 0px;

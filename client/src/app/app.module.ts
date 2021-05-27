@@ -12,7 +12,6 @@ import { DoctorModule } from './doctor/doctor.module';
 import { AdminModule } from './admin/admin.module';
 import { NurseModule } from './nurse/nurse.module';
 import { AuthModule } from './auth/auth.module';
-import { from } from 'rxjs';
 
 
 @NgModule({

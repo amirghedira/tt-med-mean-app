@@ -13,6 +13,11 @@ tr {
   background-color: rgba(81, 145, 145, 0.6);
 }
 
+tr:hover {
+  background-color: #41acbe;
+  box-shadow: 2px 2px 12px rgb(165, 241, 255), -1px -1px 8px rgba(0, 0, 0, 0);
+}
+
 #header {
   background-color: #025d6d;
   color: white;

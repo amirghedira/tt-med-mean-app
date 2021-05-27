@@ -11,11 +11,10 @@ import { FicheMedical } from 'src/app/types/FicheMedical';
 import { Appointment } from 'src/app/types/Appointment';
 import { saveAs } from 'file-saver';
 import * as moment from 'moment';
-
 @Component({
     selector: 'app-dossier-medical',
     templateUrl: './dossier-medical.component.html',
-    styleUrls: ['./dossier-medical.component.css']
+    styleUrls: ['./dossier-medical.component.css']   
 })
 export class DossierMedicalComponent implements OnInit {
 
