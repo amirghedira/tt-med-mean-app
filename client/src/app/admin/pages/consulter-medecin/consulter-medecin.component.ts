@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from 'src/app/types/Doctor';
 import { AdminService } from '../../admin.service';
+import { saveAs } from 'file-saver';
 
 @Component({
     selector: 'app-consulter-medecin',
@@ -47,6 +48,19 @@ export class ConsulterMedecinComponent implements OnInit {
         })
         this.selectedDoctorHours = _workingHours.length;
 
+    }
+    onGetDoctorPresencePdf() {
+        this.adminService.getDoctorPresencePdf(2, 2021)
+            .subscribe((res: any) => {
+                const byteCharacters = atob(res.blob);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                saveAs(pdfBlob, `first.pdf`);
+            })
     }
     setSelectedDoctor(doctorId) {
         const doctorIndex = this.doctors.findIndex(doctor => doctor._id === doctorId)

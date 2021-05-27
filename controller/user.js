@@ -2,6 +2,8 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
+const pdf = require('html-pdf')
+const presenceDoctorPdf = require('../pdfs/precenseMedecin')
 
 exports.markDoctorPresent = async (req, res) => {
     try {
@@ -211,6 +213,26 @@ exports.userLogin = async (req, res) => {
 };
 
 
+exports.getDoctorPresencePdf = async (req, res) => {
+    try {
+        console.log(req.query.trimestre)
+        console.log(req.query.annee)
+        pdf.create(presenceDoctorPdf(
+            {
+                annee: +req.query.annee,
+                trimestre: +req.query.trimestre
+            }, {})).toBuffer((err, buffer) => {
+                if (err) {
+                    res.send(Promise.reject());
+                }
+                res.status(200).json({ blob: buffer.toString("base64") })
+            });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: error.message });
+
+    }
+}
 
 exports.addDoctor = async (req, res) => {
     try {

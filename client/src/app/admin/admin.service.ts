@@ -52,6 +52,10 @@ export class AdminService {
 
     }
 
+    getDoctorPresencePdf(trimestre, annee) {
+        return this.http.get(`http://localhost:5000/user/doctor-presence-pdf?annee=${annee}&trimestre=${trimestre}`)
+
+    }
     getDoctors() {
         return this.http.get(`http://localhost:5000/user/doctor`)
 

@@ -67,6 +67,9 @@
           <label class="firstlabel">Mois</label>
           <input class="lastname" type="number" name="workingHoursYear" [(ngModel)]="workingHoursYear"
             (input)="getDoctorHours()">
+          <button (click)="onGetDoctorPresencePdf()">
+            get pdf
+          </button>
           <label class="lastlabel">Année</label>
         </div>
       </div>
