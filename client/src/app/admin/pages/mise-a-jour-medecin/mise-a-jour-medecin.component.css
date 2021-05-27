@@ -1,9 +1,7 @@
 .main-container {
-
   padding-top: 100px;
   padding-bottom: 50px;
 }
-
 
 .main {
   background-color: rgba(99, 179, 179, 0.6);
@@ -14,7 +12,7 @@
 .consultform {
   width: 700px;
   background-color: #025d6d;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: auto;
   margin-top: 20px;
   padding: 10px 0px 10px 0px;
@@ -39,7 +37,6 @@
   border-radius: 6px;
   padding: 0 22px;
   font-size: 16px;
-
 }
 
 form {
@@ -68,7 +65,7 @@ form {
   border-radius: 12px;
   border: 2px solid rgb(27, 204, 235);
   padding: 14px 50px;
-  margin-left: 500px;
+  margin-left: 400px;
   outline: none;
   color: black;
   cursor: pointer;
@@ -82,7 +79,6 @@ form {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.3s;
-
 }
 
 .search {
@@ -90,7 +86,6 @@ form {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-
 }
 
 .recherche {
@@ -101,9 +96,8 @@ form {
   border-radius: 50px;
 }
 
-
 .error-message {
-  color: #DC143C;
+  color: #dc143c;
   font-size: 13px;
   font-weight: 500;
   margin: 10px 0px 10px 0px;
