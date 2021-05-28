@@ -20,6 +20,7 @@ const {
     getNurse,
     markDoctorPresent,
     getDoctorPresencePdf,
+    getDoctorWorkingHoursPdf
 } = require('../controller/user')
 
 
@@ -28,7 +29,8 @@ router.get('/', AuthGuard, getUsers)
 router.get('/doctor', AuthGuard, getDoctors)
 router.get('/nurse', AuthGuard, getNurses)
 router.get('/doctor/:mat', AuthGuard, getDoctor)
-router.get('/doctor-presence-pdf', AuthGuard, getDoctorPresencePdf)
+router.get('/doctor-presence-pdf/:doctorId', AuthGuard, getDoctorPresencePdf)
+router.get('/doctor-workinghours-pdf/:doctorId', AuthGuard, getDoctorWorkingHoursPdf)
 
 router.get('/nurse/:mat', AuthGuard, getNurse)
 

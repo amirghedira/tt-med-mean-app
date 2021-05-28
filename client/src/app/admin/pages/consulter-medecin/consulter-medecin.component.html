@@ -63,14 +63,62 @@
             <span class="field-value">{{selectedDoctorHours}}</span>
           </h2>
           <input class="firstname" type="number" name="workingHoursMonth" [(ngModel)]="workingHoursMonth"
-            (input)="getDoctorHours()">
+            (input)="getDoctorHours()" (focus)="resetErrorMessagePdfWorkingHours()">
           <label class="firstlabel">Mois</label>
           <input class="lastname" type="number" name="workingHoursYear" [(ngModel)]="workingHoursYear"
-            (input)="getDoctorHours()">
-          <button (click)="onGetDoctorPresencePdf()">
-            get pdf
-          </button>
+            (input)="getDoctorHours()" (focus)="resetErrorMessagePdfWorkingHours()">
           <label class="lastlabel">Année</label>
+        </div>
+        <div style="display: flex;align-items:center;justify-content:center;">
+          <div class="error-message-container">
+            <h2 class="error-message">
+              {{ errorMessageWorkingHoursPdf }}
+            </h2>
+          </div>
+        </div>
+        <button class="submit" (click)="onGetDoctorWorkingHoursPdf()">
+          Telecharger
+        </button>
+
+        <div class="row">
+          <div class="col">
+            <h2 class="name">PDF de presence:</h2>
+          </div>
+          <div class="col" style="display: flex;align-items:center">
+            <select name="pdfPresenceTrimestre" [(ngModel)]="pdfPresenceTrimestre"
+              (focus)="resetErrorMessagePdfPresence()">
+              <option value="none">Choisir trimestre</option>
+              <option value="1">trimestre 1</option>
+              <option value="2">trimestre 2</option>
+              <option value="3">trimestre 3</option>
+              <option value="4">trimestre 4</option>
+
+
+            </select>
+          </div>
+          <div class="col" style="display: flex;align-items:center">
+            <div>
+              <input class="lastname" style="top: 0;" type="number" name="pdfPresenceAnnee"
+                [(ngModel)]="pdfPresenceAnnee" (focus)="resetErrorMessagePdfPresence()">
+              <label class="lastlabel">Année</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="display: flex;align-items:center;justify-content:center;">
+            <div class="error-message-container">
+              <h2 class="error-message">
+                {{ errorMessagePdfPresence }}
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="display: flex;align-items:center;justify-content:center;">
+            <button class="submit" (click)="onGetDoctorPresencePdf()">
+              Telecharger
+            </button>
+          </div>
         </div>
       </div>
     </div>

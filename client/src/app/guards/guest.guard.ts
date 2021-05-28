@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from '../types/User';
@@ -19,15 +19,15 @@ export class GuestGuard implements CanActivate {
                     if (isConnected === true) {
                         authService.getCurrentUser()
                             .subscribe((user: User) => {
-                                if (user.role == 'admin')
-                                    this.router.navigate(['admin'])
+                                if (user) {
+                                    if (user.role == 'admin')
+                                        this.router.navigate(['admin'])
 
-                                else if (user.role == 'nurse')
-                                    this.router.navigate(['nurse'])
-                                else if (user.role == 'doctor')
-                                    this.router.navigate(['doctor'])
-
-
+                                    else if (user.role == 'nurse')
+                                        this.router.navigate(['nurse'])
+                                    else if (user.role == 'doctor')
+                                        this.router.navigate(['doctor'])
+                                }
                             })
                     }
                     obs.next(isConnected === false)

@@ -17,6 +17,10 @@ export class ConsulterMedecinComponent implements OnInit {
     selectedDoctorHours: number;
     workingHoursMonth: string;
     workingHoursYear: string;
+    pdfPresenceTrimestre: string = 'none';
+    pdfPresenceAnnee: string;
+    errorMessagePdfPresence: string;
+    errorMessageWorkingHoursPdf: string;
     constructor(private adminService: AdminService) { }
 
     ngOnInit() {
@@ -49,8 +53,37 @@ export class ConsulterMedecinComponent implements OnInit {
         this.selectedDoctorHours = _workingHours.length;
 
     }
+    resetErrorMessagePdfPresence() {
+        this.errorMessagePdfPresence = ''
+    }
+    resetErrorMessagePdfWorkingHours() {
+        this.errorMessageWorkingHoursPdf = ''
+    }
     onGetDoctorPresencePdf() {
-        this.adminService.getDoctorPresencePdf(2, 2021)
+        if (this.pdfPresenceTrimestre == 'none' || !this.pdfPresenceAnnee || this.pdfPresenceAnnee == '')
+            return this.errorMessagePdfPresence = 'Please fill tho whole inputs'
+        if (+this.pdfPresenceAnnee > new Date().getFullYear()) {
+            return this.errorMessagePdfPresence = 'Invalid date'
+        }
+        this.adminService.getDoctorPresencePdf(this.selectedDoctor._id, this.pdfPresenceTrimestre, this.pdfPresenceAnnee)
+            .subscribe((res: any) => {
+                const byteCharacters = atob(res.blob);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
+                saveAs(pdfBlob, `first.pdf`);
+            })
+    }
+    onGetDoctorWorkingHoursPdf() {
+        if (this.workingHoursMonth == '' || !this.workingHoursMonth || this.workingHoursYear == '' || !this.workingHoursYear)
+            return this.errorMessageWorkingHoursPdf = 'Please fill tho whole inputs'
+        if (+this.workingHoursMonth < 1 || +this.workingHoursMonth > 12)
+            return this.errorMessageWorkingHoursPdf = 'Invalid date'
+
+        this.adminService.getDoctorWorkingHoursPdf(this.selectedDoctor._id, this.workingHoursMonth, this.workingHoursYear)
             .subscribe((res: any) => {
                 const byteCharacters = atob(res.blob);
                 const byteNumbers = new Array(byteCharacters.length);

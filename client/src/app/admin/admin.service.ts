@@ -52,8 +52,12 @@ export class AdminService {
 
     }
 
-    getDoctorPresencePdf(trimestre, annee) {
-        return this.http.get(`http://localhost:5000/user/doctor-presence-pdf?annee=${annee}&trimestre=${trimestre}`)
+    getDoctorPresencePdf(doctorId: string, trimestre: string, annee: string) {
+        return this.http.get(`http://localhost:5000/user/doctor-presence-pdf/${doctorId}?annee=${annee}&trimestre=${trimestre}`)
+
+    }
+    getDoctorWorkingHoursPdf(doctorId: string, mois: string, annee: string) {
+        return this.http.get(`http://localhost:5000/user/doctor-workinghours-pdf/${doctorId}?annee=${annee}&mois=${mois}`)
 
     }
     getDoctors() {

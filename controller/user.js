@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 const pdf = require('html-pdf')
 const presenceDoctorPdf = require('../pdfs/precenseMedecin')
+const workingHoursDoctorPdf = require('../pdfs/workingHoursMedecin')
 
 exports.markDoctorPresent = async (req, res) => {
     try {
@@ -212,21 +213,54 @@ exports.userLogin = async (req, res) => {
     }
 };
 
+exports.getDoctorWorkingHoursPdf = async (req, res) => {
+    try {
+        const doctor = await User.findOne({ _id: req.params.doctorId })
+        if (doctor) {
+            pdf.create(workingHoursDoctorPdf(
+                {
+                    annee: +req.query.annee,
+                    mois: +req.query.mois,
+                    workingHours: doctor.workingHours,
+                    doctorNom: doctor.nom,
+                    doctorPrenom: doctor.prenom
+                }, {})).toBuffer((err, buffer) => {
+                    if (err) {
+                        res.send(Promise.reject());
+                    }
+                    res.status(200).json({ blob: buffer.toString("base64") })
+                });
+        } else {
+            res.status(404).json({ message: 'doctor not found' });
 
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: error.message });
+
+    }
+}
 exports.getDoctorPresencePdf = async (req, res) => {
     try {
-        console.log(req.query.trimestre)
-        console.log(req.query.annee)
-        pdf.create(presenceDoctorPdf(
-            {
-                annee: +req.query.annee,
-                trimestre: +req.query.trimestre
-            }, {})).toBuffer((err, buffer) => {
-                if (err) {
-                    res.send(Promise.reject());
-                }
-                res.status(200).json({ blob: buffer.toString("base64") })
-            });
+        const doctor = await User.findOne({ _id: req.params.doctorId })
+        if (doctor) {
+            pdf.create(presenceDoctorPdf(
+                {
+                    annee: +req.query.annee,
+                    trimestre: +req.query.trimestre,
+                    workingHours: doctor.workingHours,
+                    doctorNom: doctor.nom,
+                    doctorPrenom: doctor.prenom
+                }, {})).toBuffer((err, buffer) => {
+                    if (err) {
+                        res.send(Promise.reject());
+                    }
+                    res.status(200).json({ blob: buffer.toString("base64") })
+                });
+        } else {
+            res.status(404).json({ message: 'doctor not found' });
+
+        }
     } catch (error) {
         console.log(error)
         res.status(500).json({ error: error.message });
