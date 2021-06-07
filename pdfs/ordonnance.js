@@ -21,7 +21,7 @@ module.exports = ({ date }) => {
   </head>
   <body>
     <div class="invoice-box">
-      <div class="invoice-box">
+    
         <div style="width: 48%; float: left">
           <p>
             Ministère des Technologie <br />
@@ -46,8 +46,12 @@ module.exports = ({ date }) => {
           Date....................${date}...................التاريخ
         </p>
       </div>
+      <div>
       <h2 style="text-align: center">وصفــــــــة طبيــــــــــة</h2>
-      <h2 style="text-align: center">ORDONNANCE MEDICALE</h2>
+      </div>
+      <div>
+      <h2 style="text-align: center ">ORDONNANCE MEDICALE</h2>
+      </div>
     </div>
   </body>
 </html>

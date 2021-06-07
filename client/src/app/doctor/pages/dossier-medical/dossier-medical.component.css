@@ -15,6 +15,13 @@ img {
   border-radius: 50%;
 }
 
+.option {
+  line-height: 60px;
+  width: 100px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+}
 .info {
   float: left;
   font-size: 30px;
@@ -60,7 +67,7 @@ img {
 }
 
 label {
-  width: 155px;
+  width: 200px;
   color: white;
   font-size: 16px;
   font-weight: 700;

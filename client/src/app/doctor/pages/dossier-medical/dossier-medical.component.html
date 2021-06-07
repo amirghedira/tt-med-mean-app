@@ -36,6 +36,11 @@
                     let ficheChronique of dossierMedical.fiche_medical_chronique
                   "
                   (click)="selectFicheMaladieChronique(ficheChronique._id)"
+                  style="
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: aquamarine;
+                  "
                 >
                   {{ ficheChronique.maladie }}<br />
                 </span>
@@ -80,12 +85,21 @@
     <div *ngIf="!isEditing" class="section">
       <div class="section">
         <div class="row justify-content-center">
-          <div class="col justify-content-center" style="display: flex;">
-            <select (input)="onChangeSelectedHistoryAnthropometrique($event)">
-              <option value="current">Current</option>
-              <option *ngFor="let historyAnthropometrique of dossierMedical.anthropometriques_history"
-                [value]="historyAnthropometrique._id">
-                {{formatDateHistory(historyAnthropometrique.date)}}
+          <div class="col justify-content-center" style="display: flex">
+            <select
+              class="option"
+              (input)="onChangeSelectedHistoryAnthropometrique($event)"
+            >
+              <option value="current">
+                --------------------------Current--------------------------
+              </option>
+              <option
+                *ngFor="
+                  let historyAnthropometrique of dossierMedical.anthropometriques_history
+                "
+                [value]="historyAnthropometrique._id"
+              >
+                {{ formatDateHistory(historyAnthropometrique.date) }}
               </option>
             </select>
           </div>
@@ -93,7 +107,6 @@
       </div>
       <div class="section">
         <div class="row justify-content-center">
-
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="sec_gauche">
               <div class="row">
@@ -280,6 +293,7 @@
                             appointment
                           )
                         "
+                        style="text-decoration: underline"
                       >
                         {{ appointment.certificat }}
                       </td>
@@ -291,6 +305,7 @@
                             appointment._id
                           )
                         "
+                        style="text-decoration: underline"
                       >
                         Oui
                       </td>
