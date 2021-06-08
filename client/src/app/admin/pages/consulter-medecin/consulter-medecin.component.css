@@ -142,7 +142,7 @@ tr:hover {
 .name {
   margin-left: 25px;
   margin-top: 30px;
-  width: 200px;
+  width: 100%;
   color: white;
   font-size: 17px;
   font-weight: 700;
@@ -220,10 +220,8 @@ form {
   border-radius: 50px;
 }
 
-
-
 .error-message {
-  color: #DC143C;
+  color: #dc143c;
   font-size: 13px;
   font-weight: 500;
   margin: 10px 0px 10px 0px;

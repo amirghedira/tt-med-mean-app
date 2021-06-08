@@ -1,42 +1,71 @@
 <div class="main-container">
   <div class="search">
-    <input class="recherche" type="text" placeholder="Entrez la matricule" name="searchedMat" [(ngModel)]="searchedMat">
-    <a (click)="onSearch()"><i class="fa fa-search"></i></a>
+    <input
+      class="recherche"
+      type="text"
+      placeholder="Entrez la matricule"
+      name="searchedMat"
+      [(ngModel)]="searchedMat"
+    />
+    <a (click)="onSearch()"
+      ><i
+        class="fa fa-search"
+        style="color: rgb(0, 238, 255); cursor: pointer; font-size: 25px"
+      ></i
+    ></a>
   </div>
   <div class="consultform">
-    <h1> Mr {{nurse.nom}} {{nurse.prenom}}</h1>
+    <h1>Mr {{ nurse.nom }} {{ nurse.prenom }}</h1>
   </div>
   <div class="main">
     <form>
       <div id="name">
         <h2 class="name">Nom d'utilisateur</h2>
-        <input class="code" type="text" name="nurse.username" (focus)="resetErrorMessage()"
-          [(ngModel)]="nurse.username">
-
+        <input
+          class="code"
+          type="text"
+          name="nurse.username"
+          (focus)="resetErrorMessage()"
+          [(ngModel)]="nurse.username"
+        />
       </div>
       <div id="name">
-        <h2 class="name"> Nouvelle mot de passe</h2>
-        <input class="code" type="password" name="nurse.password" (focus)="resetErrorMessage()"
-          [(ngModel)]="nurse.password">
-
+        <h2 class="name">Nouvelle mot de passe</h2>
+        <input
+          class="code"
+          type="password"
+          name="nurse.password"
+          (focus)="resetErrorMessage()"
+          [(ngModel)]="nurse.password"
+        />
       </div>
       <div id="name">
         <h2 class="name">Confirmer mot de passe</h2>
-        <input class="code" type="password" name="rePassword" (focus)="resetErrorMessage()" [(ngModel)]="rePassword">
-
+        <input
+          class="code"
+          type="password"
+          name="rePassword"
+          (focus)="resetErrorMessage()"
+          [(ngModel)]="rePassword"
+        />
       </div>
       <div id="name">
         <h2 class="name">Num de téléphone:</h2>
-        <input class="code" name="nurse.numTel" (focus)="resetErrorMessage()" [(ngModel)]="nurse.numTel">
-
+        <input
+          class="code"
+          name="nurse.numTel"
+          (focus)="resetErrorMessage()"
+          [(ngModel)]="nurse.numTel"
+        />
       </div>
       <div class="error-message-container">
         <h2 class="error-message">
-          {{errorMessage}}
+          {{ errorMessage }}
         </h2>
       </div>
-      <button type="submit" class="bouton2" (click)="onSave()">Sauvegarder</button>
+      <button type="submit" class="bouton2" (click)="onSave()">
+        Sauvegarder
+      </button>
     </form>
   </div>
-
 </div>

@@ -1,8 +1,14 @@
 <div class="main-container">
   <div>
     <div class="search">
-      <input class="recherche" type="text" name="searchedMat" [(ngModel)]="searchedMat"
-        placeholder="Entrez la matricule " (input)="filterDoctors()">
+      <input
+        class="recherche"
+        type="text"
+        name="searchedMat"
+        [(ngModel)]="searchedMat"
+        placeholder="Entrez la matricule "
+        (input)="filterDoctors()"
+      />
     </div>
     <div class="tableau">
       <div>
@@ -13,63 +19,95 @@
             <th>Téléphone</th>
             <th>Nom d'utilisateur</th>
             <th>Mail</th>
-
-
           </tr>
           <tr *ngFor="let doctor of filtredDoctors">
-            <td (click)="setSelectedDoctor(doctor._id)" style="text-decoration: underline;">{{doctor.matricule}}</td>
-            <td>{{doctor.nom}} {{doctor.prenom}}</td>
-            <td>{{doctor.numTel}}</td>
-            <td>{{doctor.username}}</td>
-            <td>{{doctor.email}}</td>
-            <td>
-              <button class="submit" type="submit" (click)="onDeleteDoctor(doctor._id)">Supprimer</button>
-              <button class="submit" type="submit" [routerLink]="['/admin/update-medecin']"
-                [queryParams]="{matricule: doctor.matricule}">Modifier</button>
+            <td
+              (click)="setSelectedDoctor(doctor._id)"
+              style="text-decoration: underline"
+            >
+              {{ doctor.matricule }}
             </td>
-
+            <td>{{ doctor.nom }} {{ doctor.prenom }}</td>
+            <td>{{ doctor.numTel }}</td>
+            <td>{{ doctor.username }}</td>
+            <td>{{ doctor.email }}</td>
+            <td>
+              <button
+                class="submit"
+                type="submit"
+                (click)="onDeleteDoctor(doctor._id)"
+              >
+                Supprimer
+              </button>
+              <button
+                class="submit"
+                type="submit"
+                [routerLink]="['/admin/update-medecin']"
+                [queryParams]="{ matricule: doctor.matricule }"
+              >
+                Modifier
+              </button>
+            </td>
           </tr>
         </table>
       </div>
-
     </div>
     <div *ngIf="selectedDoctor">
       <div class="consultform">
-        <h1>Dr {{selectedDoctor.nom}} {{selectedDoctor.prenom}}</h1>
+        <h1>Dr {{ selectedDoctor.nom }} {{ selectedDoctor.prenom }}</h1>
       </div>
       <div class="main">
         <div id="name">
-          <h2 class="name">Num de matricule:
-            <span class="field-value">{{selectedDoctor.matricule}}</span>
+          <h2 class="name">
+            Num de matricule:
+            <span class="field-value">{{ selectedDoctor.matricule }}</span>
           </h2>
         </div>
         <div id="name">
-          <h2 class="name">Num de téléphone:
-            <span class="field-value">{{selectedDoctor.numTel}}</span>
+          <h2 class="name">
+            Num de téléphone:
+            <span class="field-value">{{ selectedDoctor.numTel }}</span>
           </h2>
         </div>
         <div id="name">
-          <h2 class="name">Nom d'utilisateur:
-            <span class="field-value">{{selectedDoctor.username}}</span>
+          <h2 class="name">
+            Nom d'utilisateur:
+            <span class="field-value">{{ selectedDoctor.username }}</span>
           </h2>
         </div>
         <div id="name">
-          <h2 class="name">Mail:
-            <span class="field-value">{{selectedDoctor.email}}</span>
+          <h2 class="name">
+            Mail:
+            <span class="field-value">{{ selectedDoctor.email }}</span>
           </h2>
         </div>
         <div id="name">
-          <h2 class="name">Nombre d'heures de travail:
-            <span class="field-value">{{selectedDoctorHours}}</span>
+          <h2 class="name">
+            Nombre d'heures de travail:
+            <span class="field-value">{{ selectedDoctorHours }}</span>
           </h2>
-          <input class="firstname" type="number" name="workingHoursMonth" [(ngModel)]="workingHoursMonth"
-            (input)="getDoctorHours()" (focus)="resetErrorMessagePdfWorkingHours()">
+          <input
+            class="firstname"
+            type="number"
+            name="workingHoursMonth"
+            [(ngModel)]="workingHoursMonth"
+            (input)="getDoctorHours()"
+            (focus)="resetErrorMessagePdfWorkingHours()"
+          />
           <label class="firstlabel">Mois</label>
-          <input class="lastname" type="number" name="workingHoursYear" [(ngModel)]="workingHoursYear"
-            (input)="getDoctorHours()" (focus)="resetErrorMessagePdfWorkingHours()">
+          <input
+            class="lastname"
+            type="number"
+            name="workingHoursYear"
+            [(ngModel)]="workingHoursYear"
+            (input)="getDoctorHours()"
+            (focus)="resetErrorMessagePdfWorkingHours()"
+          />
           <label class="lastlabel">Année</label>
         </div>
-        <div style="display: flex;align-items:center;justify-content:center;">
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
           <div class="error-message-container">
             <h2 class="error-message">
               {{ errorMessageWorkingHoursPdf }}
@@ -84,28 +122,38 @@
           <div class="col">
             <h2 class="name">PDF de presence:</h2>
           </div>
-          <div class="col" style="display: flex;align-items:center">
-            <select name="pdfPresenceTrimestre" [(ngModel)]="pdfPresenceTrimestre"
-              (focus)="resetErrorMessagePdfPresence()">
+          <div class="col" style="display: flex; align-items: center">
+            <select
+              name="pdfPresenceTrimestre"
+              [(ngModel)]="pdfPresenceTrimestre"
+              (focus)="resetErrorMessagePdfPresence()"
+            >
               <option value="none">Choisir trimestre</option>
               <option value="1">trimestre 1</option>
               <option value="2">trimestre 2</option>
               <option value="3">trimestre 3</option>
               <option value="4">trimestre 4</option>
-
-
             </select>
           </div>
-          <div class="col" style="display: flex;align-items:center">
+          <div class="col" style="display: flex; align-items: center">
             <div>
-              <input class="lastname" style="top: 0;" type="number" name="pdfPresenceAnnee"
-                [(ngModel)]="pdfPresenceAnnee" (focus)="resetErrorMessagePdfPresence()">
+              <input
+                class="lastname"
+                style="top: 0"
+                type="number"
+                name="pdfPresenceAnnee"
+                [(ngModel)]="pdfPresenceAnnee"
+                (focus)="resetErrorMessagePdfPresence()"
+              />
               <label class="lastlabel">Année</label>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col" style="display: flex;align-items:center;justify-content:center;">
+          <div
+            class="col"
+            style="display: flex; align-items: center; justify-content: center"
+          >
             <div class="error-message-container">
               <h2 class="error-message">
                 {{ errorMessagePdfPresence }}
@@ -114,7 +162,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col" style="display: flex;align-items:center;justify-content:center;">
+          <div
+            class="col"
+            style="display: flex; align-items: center; justify-content: center"
+          >
             <button class="submit" (click)="onGetDoctorPresencePdf()">
               Telecharger
             </button>
@@ -123,5 +174,4 @@
       </div>
     </div>
   </div>
-
 </div>

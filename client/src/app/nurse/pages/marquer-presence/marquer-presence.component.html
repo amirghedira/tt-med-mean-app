@@ -1,18 +1,31 @@
 <div class="list-consultation">
-  <p> Marquer la présence du médecin:</p>
+  <p>Marquer la présence du médecin:</p>
   <div class="row main-row">
     <div class="col-6 side-container">
-      <img src="/assets/images/mark-presence-doctor.png" class="mark-presence-image">
+      <img
+        src="/assets/images/mark-presence-doctor.png"
+        class="mark-presence-image"
+      />
     </div>
     <div class="col-6 side-container">
       <div>
         <div class="txt_field">
-          <label>Matricule du médecin </label>
-          <input type="text" name="matricule" [(ngModel)]="matricule" (focus)="resetErrorMessage()">
+          <label>Cin du médecin </label>
+          <input
+            type="text"
+            name="matricule"
+            [(ngModel)]="matricule"
+            (focus)="resetErrorMessage()"
+          />
         </div>
         <div class="txt_field">
           <label>Date de presence </label>
-          <input type="date" name="matricule" [(ngModel)]="presenceDate" (focus)="resetErrorMessage()">
+          <input
+            type="date"
+            name="matricule"
+            [(ngModel)]="presenceDate"
+            (focus)="resetErrorMessage()"
+          />
         </div>
       </div>
     </div>
@@ -20,14 +33,11 @@
   <div class="row main-row">
     <div class="col error-message-container">
       <h2 class="error-message">
-        {{errorMessage}}
+        {{ errorMessage }}
       </h2>
     </div>
   </div>
   <div class="row justify-content-center main-row">
-    <button class="submit" (click)="onValidate()">
-      Valider
-    </button>
+    <button class="submit" (click)="onValidate()">Valider</button>
   </div>
-
 </div>

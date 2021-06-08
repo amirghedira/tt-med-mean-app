@@ -51,6 +51,11 @@
                     let ficheChronique of editedDossierMedical.fiche_medical_chronique
                   "
                   (click)="selectFicheMaladieChronique(ficheChronique._id)"
+                  style="
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: aquamarine;
+                  "
                 >
                   {{ ficheChronique.maladie }}<br />
                 </span>
