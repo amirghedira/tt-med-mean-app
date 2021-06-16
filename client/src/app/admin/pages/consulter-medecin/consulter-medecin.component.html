@@ -6,7 +6,7 @@
         type="text"
         name="searchedMat"
         [(ngModel)]="searchedMat"
-        placeholder="Entrez la matricule "
+        placeholder="Entrez la CIN "
         (input)="filterDoctors()"
       />
     </div>
@@ -14,7 +14,7 @@
       <div>
         <table>
           <tr id="header">
-            <th>Num matricule</th>
+            <th>Num CIN</th>
             <th>Nom&prénom</th>
             <th>Téléphone</th>
             <th>Nom d'utilisateur</th>
@@ -59,31 +59,31 @@
       <div class="main">
         <div id="name">
           <h2 class="name">
-            Num de matricule:
+            Num de CIN :
             <span class="field-value">{{ selectedDoctor.matricule }}</span>
           </h2>
         </div>
         <div id="name">
           <h2 class="name">
-            Num de téléphone:
+            Num de téléphone :
             <span class="field-value">{{ selectedDoctor.numTel }}</span>
           </h2>
         </div>
         <div id="name">
           <h2 class="name">
-            Nom d'utilisateur:
+            Nom d'utilisateur :
             <span class="field-value">{{ selectedDoctor.username }}</span>
           </h2>
         </div>
         <div id="name">
           <h2 class="name">
-            Mail:
+            Mail :
             <span class="field-value">{{ selectedDoctor.email }}</span>
           </h2>
         </div>
         <div id="name">
           <h2 class="name">
-            Nombre d'heures de travail:
+            Nombre d'heures de travail :
             <span class="field-value">{{ selectedDoctorHours }}</span>
           </h2>
           <input
@@ -120,7 +120,7 @@
 
         <div class="row">
           <div class="col">
-            <h2 class="name">PDF de presence:</h2>
+            <h2 class="name">PDF de presence :</h2>
           </div>
           <div class="col" style="display: flex; align-items: center">
             <select
